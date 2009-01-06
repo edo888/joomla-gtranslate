@@ -1,12 +1,19 @@
 <?php
+/**
+* @version   $Id$
+* @package   GTranslate
+* @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
+* @license   http://creativecommons.org/licenses/by-nc-nd/3.0/
+*/
+
 defined('_JEXEC') or die('Restricted access');
 
 class modGTranslateHelper {
         function getParams(&$params) {
                 $params->def('look', 'flags');
-		$params->def('orientation', 'h');
-		$params->def('flag_size', '24');
-		$params->def('language', 'en');
+        $params->def('orientation', 'h');
+        $params->def('flag_size', '24');
+        $params->def('language', 'en');
                 $params->def('show_en', '1');
                 $params->def('show_ar', '1');
                 $params->def('show_bg', '1');
@@ -31,17 +38,17 @@ class modGTranslateHelper {
                 $params->def('show_ru', '1');
                 $params->def('show_es', '1');
                 $params->def('show_sv', '1');
-		$params->def('show_ca', '1');
-		$params->def('show_tl', '1');
-		$params->def('show_iw', '1');
-		$params->def('show_id', '1');
-		$params->def('show_lv', '1');
-		$params->def('show_lt', '1');
-		$params->def('show_sr', '1');
-		$params->def('show_sk', '1');
-		$params->def('show_sl', '1');
-		$params->def('show_uk', '1');
-		$params->def('show_vi', '1');
-        	return $params;
-	}
+        $params->def('show_ca', '1');
+        $params->def('show_tl', '1');
+        $params->def('show_iw', '1');
+        $params->def('show_id', '1');
+        $params->def('show_lv', '1');
+        $params->def('show_lt', '1');
+        $params->def('show_sr', '1');
+        $params->def('show_sk', '1');
+        $params->def('show_sl', '1');
+        $params->def('show_uk', '1');
+        $params->def('show_vi', '1');
+            return $params;
+    }
 }
