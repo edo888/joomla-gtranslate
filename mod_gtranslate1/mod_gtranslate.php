@@ -87,11 +87,15 @@ $lang_array = array(
 'uk' => 'Ukrainian',
 'vi' => 'Vietnamese'
 );
+
+if(!defined('GTRANSLATE_INCLUDED')) {
+    define('GTRANSLATE_INCLUDED', 1);
 ?>
 <script type="text/javascript">
 //<![CDATA[
-// google translate
-<?php if($look == 'flags') { ?>
+<?php
+if($look == 'flags') { // google translate
+?>
 function doTranslate(lang_pair) {
         if (location.hostname == '<?php echo $main_url; ?>' && lang_pair == '<?php echo $language; ?>|<?php echo $language; ?>') return;
         else if(location.hostname != '<?php echo $main_url; ?>' && lang_pair == '<?php echo $language; ?>|<?php echo $language; ?>') location.href = unescape(gfg('u'));
@@ -105,8 +109,9 @@ function doTranslate(select_obj) {
         else if(location.hostname == '<?php echo $main_url; ?>' && select_obj.value != '<?php echo $language; ?>|<?php echo $language; ?>') location.href = 'http://translate.google.com/translate_p?client=tmpg&hl=en&langpair=' + select_obj.value + '&u=' + escape(location.href);
         else location.href = 'http://translate.google.com/translate_p?client=tmpg&hl=en&langpair=' + select_obj.value + '&u=' + gfg('u');
 }
-<?php } ?>
-// get from get
+<?php
+} // get from get
+?>
 function gfg(name) {
         name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
         var regexS = "[\\?&]"+name+"=([^&#]*)";
@@ -119,6 +124,8 @@ function gfg(name) {
 </script>
 
 <?php
+}
+
 if($look == 'flags') {
         $i = $j = 0;
         foreach($lang_array as $lang => $lang_name) {
