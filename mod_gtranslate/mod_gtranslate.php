@@ -1,4 +1,11 @@
 <?php
+/**
+* @version   $Id$
+* @package   GTranslate
+* @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
+* @license   http://creativecommons.org/licenses/by-nc-nd/3.0/
+*/
+
 defined('_JEXEC') or die('Restricted access');
 
 require_once (dirname(__FILE__).DS.'helper.php');
