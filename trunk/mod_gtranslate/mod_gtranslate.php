@@ -1,6 +1,6 @@
 <?php
 /**
-* @version   $Id: mod_gtranslate.php 148 2006-07-28 21:30:43Z edo888 $
+* @version   $Id$
 * @package   GTranslate
 * @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
 * @license   http://creativecommons.org/licenses/by-nc-nd/3.0/
