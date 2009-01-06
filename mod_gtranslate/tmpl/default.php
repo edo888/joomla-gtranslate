@@ -8,70 +8,15 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-$lang_array = array(
-'en' => 'English',
-'ar' => 'Arabic',
-'bg' => 'Bulgarian',
-'zh-CN' => 'Chinese (Simplified)',
-'zh-TW' => 'Chinese (Traditional)',
-'hr' => 'Croatian',
-'cs' => 'Czech',
-'da' => 'Danish',
-'nl' => 'Dutch',
-'fi' => 'Finnish',
-'fr' => 'French',
-'de' => 'German',
-'el' => 'Greek',
-'hi' => 'Hindi',
-'it' => 'Italian',
-'ja' => 'Japanese',
-'ko' => 'Korean',
-'no' => 'Norwegian',
-'pl' => 'Polish',
-'pt' => 'Portuguese',
-'ro' => 'Romanian',
-'ru' => 'Russian',
-'es' => 'Spanish',
-'sv' => 'Swedish',
-'ca' => 'Catalan',
-'tl' => 'Filipino',
-'iw' => 'Hebrew',
-'id' => 'Indonesian',
-'lv' => 'Latvian',
-'lt' => 'Lithuanian',
-'sr' => 'Serbian',
-'sk' => 'Slovak',
-'sl' => 'Slovenian',
-'uk' => 'Ukrainian',
-'vi' => 'Vietnamese'
-);
+$lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese');
 
 if(!defined('GTRANSLATE_INCLUDED')) {
     define('GTRANSLATE_INCLUDED', 1);
 ?>
 <script type="text/javascript">
 //<![CDATA[
-<?php
-// google translate
-?>
-function doTranslate(lang_pair) {
-    if(lang_pair.value) lang_pair = lang_pair.value;
-    if(location.hostname == '<?php echo $main_url; ?>' && lang_pair == '<?php echo $language; ?>|<?php echo $language; ?>') return;
-    else if(location.hostname != '<?php echo $main_url; ?>' && lang_pair == '<?php echo $language; ?>|<?php echo $language; ?>') location.href = unescape(gfg('u'));
-    else if(location.hostname == '<?php echo $main_url; ?>' && lang_pair != '<?php echo $language; ?>|<?php echo $language; ?>') location.href = 'http://translate.google.com/translate_p?client=tmpg&hl=en&langpair=' + lang_pair + '&u=' + escape(location.href);
-    else location.href = 'http://translate.google.com/translate_p?client=tmpg&hl=en&langpair=' + lang_pair + '&u=' + unescape(gfg('u'));
-}
-<?php
-// get from get
-?>
-function gfg(name) {
-    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = "[\\?&]"+name+"=([^&#]*)";
-    var regex = new RegExp(regexS);
-    var results = regex.exec(location.href);
-    if(results == null) return '';
-    return results[1];
-}
+function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')return;else if(location.hostname!='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')location.href=unescape(gfg('u'));else if(location.hostname=='<?php echo $main_url; ?>' && lang_pair!='<?php echo $language; ?>|<?php echo $language; ?>')location.href='http://translate.google.com/translate_p?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate_p?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}
+function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return '';return results[1];}
 //]]>
 </script>
 
@@ -115,7 +60,7 @@ if($look == 'flags') {
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this == '2'):
-            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;background:url(\'modules/mod_gtranslate/tmpl/lang/'.$flag_size.'.png\') no-repeat scroll -'.($i*100).'px -'.($j*100).'px;"><img src="modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="blank" /></a> ';
+            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;background:url(\'modules/mod_gtranslate/tmpl/lang/'.$flag_size.'.png\') no-repeat scroll -'.($i*100).'px -'.($j*100).'px;"><img src="modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> ';
         endif;
         if($lang != 'zh-CN') {
             if($i == 7) {
