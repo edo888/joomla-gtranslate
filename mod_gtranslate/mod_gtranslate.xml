@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install type="module" version="1.5.0">
-	<name>GTranslate</name>
-	<author>Edvard Ananyan</author>
-	<creationDate>May 2008</creationDate>
-	<copyright>Copyright (C) 2008 Edvard Ananyan. All rights reserved.</copyright>
-	<license>http://edo.webmaster.am/projects</license>
-	<authorEmail>ea@webmaster.am</authorEmail>
-	<authorUrl>http://edo.webmaster.am</authorUrl>
-	<version>1.5.x.6</version>
-	<description>Google Automatic Translations</description>
-	<files>
-		<filename module="mod_gtranslate">mod_gtranslate.php</filename>
-		<filename>helper.php</filename>
-		<filename>index.html</filename>
-		<filename>tmpl/default.php</filename>
-		<filename>tmpl/index.html</filename>
-		<filename>tmpl/lang/16.png</filename>
-		<filename>tmpl/lang/16l.png</filename>
-		<filename>tmpl/lang/24.png</filename>
-		<filename>tmpl/lang/32.png</filename>
-		<filename>tmpl/lang/blank.png</filename>
-	</files>
-	<params>
-		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
-		<param name="look" type="list" default="flags" label="Look" description="The way it will appear in your site">
-			<option value="flags">Flags</option>
-			<option value="dropdown">Drop down list</option>
-		</param>
-		<param name="flag_size" type="radio" default="24" label="Flag size" description="Size of the language flags">
-			<option value="16">16</option>
-			<option value="24">24</option>
-			<option value="32">32</option>
-		</param>
-		<param name="orientation" type="radio" default="h" label="Orientation" description="Display translation bar horizontally or vertically">
-			<option value="h">Horizontal</option>
-			<option value="v">Vertical</option>
-		</param>
-		<param name="language" type="list" default="en" label="Site Language" description="Your site's native language">
+    <name>GTranslate</name>
+    <author>Edvard Ananyan</author>
+    <creationDate>May 2008</creationDate>
+    <copyright>Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.</copyright>
+    <license>http://edo.webmaster.am/projects</license>
+    <authorEmail>edo888@gmail.com</authorEmail>
+    <authorUrl>http://edo.webmaster.am</authorUrl>
+    <version>1.5.x.6</version>
+    <description>Google Automatic Translations</description>
+
+    <files>
+        <filename module="mod_gtranslate">mod_gtranslate.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+        <filename>tmpl/lang/16.png</filename>
+        <filename>tmpl/lang/16l.png</filename>
+        <filename>tmpl/lang/24.png</filename>
+        <filename>tmpl/lang/32.png</filename>
+        <filename>tmpl/lang/blank.png</filename>
+    </files>
+
+    <params>
+        <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+        <param name="look" type="list" default="flags" label="Look" description="The way it will appear in your site">
+            <option value="flags">Flags</option>
+            <option value="dropdown">Drop down list</option>
+        </param>
+        <param name="flag_size" type="radio" default="24" label="Flag size" description="Size of the language flags">
+            <option value="16">16</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+        </param>
+        <param name="orientation" type="radio" default="h" label="Orientation" description="Display translation bar horizontally or vertically">
+            <option value="h">Horizontal</option>
+            <option value="v">Vertical</option>
+        </param>
+        <param name="language" type="list" default="en" label="Site Language" description="Your site's native language">
                         <option value="en">English</option>
                         <option value="ar">Arabic</option>
                         <option value="bg">Bulgarian</option>
@@ -61,164 +63,165 @@
                         <option value="ru">Russian</option>
                         <option value="es">Spanish</option>
                         <option value="sv">Swedish</option>
-			<option value="ca">Catalan</option>
-			<option value="tl">Filipino</option>
-			<option value="iw">Hebrew</option>
-			<option value="id">Indonesian</option>
-			<option value="lv">Latvian</option>
-			<option value="lt">Lithuanian</option>
-			<option value="sr">Serbian</option>
-			<option value="sk">Slovak</option>
-			<option value="sl">Slovenian</option>
-			<option value="uk">Ukrainian</option>
-			<option value="vi">Vietnamese</option>
-		</param>
+            <option value="ca">Catalan</option>
+            <option value="tl">Filipino</option>
+            <option value="iw">Hebrew</option>
+            <option value="id">Indonesian</option>
+            <option value="lv">Latvian</option>
+            <option value="lt">Lithuanian</option>
+            <option value="sr">Serbian</option>
+            <option value="sk">Slovak</option>
+            <option value="sl">Slovenian</option>
+            <option value="uk">Ukrainian</option>
+            <option value="vi">Vietnamese</option>
+        </param>
                 <param name="show_en" type="radio" default="1" label="Show English" description="Show English in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_ar" type="radio" default="1" label="Show Arabic" description="Show Arabic in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_bg" type="radio" default="1" label="Show Bulgarian" description="Show Bulgarian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_zh-CN" type="radio" default="1" label="Show Chinese (Simplified)" description="Show Chinese (Simplified) in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_zh-TW" type="radio" default="1" label="Show Chinese (Traditional)" description="Show Chinese (Traditional) in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_hr" type="radio" default="1" label="Show Croatian" description="Show Croatian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_cs" type="radio" default="1" label="Show Czech" description="Show Czech in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_da" type="radio" default="1" label="Show Danish" description="Show Danish in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_nl" type="radio" default="1" label="Show Dutch" description="Show Dutch in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_fi" type="radio" default="1" label="Show Finnish" description="Show Finnish in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_fr" type="radio" default="1" label="Show French" description="Show French in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_de" type="radio" default="1" label="Show German" description="Show German in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_el" type="radio" default="1" label="Show Greek" description="Show Greek in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_hi" type="radio" default="1" label="Show Hindi" description="Show Hindi in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_it" type="radio" default="1" label="Show Italian" description="Show Italian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_ja" type="radio" default="1" label="Show Japanese" description="Show Japanese in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_ko" type="radio" default="1" label="Show Korean" description="Show Korean in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_no" type="radio" default="1" label="Show Norwegian" description="Show Norwegian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_pl" type="radio" default="1" label="Show Polish" description="Show Polish in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_pt" type="radio" default="1" label="Show Portuguese" description="Show Portuguese in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_ro" type="radio" default="1" label="Show Romanian" description="Show Romanian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_ru" type="radio" default="1" label="Show Russian" description="Show Russian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_es" type="radio" default="1" label="Show Spanish" description="Show Spanish in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
                 <param name="show_sv" type="radio" default="1" label="Show Swedish" description="Show Swedish in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_ca" type="radio" default="1" label="Show Catalan" description="Show Catalan in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_tl" type="radio" default="1" label="Show Filipino" description="Show Filipino in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_iw" type="radio" default="1" label="Show Hebrew" description="Show Hebrew in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_id" type="radio" default="1" label="Show Indonesian" description="Show Indonesian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_lv" type="radio" default="1" label="Show Latvian" description="Show Latvian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_lt" type="radio" default="1" label="Show Lithuanian" description="Show Lithuanian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_sr" type="radio" default="1" label="Show Serbian" description="Show Serbian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_sk" type="radio" default="1" label="Show Slovak" description="Show Slovak in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_sl" type="radio" default="1" label="Show Slovenian" description="Show Slovenian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_uk" type="radio" default="1" label="Show Ukrainian" description="Show Ukrainian in language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-		<param name="show_vi" type="radio" default="1" label="Show Vietnamese" description="Show Vietnamesein language list">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
-		</param>
-	</params>
-	<params group="advanced">
-		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
-			<option value="1">Use global</option>
-			<option value="0">No caching</option>
-		</param>
-		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
-	</params>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_ca" type="radio" default="1" label="Show Catalan" description="Show Catalan in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_tl" type="radio" default="1" label="Show Filipino" description="Show Filipino in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_iw" type="radio" default="1" label="Show Hebrew" description="Show Hebrew in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_id" type="radio" default="1" label="Show Indonesian" description="Show Indonesian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_lv" type="radio" default="1" label="Show Latvian" description="Show Latvian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_lt" type="radio" default="1" label="Show Lithuanian" description="Show Lithuanian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_sr" type="radio" default="1" label="Show Serbian" description="Show Serbian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_sk" type="radio" default="1" label="Show Slovak" description="Show Slovak in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_sl" type="radio" default="1" label="Show Slovenian" description="Show Slovenian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_uk" type="radio" default="1" label="Show Ukrainian" description="Show Ukrainian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+        <param name="show_vi" type="radio" default="1" label="Show Vietnamese" description="Show Vietnamesein language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </param>
+    </params>
+
+    <params group="advanced">
+        <param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+            <option value="1">Use global</option>
+            <option value="0">No caching</option>
+        </param>
+        <param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+    </params>
 </install>
