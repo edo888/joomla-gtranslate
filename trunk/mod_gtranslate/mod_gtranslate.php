@@ -53,4 +53,7 @@ $show_uk = $params->get('show_uk');
 $show_vi = $params->get('show_vi');
 $main_url = $_SERVER['HTTP_HOST'];
 
+if($_SERVER['SERVER_PORT'] != '80')
+    $main_url = substr($main_url, 0, strpos($main_url, ':'));
+
 require(JModuleHelper::getLayoutPath('mod_gtranslate'));
