@@ -95,8 +95,7 @@ if($look == 'flags') {
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this)
             echo '<option value="'.$language.'|'.$lang.'" style="background:url(\'modules/flags/16l.png\') no-repeat scroll 0 -'.($i*16).'px;padding-left:18px;">'.$lang_name.'</option>';
-        if($lang != 'zh-CN')
-            $i++;
+        $i++;
     }
     echo '</select>';
 } else {
