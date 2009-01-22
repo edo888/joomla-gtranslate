@@ -36,13 +36,11 @@ if($look == 'flags') {
             else
                 echo ' ';
         endif;
-        if($lang != 'zh-CN') {
-            if($i == 7) {
-                $i = 0;
-                $j++;
-            } else {
-                $i++;
-            }
+        if($i == 7) {
+            $i = 0;
+            $j++;
+        } else {
+            $i++;
         }
     }
 } elseif ($look == 'dropdown') {
@@ -64,13 +62,11 @@ if($look == 'flags') {
         if($$show_this == '2'):
             echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;background:url(\'modules/mod_gtranslate/tmpl/lang/'.$flag_size.'.png\') no-repeat scroll -'.($i*100).'px -'.($j*100).'px;"><img src="modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> ';
         endif;
-        if($lang != 'zh-CN') {
-            if($i == 7) {
-                $i = 0;
-                $j++;
-            } else {
-                $i++;
-            }
+        if($i == 7) {
+            $i = 0;
+            $j++;
+        } else {
+            $i++;
         }
     }
     echo '<br/><select onchange="doTranslate(this);">';
