@@ -7,7 +7,7 @@
     <license>http://edo.webmaster.am/projects</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.5.x.8</version>
+    <version>1.5.x.9</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -253,42 +253,42 @@
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_vi" type="radio" default="1" label="Show Vietnamese" description="Show Vietnamesein language list">
+        <param name="show_vi" type="radio" default="1" label="Show Vietnamese" description="Show Vietnamese in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_sq" type="radio" default="1" label="Show Albanian" description="Show Albanian language list">
+        <param name="show_sq" type="radio" default="1" label="Show Albanian" description="Show Albanian in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_et" type="radio" default="1" label="Show Estonian" description="Show Estonian language list">
+        <param name="show_et" type="radio" default="1" label="Show Estonian" description="Show Estonian in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_gl" type="radio" default="1" label="Show Galician" description="Show Galician language list">
+        <param name="show_gl" type="radio" default="1" label="Show Galician" description="Show Galician in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_hu" type="radio" default="1" label="Show Hungarian" description="Show Hungarian language list">
+        <param name="show_hu" type="radio" default="1" label="Show Hungarian" description="Show Hungarian in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_mt" type="radio" default="1" label="Show Maltese" description="Show Maltese language list">
+        <param name="show_mt" type="radio" default="1" label="Show Maltese" description="Show Maltese in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_th" type="radio" default="1" label="Show Thai" description="Show Thai language list">
+        <param name="show_th" type="radio" default="1" label="Show Thai" description="Show Thai in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_tr" type="radio" default="1" label="Show Turkish" description="Show Turkish language list">
+        <param name="show_tr" type="radio" default="1" label="Show Turkish" description="Show Turkish in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
