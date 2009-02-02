@@ -49,6 +49,13 @@ class modGTranslateHelper {
         $params->def('show_sl', 1);
         $params->def('show_uk', 1);
         $params->def('show_vi', 1);
+        $params->def('show_sq', 1);
+        $params->def('show_et', 1);
+        $params->def('show_gl', 1);
+        $params->def('show_hu', 1);
+        $params->def('show_mt', 1);
+        $params->def('show_th', 1);
+        $params->def('show_tr', 1);
         return $params;
     }
 }

@@ -51,6 +51,13 @@ $show_sk = $params->get('show_sk');
 $show_sl = $params->get('show_sl');
 $show_uk = $params->get('show_uk');
 $show_vi = $params->get('show_vi');
+$show_sq = $params->get('show_sq');
+$show_et = $params->get('show_et');
+$show_gl = $params->get('show_gl');
+$show_hu = $params->get('show_hu');
+$show_mt = $params->get('show_mt');
+$show_th = $params->get('show_th');
+$show_tr = $params->get('show_tr');
 $main_url = $_SERVER['HTTP_HOST'];
 
 if($_SERVER['SERVER_PORT'] != '80')
