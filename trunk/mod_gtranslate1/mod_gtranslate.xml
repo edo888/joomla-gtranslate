@@ -7,7 +7,7 @@
     <license>http://edo.webmaster.am/projects</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.0.x.9</version>
+    <version>1.0.x.10</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -34,6 +34,10 @@
         <param name="orientation" type="radio" default="h" label="Orientation" description="Display translation bar horizontally or vertically">
             <option value="h">Horizontal</option>
             <option value="v">Vertical</option>
+        </param>
+        <param name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you purchased GTranslate Pro version and it is installed, just turn on this option. http://edo.webmaster.am/gtranslate">
+            <option value="0">Off</option>
+            <option value="1">On</option>
         </param>
         <param name="language" type="list" default="en" label="Site Language" description="Your site's native language">
             <option value="en">English</option>
