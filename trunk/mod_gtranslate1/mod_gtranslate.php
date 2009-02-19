@@ -68,7 +68,7 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <script type="text/javascript">
 //<![CDATA[
 <?php if($pro_version): ?>
-function doTranslate(lang_pair) {var lang = lang_pair.split('|')[1];var plang = location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW') plang = '<?php echo $language; ?>';if(lang == '<?php echo $language; ?>') location.pathname = location.pathname.replace('/'+plang, '');else location.pathname = '/'+lang+location.pathname.replace('/'+plang, '');}
+function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';if(lang == '<?php echo $language; ?>')location.pathname=location.pathname.replace('/'+plang, '');else location.pathname='/'+lang+location.pathname.replace('/'+plang, '');}
 <?php else: ?>
 if(top.location!=self.location)top.location=self.location;
 window['_tipoff']=function(){};window['_tipon']=function(a){};
