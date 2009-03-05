@@ -7,7 +7,7 @@
     <license>http://edo.webmaster.am/projects</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.0.x.10</version>
+    <version>1.0.x.11</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -36,6 +36,10 @@
             <option value="v">Vertical</option>
         </param>
         <param name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you purchased GTranslate Pro version and it is installed, just turn on this option. http://edo.webmaster.am/gtranslate">
+            <option value="0">Off</option>
+            <option value="1">On</option>
+        </param>
+        <param name="new_tab" type="radio" default="0" label="Open translated page in new window" description="Opens translated page in new window">
             <option value="0">Off</option>
             <option value="1">On</option>
         </param>
