@@ -90,6 +90,12 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php endif; ?>
 //]]>
 </script>
+<style type="text/css">
+<!--
+a.flag {background-image:url('<?php echo $mosConfig_live_site.'/modules/flags/'.$flag_size.'a.png';?>');}
+a.flag:hover {background-image:url('<?php echo $mosConfig_live_site.'/modules/flags/'.$flag_size.'.png';?>');}
+-->
+</style>
 
 <?php
 }
@@ -99,7 +105,7 @@ if($look == 'flags') {
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this):
-            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;background:url(\''.$mosConfig_live_site.'/modules/flags/'.$flag_size.'.png\') no-repeat scroll -'.($i*100).'px -'.($j*100).'px;"><img src="'.$mosConfig_live_site.'/modules/flags/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a>';
+            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="font-size:'.$flag_size.'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.($i*100).'px -'.($j*100).'px;"><img src="'.$mosConfig_live_site.'/modules/flags/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a>';
             if($orientation == 'v')
                 echo '<br />';
             else
@@ -128,7 +134,7 @@ if($look == 'flags') {
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this == '2'):
-            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;background:url(\''.$mosConfig_live_site.'/modules/flags/'.$flag_size.'.png\') no-repeat scroll -'.($i*100).'px -'.($j*100).'px;"><img src="'.$mosConfig_live_site.'/modules/flags/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> ';
+            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="font-size:'.$flag_size.'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.($i*100).'px -'.($j*100).'px;"><img src="'.$mosConfig_live_site.'/modules/flags/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a>';
         endif;
         if($i == 7) {
             $i = 0;
