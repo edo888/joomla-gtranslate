@@ -7,7 +7,7 @@
     <license>http://edo.webmaster.am/projects</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.5.x.11</version>
+    <version>1.5.x.12</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -17,9 +17,12 @@
         <filename>tmpl/default.php</filename>
         <filename>tmpl/index.html</filename>
         <filename>tmpl/lang/16.png</filename>
+        <filename>tmpl/lang/16a.png</filename>
         <filename>tmpl/lang/16l.png</filename>
         <filename>tmpl/lang/24.png</filename>
+        <filename>tmpl/lang/24a.png</filename>
         <filename>tmpl/lang/32.png</filename>
+        <filename>tmpl/lang/32a.png</filename>
         <filename>tmpl/lang/blank.png</filename>
     </files>
 
