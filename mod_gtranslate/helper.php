@@ -57,6 +57,7 @@ class modGTranslateHelper {
         $params->def('show_hu', 1);
         $params->def('show_mt', 1);
         $params->def('show_th', 1);
+        $params->def('show_tr', 1);
         $params->def('show_fa', 1);
         return $params;
     }
