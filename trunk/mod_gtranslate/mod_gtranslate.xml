@@ -93,6 +93,7 @@
             <option value="mt">Maltese</option>
             <option value="th">Thai</option>
             <option value="tr">Turkish</option>
+            <option value="fa">Persian</option>
         </param>
         <param name="show_en" type="radio" default="2" label="Show English" description="Show English in language list">
             <option value="1">Yes</option>
@@ -300,6 +301,11 @@
             <option value="2">As a flag</option>
         </param>
         <param name="show_tr" type="radio" default="1" label="Show Turkish" description="Show Turkish in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_fa" type="radio" default="1" label="Show Persian" description="Show Persian in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>

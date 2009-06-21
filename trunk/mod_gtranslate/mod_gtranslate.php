@@ -60,6 +60,7 @@ $show_hu = $params->get('show_hu');
 $show_mt = $params->get('show_mt');
 $show_th = $params->get('show_th');
 $show_tr = $params->get('show_tr');
+$show_fa = $params->get('show_fa');
 $main_url = $_SERVER['HTTP_HOST'];
 
 if($_SERVER['SERVER_PORT'] != '80')
