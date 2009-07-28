@@ -3,7 +3,7 @@
 * @version   $Id$
 * @package   GTranslate
 * @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
-* @license   http://creativecommons.org/licenses/by-nc-nd/3.0/
+* @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
 defined( '_VALID_MOS' ) or die( 'Restricted access' );
