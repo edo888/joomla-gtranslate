@@ -59,6 +59,15 @@ class modGTranslateHelper {
         $params->def('show_th', 1);
         $params->def('show_tr', 1);
         $params->def('show_fa', 1);
+        $params->def('show_af', 1);
+        $params->def('show_ms', 1);
+        $params->def('show_sw', 1);
+        $params->def('show_ga', 1);
+        $params->def('show_cy', 1);
+        $params->def('show_be', 1);
+        $params->def('show_is', 1);
+        $params->def('show_mk', 1);
+        $params->def('show_yi', 1);
         return $params;
     }
 }

@@ -7,7 +7,7 @@
     <license>http://edo.webmaster.am/projects</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.0.x.13</version>
+    <version>1.0.x.14</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -90,6 +90,15 @@
             <option value="th">Thai</option>
             <option value="tr">Turkish</option>
             <option value="fa">Persian</option>
+            <option value="af">Africaans</option>
+            <option value="ms">Malay</option>
+            <option value="sw">Swahili</option>
+            <option value="ga">Irish</option>
+            <option value="cy">Welsh</option>
+            <option value="be">Belarusian</option>
+            <option value="is">Icelandic</option>
+            <option value="mk">Macedonian</option>
+            <option value="yi">Yiddish</option>
         </param>
         <param name="show_en" type="radio" default="2" label="Show English" description="Show English in language list">
             <option value="1">Yes</option>
@@ -302,6 +311,51 @@
             <option value="2">As a flag</option>
         </param>
         <param name="show_fa" type="radio" default="1" label="Show Persian" description="Show Persian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_af" type="radio" default="1" label="Show Africaans" description="Show Africaans in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_ms" type="radio" default="1" label="Show Malay" description="Show Malay in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_sw" type="radio" default="1" label="Show Swahili" description="Show Swahili in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_ga" type="radio" default="1" label="Show Irish" description="Show Irish in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_cy" type="radio" default="1" label="Show Welsh" description="Show Welsh in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_be" type="radio" default="1" label="Show Belarusian" description="Show Belarusian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_is" type="radio" default="1" label="Show Icelandic" description="Show Icelandic in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_mk" type="radio" default="1" label="Show Macedonian" description="Show Macedonian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_yi" type="radio" default="1" label="Show Yiddish" description="Show Yiddish in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>

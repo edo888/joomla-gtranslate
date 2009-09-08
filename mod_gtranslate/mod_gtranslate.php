@@ -61,6 +61,15 @@ $show_mt = $params->get('show_mt');
 $show_th = $params->get('show_th');
 $show_tr = $params->get('show_tr');
 $show_fa = $params->get('show_fa');
+$show_af = $params->get('show_af');
+$show_ms = $params->get('show_ms');
+$show_sw = $params->get('show_sw');
+$show_ga = $params->get('show_ga');
+$show_cy = $params->get('show_cy');
+$show_be = $params->get('show_be');
+$show_is = $params->get('show_is');
+$show_mk = $params->get('show_mk');
+$show_yi = $params->get('show_yi');
 $main_url = $_SERVER['HTTP_HOST'];
 
 if($_SERVER['SERVER_PORT'] != '80')
