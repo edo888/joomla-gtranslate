@@ -94,7 +94,7 @@
             <option value="th">Thai</option>
             <option value="tr">Turkish</option>
             <option value="fa">Persian</option>
-            <option value="af">Africaans</option>
+            <option value="af">Afrikaans</option>
             <option value="ms">Malay</option>
             <option value="sw">Swahili</option>
             <option value="ga">Irish</option>
@@ -319,7 +319,7 @@
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
-        <param name="show_af" type="radio" default="1" label="Show Africaans" description="Show Africaans in language list">
+        <param name="show_af" type="radio" default="1" label="Show Afrikaans" description="Show Afrikaans in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
