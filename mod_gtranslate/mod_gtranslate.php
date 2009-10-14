@@ -12,6 +12,7 @@ require_once (dirname(__FILE__).DS.'helper.php');
 
 $params = modGTranslateHelper::getParams($params);
 
+$method = $params->get('method');
 $look = $params->get('look');
 $flag_size = $params->get('flag_size');
 $orientation = $params->get('orientation');
