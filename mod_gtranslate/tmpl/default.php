@@ -18,12 +18,13 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">google.load('jquery', '1.2.6');</script>
     <script type="text/javascript" src="<?php echo JURI::root(true); ?>/modules/mod_gtranslate/jquery-translate.js"></script>
+    <script type="text/javascript">if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate($.cookie('glang'));});</script>
 <?php endif; ?>
 
 <script type="text/javascript">
 //<![CDATA[
 <?php if($method == 'ajax'): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery('body').translate(lang);}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang);jQuery('body').translate(lang);}
 <?php else: ?>
     <?php if($new_tab): ?>
         function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
