@@ -29,8 +29,9 @@
 
     <params>
         <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
-        <param name="method" type="radio" default="ajax" label="Translation method" description="Select how your page will be translated">
-            <option value="ajax">On Fly</option>
+        <param name="method" type="radio" default="google_default" label="Translation method" description="Select how your page will be translated">
+            <option value="google_default">Google Default</option>
+            <option value="ajax">On Fly (jQuery)</option>
             <option value="standard">Redirect to Google</option>
         </param>
         <param name="look" type="list" default="both" label="Look" description="The way it will appear in your site">

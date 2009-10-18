@@ -49,6 +49,26 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php endif; ?>
 //]]>
 </script>
+
+<?php if($method == 'google_default'): ?>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: '<?php echo $language; ?>',
+    includedLanguages: '<?php
+    foreach($lang_array as $lang => $lang_name) {
+        $show_this = 'show_'.str_replace('-', '', $lang);
+        if($$show_this)
+            echo $lang.',';
+    }
+    ?>'
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<?php return; endif; ?>
+
 <?php
     $document =& JFactory::getDocument();
     $document->addStyleDeclaration("

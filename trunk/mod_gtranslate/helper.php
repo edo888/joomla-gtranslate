@@ -10,7 +10,7 @@ defined('_JEXEC') or die('Restricted access');
 
 class modGTranslateHelper {
     function getParams(&$params) {
-        $params->def('method', 'ajax');
+        $params->def('method', 'google_default');
         $params->def('look', 'both');
         $params->def('orientation', 'h');
         $params->def('flag_size', 16);
