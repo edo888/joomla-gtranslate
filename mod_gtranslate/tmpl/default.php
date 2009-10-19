@@ -14,11 +14,16 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     define('GTRANSLATE_INCLUDED', 1);
 ?>
 
-<?php if($method == 'ajax'): ?>
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript">google.load('jquery', '1.2.6');</script>
-    <script type="text/javascript" src="<?php echo JURI::root(true); ?>/modules/mod_gtranslate/jquery-translate.js"></script>
-    <script type="text/javascript">if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate($.cookie('glang'));});</script>
+<?php
+if($method == 'ajax'):
+    $document =& JFactory::getDocument();
+    $document->addScript(JURI::root(true).'/modules/mod_gtranslate/jquery-translate.js');
+?>
+    <script type="text/javascript">
+    //<![CDATA[
+    if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate($.cookie('glang'));});
+    //]]>
+    </script>
 <?php endif; ?>
 
 <script type="text/javascript">
