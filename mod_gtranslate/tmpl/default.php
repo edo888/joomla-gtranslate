@@ -21,7 +21,7 @@ if($method == 'ajax'):
 ?>
     <script type="text/javascript">
     //<![CDATA[
-    if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate($.cookie('glang'));});
+    if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate('<?php echo $language; ?>', $.cookie('glang'), {not:'script'});});
     //]]>
     </script>
 <?php endif; ?>
@@ -29,7 +29,7 @@ if($method == 'ajax'):
 <script type="text/javascript">
 //<![CDATA[
 <?php if($method == 'ajax'): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang);jQuery('body').translate(lang);}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];if(lang=='pt')lang='pt-PT';jQuery.cookie('glang', lang);jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {not:'script'})});}
 <?php else: ?>
     <?php if($new_tab): ?>
         function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
@@ -107,7 +107,7 @@ if($look == 'flags') {
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this)
-            echo '<option value="'.$language.'|'.$lang.'" style="background:url(\''.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/16l.png\') no-repeat scroll 0 -'.($i*16).'px;padding-left:18px;">'.$lang_name.'</option>';
+            echo '<option value="'.$language.'|'.$lang.'" style="'.($lang == $language ? 'font-weight:bold;' : '').'background:url(\''.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/16l.png\') no-repeat scroll 0 -'.($i*16).'px;padding-left:18px;">'.$lang_name.'</option>';
         $i++;
     }
     echo '</select>';
@@ -131,7 +131,7 @@ if($look == 'flags') {
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this)
-            echo '<option value="'.$language.'|'.$lang.'">'.$lang_name.'</option>';
+            echo '<option '.($lang == $language ? 'style="font-weight:bold;"' : '').' value="'.$language.'|'.$lang.'">'.$lang_name.'</option>';
     }
     echo '</select>';
 }
