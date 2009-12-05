@@ -1,0 +1,63 @@
+* version 1.5.x.2:
+    1. New languages available
+    2. You can select languages you want
+
+* version 1.5.x.3:
+    1. Valid XHTML
+
+* version 1.0.x.3 for Joomla! 1.0.x:
+    1. Now it is also compatible with Joomla! 1.0.x
+
+* versions 1.5.x.6 and 1.0.x.6
+    1. New language bar with language/country flags
+    2. You can configure it with css classes
+    3. You can select language flags size 16, 24, 32 px
+    4. Optimized for fast loading flags - thanks to MarHaj
+    5. Optimized for non SEO URLs
+
+* versions 1.5.x.7 and 1.0.x.7 - special thanks to dfader
+    1. New look: dropdown menu w/ flags
+    2. Fixed minor bugs
+
+* versions 1.5.x.8 and 1.0.x.8
+    1. zh-TW flag changed - thanks to miguipda
+    2. New feature for hiding "Suggest better translation" pop-up
+
+* versions 1.5.x.9 and 1.0.x.9
+    1. Added new 7 languages including Hungarian, Turkish, Thai
+    2. Fixed minor bug with absolute paths
+
+* versions 1.5.x.10 and 1.0.x.10
+    1. Added new option to work with GTranslate Pro version
+    2. Fixed minor bugs
+
+* versions 1.5.x.11 and 1.0.x.11
+    1. New option to open translated page in a new window
+
+* versions 1.5.x.12 and 1.0.x.12
+    1. Added alpha flag mouseover effect
+
+* versions 1.5.x.13 and 1.0.x.13
+    1. Added Persian language support
+    2. Fixed a bug causing invalid xHTML markup
+
+* versions 1.5.x.14 and 1.0.x.14
+    1. Added 9 new languages such as Afrikaans, Belarusian, Icelandic, Irish and Welsh
+
+* version 1.5.x.15
+    1. Possibility to translate the website on fly, without redirecting to Google Translator page, so you will not see the top frame at all. It will also enable the translation of non-public pages!
+
+Version for Joomla! 1.0.x is discontinued.
+
+* version 1.5.x.16
+    1. Fixed jQuery conflict with MooTools and non-valid XHTML bug
+    2. Upgraded jQuery library version
+    3. Added new feature to use default Google On Fly translator
+
+* version 1.5.x.17
+    1. Upgraded jQuery Translate library
+    2. Now the main language is bold in drop-down list, so users can easily return to the main language.
+
+* version 1.5.x.18
+    1. Languages are in alphabetical order
+    2. New toggle option in On Fly mode to easily return to original language.
