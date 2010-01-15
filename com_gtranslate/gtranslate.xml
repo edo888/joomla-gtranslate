@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0" method="upgrade">
+    <name>GTranslate</name>
+    <author>Edvard Ananyan</author>
+    <creationDate>January 2010</creationDate>
+    <copyright>Copyright (c) 2008 - 2010 Edvard Ananyan. All rights reserved.</copyright>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <authorEmail>edo888@gmail.com</authorEmail>
+    <authorUrl>http://edo.webmaster.am/</authorUrl>
+    <version>1.0.0</version>
+    <description><![CDATA[GTranslate cache manager]]></description>
+
+    <installfile>install.gtranslate.php</installfile>
+    <uninstallfile>uninstall.gtranslate.php</uninstallfile>
+
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">install.gtranslate.sql</file>
+        </sql>
+    </install>
+
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">uninstall.gtranslate.sql</file>
+        </sql>
+    </uninstall>
+
+    <administration>
+        <menu>GTranslate</menu>
+        <files folder="admin">
+            <filename>admin.gtranslate.php</filename>
+            <filename>toolbar.gtranslate.html.php</filename>
+            <filename>toolbar.gtranslate.php</filename>
+            <filename>install.gtranslate.php</filename>
+            <filename>uninstall.gtranslate.php</filename>
+            <filename>install.gtranslate.sql</filename>
+            <filename>uninstall.gtranslate.sql</filename>
+            <filename>config.xml</filename>
+            <filename>index.html</filename>
+            <folder>module</folder>
+        </files>
+
+        <languages folder="admin/language">
+            <language tag="en-GB">en-GB.com_gtranslate.ini</language>
+        </languages>
+    </administration>
+</install>
