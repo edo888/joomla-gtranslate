@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <params>
+        <param name="cache_dir" type="text" menu="hide" size="60"
+            default="gtranslate/cache" label="Cache folder" description="Cache folder absolute or relative path" />
+    </params>
+</config>
