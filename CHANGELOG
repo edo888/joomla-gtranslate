@@ -61,3 +61,6 @@ Version for Joomla! 1.0.x is discontinued.
 * version 1.5.x.18
     1. Languages are in alphabetical order
     2. New toggle option in On Fly mode to easily return to original language.
+
+* version 1.5.x.19
+    1. Updated jQuery Translator library version to 1.4.4
