@@ -174,10 +174,10 @@ class GTranslateController extends JController {
 
         $cached_files = array_diff(scandir($cache_dir), array('.', '..'));
         foreach($cached_files as $cached_file) {
-            $handle = fopen($cache_dir.DS.$cached_file, 'r');
-            $request = fgets($handle);
+            $handle = gzopen($cache_dir.DS.$cached_file, 'r');
+            $request = gzgets($handle);
             sscanf($request, '<!-- Request: %s -->', $request);
-            fclose($handle);
+            gzclose($handle);
 
             preg_match('/(\/[a-z]{2}\/)|(\/zh-TW\/)|(\/zh-CN\/)/', $request, $matches);
 
