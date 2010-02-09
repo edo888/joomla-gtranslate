@@ -111,12 +111,15 @@ class GTranslateController extends JController {
 
         $db->setQuery("select * from #__gtranslate where id = $cacheid");
         $cache = $db->loadObject();
-        $cached_file = md5($cache->url);
+        $cached_file = md5($cache->url).'.gz';
 
         //die(stripslashes($_POST['content']));
 
-        file_put_contents($cache_dir.DS.$cached_file, '<!-- Request: '.$cache->url." -->\n");
-        file_put_contents($cache_dir.DS.$cached_file, stripslashes($_POST['content']), FILE_APPEND);
+        $content = '<!-- Request: '.$cache->url." -->\n";
+        $content .= stripslashes($_POST['content']);
+        $gz = gzopen($cache_dir.DS.$cached_file, 'w9');
+        gzwrite($gz, $content);
+        gzclose($gz);
 
         switch($this->_task) {
             case 'apply':
@@ -148,7 +151,7 @@ class GTranslateController extends JController {
         for($i=0, $n=count($cid); $i < $n; $i++) {
             $db->setQuery("select * from #__gtranslate where id = $cid[$i]");
             $cache = $db->loadObject();
-            $cached_file = md5($cache->url);
+            $cached_file = md5($cache->url).'.gz';
             if(!unlink($cache_dir.DS.$cached_file))
                 $msg .= "Cannot remove ". $cache_dir.DS.$cached_file;
             else {
@@ -208,7 +211,7 @@ class GTranslateController extends JController {
         $count = 0;
         $size = 0;
         foreach($rows as $row) {
-            $cached_file = $cache_dir.DS.md5($row->url);
+            $cached_file = $cache_dir.DS.md5($row->url).'.gz';
             if(is_file($cached_file) and $now - filemtime($cached_file) > 1.5 * $cache_time) {
                 $file_size = filesize($cached_file);
                 if(unlink($cached_file)) {
@@ -347,8 +350,11 @@ class GTranslateView {
 
                     $cache_dir = is_dir($config->get('cache_dir')) ? $config->get('cache_dir') : JPATH_ROOT.DS.$config->get('cache_dir');
 
-                    $cached_file = md5($row->url);
-                    $content = file_get_contents($cache_dir.DS.$cached_file);
+                    $cached_file = md5($row->url).'.gz';
+                    ob_start();
+                    readgzfile($cache_dir.DS.$cached_file);
+                    $content = ob_get_contents();
+                    ob_end_clean();
                     $content = substr($content, strpos($content, "\n"), strlen($content));
                     echo $row->url;
                     ?>
