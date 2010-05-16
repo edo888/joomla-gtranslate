@@ -64,3 +64,9 @@ Version for Joomla! 1.0.x is discontinued.
 
 * version 1.5.x.19
     1. Updated jQuery Translator library version to 1.4.4
+
+* version 1.5.x.20
+    1. Changed jQuery Translator library version to 1.4.6
+    2. Changed jQuery library version to 1.4.2
+    3. Added 6 new languages: Armenian, Azerbaijani, Basque, Georgian, Haitian Creole, Urdu
+    4. Fixed minor issues in doTranslate function

@@ -70,6 +70,12 @@ class modGTranslateHelper {
         $params->def('show_is', 1);
         $params->def('show_mk', 1);
         $params->def('show_yi', 1);
+        $params->def('show_hy', 1);
+        $params->def('show_az', 1);
+        $params->def('show_eu', 1);
+        $params->def('show_ka', 1);
+        $params->def('show_ht', 1);
+        $params->def('show_ur', 1);
         return $params;
     }
 }

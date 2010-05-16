@@ -72,6 +72,12 @@ $show_be = $params->get('show_be');
 $show_is = $params->get('show_is');
 $show_mk = $params->get('show_mk');
 $show_yi = $params->get('show_yi');
+$show_hy = $params->get('show_hy');
+$show_az = $params->get('show_az');
+$show_eu = $params->get('show_eu');
+$show_ka = $params->get('show_ka');
+$show_ht = $params->get('show_ht');
+$show_ur = $params->get('show_ur');
 $main_url = $_SERVER['HTTP_HOST'];
 
 if($_SERVER['SERVER_PORT'] != '80')
