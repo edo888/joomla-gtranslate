@@ -56,6 +56,9 @@
             <option value="af">Afrikaans</option>
             <option value="sq">Albanian</option>
             <option value="ar">Arabic</option>
+            <option value="hy">Armenian</option>
+            <option value="az">Azerbaijani</option>
+            <option value="eu">Basque</option>
             <option value="be">Belarusian</option>
             <option value="bg">Bulgarian</option>
             <option value="ca">Catalan</option>
@@ -71,8 +74,10 @@
             <option value="fi">Finnish</option>
             <option value="fr">French</option>
             <option value="gl">Galician</option>
+            <option value="ka">Georgian</option>
             <option value="de">German</option>
             <option value="el">Greek</option>
+            <option value="ht">Haitian Creole</option>
             <option value="iw">Hebrew</option>
             <option value="hi">Hindi</option>
             <option value="hu">Hungarian</option>
@@ -102,6 +107,7 @@
             <option value="th">Thai</option>
             <option value="tr">Turkish</option>
             <option value="uk">Ukrainian</option>
+            <option value="ur">Urdu</option>
             <option value="vi">Vietnamese</option>
             <option value="cy">Welsh</option>
             <option value="yi">Yiddish</option>
@@ -117,6 +123,21 @@
             <option value="2">As a flag</option>
         </param>
         <param name="show_ar" type="radio" default="1" label="Show Arabic" description="Show Arabic in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_hy" type="radio" default="1" label="Show Armenian" description="Show Armenian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_az" type="radio" default="1" label="Show Azerbaijani" description="Show Azerbaijani in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_eu" type="radio" default="1" label="Show Basque" description="Show Basque in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
@@ -196,12 +217,22 @@
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
+                <param name="show_ka" type="radio" default="1" label="Show Georgian" description="Show Georgian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
         <param name="show_de" type="radio" default="2" label="Show German" description="Show German in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
         </param>
         <param name="show_el" type="radio" default="1" label="Show Greek" description="Show Greek in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_ht" type="radio" default="1" label="Show Haitian Creole" description="Show Haitian Creole in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
@@ -347,6 +378,11 @@
             <option value="2">As a flag</option>
         </param>
         <param name="show_uk" type="radio" default="1" label="Show Ukrainian" description="Show Ukrainian in language list">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+            <option value="2">As a flag</option>
+        </param>
+        <param name="show_ur" type="radio" default="1" label="Show Urdu" description="Show Urdu in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
             <option value="2">As a flag</option>
