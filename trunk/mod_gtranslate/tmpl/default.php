@@ -50,7 +50,7 @@ if($method == 'ajax'):
 ?>
     <script type="text/javascript">
     //<![CDATA[
-    if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate('<?php echo $language; ?>', $.cookie('glang'), {toggle:true});});
+    if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate('<?php echo $language; ?>', $.cookie('glang'), {toggle:true, not:'.notranslate'});});
     //]]>
     </script>
 <?php endif; ?>
@@ -58,7 +58,7 @@ if($method == 'ajax'):
 <script type="text/javascript">
 //<![CDATA[
 <?php if($method == 'ajax'): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang);jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {toggle:true});});}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang);jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {toggle:true, not:'.notranslate'});});}
 <?php else: ?>
     <?php if($new_tab): ?>
         function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
@@ -106,7 +106,7 @@ function googleTranslateElementInit() {
 <?php
     $document =& JFactory::getDocument();
     $document->addStyleDeclaration("
-        a.flag {font-size:'.$flag_size.'px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size . 'a.png' . "');}
+        a.flag {font-size:{$flag_size}px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size . 'a.png' . "');}
         a.flag:hover {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size.'.png' . "');}
         a.flag img {border:0;vertical-align:top;}
     ");
