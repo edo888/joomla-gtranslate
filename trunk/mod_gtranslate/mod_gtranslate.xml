@@ -7,7 +7,7 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.5.x.20</version>
+    <version>1.5.x.21</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -190,7 +190,8 @@
         <param name="show_en" type="radio" default="2" label="Show English" description="Show English in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
-            <option value="2">As a flag</option>
+            <option value="2">As a GB flag</option>
+            <option value="3">As a US flag</option>
         </param>
         <param name="show_et" type="radio" default="1" label="Show Estonian" description="Show Estonian in language list">
             <option value="1">Yes</option>
@@ -325,7 +326,8 @@
         <param name="show_pt" type="radio" default="2" label="Show Portuguese" description="Show Portuguese in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
-            <option value="2">As a flag</option>
+            <option value="2">As a PT flag</option>
+            <option value="3">As a BR flag</option>
         </param>
         <param name="show_ro" type="radio" default="1" label="Show Romanian" description="Show Romanian in language list">
             <option value="1">Yes</option>
@@ -355,7 +357,8 @@
         <param name="show_es" type="radio" default="2" label="Show Spanish" description="Show Spanish in language list">
             <option value="1">Yes</option>
             <option value="0">No</option>
-            <option value="2">As a flag</option>
+            <option value="2">As a ES flag</option>
+            <option value="3">As a MX flag</option>
         </param>
         <param name="show_sw" type="radio" default="1" label="Show Swahili" description="Show Swahili in language list">
             <option value="1">Yes</option>
