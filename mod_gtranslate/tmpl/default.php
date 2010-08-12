@@ -40,8 +40,12 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php
 if($method == 'ajax'):
     $document =& JFactory::getDocument();
-    if($load_jquery)
-        $document->addScript(JURI::root(true).'/modules/mod_gtranslate/jquery.js');
+    if($load_jquery) {
+        if(!defined('J_JQUERY_LOADED')) {
+            $document->addScript(JURI::root(true).'/modules/mod_gtranslate/jquery.js');
+            define('J_JQUERY_LOADED', 1);
+        }
+    }
     $document->addScript(JURI::root(true).'/modules/mod_gtranslate/jquery-translate.js');
 ?>
     <script type="text/javascript">
@@ -102,8 +106,9 @@ function googleTranslateElementInit() {
 <?php
     $document =& JFactory::getDocument();
     $document->addStyleDeclaration("
-        a.flag {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size . 'a.png' . "');}
+        a.flag {font-size:'.$flag_size.'px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size . 'a.png' . "');}
         a.flag:hover {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size.'.png' . "');}
+        a.flag img {border:0;vertical-align:top;}
     ");
 }
 
@@ -120,7 +125,7 @@ if($look == 'flags') {
                 }
             }
             else
-                echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="font-size:'.$flag_size.'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a>';
+                echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a>';
             if($orientation == 'v')
                 echo '<br />';
             else
@@ -143,7 +148,7 @@ if($look == 'flags') {
         $show_this = 'show_'.str_replace('-', '', $lang);
         list($flag_x, $flag_y) = $flag_map[$lang];
         if($$show_this == '2')
-            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="font-size:'.$flag_size.'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> ';
+            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
         elseif($$show_this == '3') {
             switch($lang) {
                 case 'en': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/us-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> '; break;
