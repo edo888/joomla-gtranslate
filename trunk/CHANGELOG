@@ -70,3 +70,8 @@ Version for Joomla! 1.0.x is discontinued.
     2. Changed jQuery library version to 1.4.2
     3. Added 6 new languages: Armenian, Azerbaijani, Basque, Georgian, Haitian Creole, Urdu
     4. Fixed minor issues in doTranslate function
+
+* version 1.5.x.21
+    1. Ability to choose between GB & US, ES & MX, PT & BR flags
+    2. Added check for J_JQUERY_LOADED constant before loading the jQuery library
+    3. Moved global definitions from style attribute into CSS
