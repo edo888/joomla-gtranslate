@@ -75,3 +75,4 @@ Version for Joomla! 1.0.x is discontinued.
     1. Ability to choose between GB & US, ES & MX, PT & BR flags
     2. Added check for J_JQUERY_LOADED constant before loading the jQuery library
     3. Moved global definitions from style attribute into CSS
+    4. jQuery translator uses pt for Portuguese instead of pt-PT now

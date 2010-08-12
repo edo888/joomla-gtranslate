@@ -58,7 +58,7 @@ if($method == 'ajax'):
 <script type="text/javascript">
 //<![CDATA[
 <?php if($method == 'ajax'): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];if(lang=='pt')lang='pt-PT';jQuery.cookie('glang', lang);jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {toggle:true});});}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang);jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {toggle:true});});}
 <?php else: ?>
     <?php if($new_tab): ?>
         function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
