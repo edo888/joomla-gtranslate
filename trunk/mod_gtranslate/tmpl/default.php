@@ -109,6 +109,9 @@ function googleTranslateElementInit() {
         a.flag {font-size:{$flag_size}px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size . 'a.png' . "');}
         a.flag:hover {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size.'.png' . "');}
         a.flag img {border:0;}
+        a.alt_flag {font-size:{$flag_size}px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/alt_flagsa.png' . "');}
+        a.alt_flag:hover {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/alt_flags.png' . "');}
+        a.alt_flag img {border:0;}
     ");
 }
 
@@ -119,9 +122,36 @@ if($look == 'flags') {
         if($$show_this) {
             if($$show_this == '3') {
                 switch($lang) {
-                    case 'en': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/us-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;" alt="'.$lang_name.'" /></a> '; break;
-                    case 'es': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/mx-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;" alt="'.$lang_name.'" /></a> '; break;
-                    case 'pt': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/br-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;" alt="'.$lang_name.'" /></a> '; break;
+                    case 'en':
+                        $flag_x = 0;
+                        if($flag_size == 16)
+                            $flag_y = 0;
+                        if($flag_size == 24)
+                            $flag_y = 100;
+                        if($flag_size == 32)
+                            $flag_y = 200;
+                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        break;
+                    case 'pt':
+                        $flag_x = 100;
+                        if($flag_size == 16)
+                            $flag_y = 0;
+                        if($flag_size == 24)
+                            $flag_y = 100;
+                        if($flag_size == 32)
+                            $flag_y = 200;
+                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        break;
+                    case 'es':
+                        $flag_x = 200;
+                        if($flag_size == 16)
+                            $flag_y = 0;
+                        if($flag_size == 24)
+                            $flag_y = 100;
+                        if($flag_size == 32)
+                            $flag_y = 200;
+                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        break;
                 }
             }
             else
@@ -151,10 +181,37 @@ if($look == 'flags') {
             echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
         elseif($$show_this == '3') {
             switch($lang) {
-                case 'en': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/us-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> '; break;
-                case 'es': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/mx-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> '; break;
-                case 'pt': echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" style="font-size:'.$flag_size.'px;padding:1px 0;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/br-'.$flag_size.'.png" height="'.$flag_size.'" width="'.$flag_size.'" style="border:0;vertical-align:top;" alt="'.$lang_name.'" /></a> '; break;
-            }
+                    case 'en':
+                        $flag_x = 0;
+                        if($flag_size == 16)
+                            $flag_y = 0;
+                        if($flag_size == 24)
+                            $flag_y = 100;
+                        if($flag_size == 32)
+                            $flag_y = 200;
+                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        break;
+                    case 'pt':
+                        $flag_x = 100;
+                        if($flag_size == 16)
+                            $flag_y = 0;
+                        if($flag_size == 24)
+                            $flag_y = 100;
+                        if($flag_size == 32)
+                            $flag_y = 200;
+                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        break;
+                    case 'es':
+                        $flag_x = 200;
+                        if($flag_size == 16)
+                            $flag_y = 0;
+                        if($flag_size == 24)
+                            $flag_y = 100;
+                        if($flag_size == 32)
+                            $flag_y = 200;
+                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        break;
+                }
         }
     }
     echo '<br/><select onchange="doTranslate(this);">';
