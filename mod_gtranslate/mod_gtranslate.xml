@@ -52,6 +52,10 @@
             <option value="0">Off</option>
             <option value="1">On</option>
         </param>
+        <param name="analytics" type="radio" default="0" label="Analytics" description="If you have Google Analytics new code on your site (_gaq). You can enable this which will allow you to see translation events in Google Analytics -&gt; Content -&gt; Events Tracking. Will not work if you use Google Default translation method.">
+            <option value="0">Off</option>
+            <option value="1">On</option>
+        </param>
         <param name="language" type="list" default="en" label="Site Language" description="Your site's native language">
             <option value="af">Afrikaans</option>
             <option value="sq">Albanian</option>
