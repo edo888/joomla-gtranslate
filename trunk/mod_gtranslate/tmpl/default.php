@@ -48,35 +48,35 @@ if($method == 'ajax'):
     }
     $document->addScript(JURI::root(true).'/modules/mod_gtranslate/jquery-translate.js');
 ?>
-    <script type="text/javascript">
-    //<![CDATA[
-    if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate('<?php echo $language; ?>', $.cookie('glang'), {toggle:true, not:'.notranslate'});});
-    //]]>
-    </script>
+<script type="text/javascript">
+//<![CDATA[
+if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>') jQuery(function($){$('body').translate('<?php echo $language; ?>', $.cookie('glang'), {toggle:true, not:'.notranslate'});});
+//]]>
+</script>
 <?php endif; ?>
 
 <script type="text/javascript">
 //<![CDATA[
 <?php if($method == 'ajax'): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang);jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {toggle:true, not:'.notranslate'});});}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>jQuery.cookie('glang', lang, {path: '/'});jQuery(function($){$('body').translate('<?php echo $language; ?>', lang, {toggle:true, not:'.notranslate'});});}
 <?php else: ?>
     <?php if($new_tab): ?>
         function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
         <?php if($pro_version): ?>
-        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';if(lang == '<?php echo $language; ?>')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}
+        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';if(lang == '<?php echo $language; ?>')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}
         <?php else: ?>
         if(top.location!=self.location)top.location=self.location;
         window['_tipoff']=function(){};window['_tipon']=function(a){};
-        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')return;else if(location.hostname!='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')openTab(unescape(gfg('u')));else if(location.hostname=='<?php echo $main_url; ?>' && lang_pair!='<?php echo $language; ?>|<?php echo $language; ?>')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}
+        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname=='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>if(location.hostname!='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')openTab(unescape(gfg('u')));else if(location.hostname=='<?php echo $main_url; ?>' && lang_pair!='<?php echo $language; ?>|<?php echo $language; ?>')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}
         function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return '';return results[1];}
         <?php endif; ?>
     <?php else: ?>
         <?php if($pro_version): ?>
-        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';if(lang == '<?php echo $language; ?>')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}
+        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';if(lang == '<?php echo $language; ?>')location.href=location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search;else location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}
         <?php else: ?>
         if(top.location!=self.location)top.location=self.location;
         window['_tipoff']=function(){};window['_tipon']=function(a){};
-        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')return;else if(location.hostname!='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')location.href=unescape(gfg('u'));else if(location.hostname=='<?php echo $main_url; ?>' && lang_pair!='<?php echo $language; ?>|<?php echo $language; ?>')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}
+        function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname=='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>if(location.hostname!='<?php echo $main_url; ?>' && lang_pair=='<?php echo $language; ?>|<?php echo $language; ?>')location.href=unescape(gfg('u'));else if(location.hostname=='<?php echo $main_url; ?>' && lang_pair!='<?php echo $language; ?>|<?php echo $language; ?>')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}
         function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return '';return results[1];}
         <?php endif; ?>
     <?php endif; ?>
