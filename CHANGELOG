@@ -77,3 +77,7 @@ Version for Joomla! 1.0.x is discontinued.
     3. Moved global definitions from style attribute into CSS
     4. jQuery translator uses pt for Portuguese instead of pt-PT now
     5. You can now exclude texts you don't want to be translated by adding class="notranslate" attribute to the text container tag (Issue 23).
+
+* version 1.5.x.22
+    1. Analytics feature implemented. If you have Google Analytics _gaq code on your site you can enable it and see the language usage.
+    2. Fixed issue with the cookie path in On Fly method
