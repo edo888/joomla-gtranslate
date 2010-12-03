@@ -7,7 +7,7 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.6.x.21</version>
+    <version>1.6.x.22</version>
     <description>Google Automatic Translations</description>
 
     <files>
@@ -51,6 +51,10 @@
                     <option value="1">On</option>
                 </field>
                 <field name="new_tab" type="radio" default="0" label="Open translated page in new window" description="Opens translated page in new window">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                </field>
+                <field name="analytics" type="radio" default="0" label="Analytics" description="If you have Google Analytics new code on your site (_gaq). You can enable this which will allow you to see translation events in Google Analytics -&gt; Content -&gt; Event Tracking. Note: Will not work if you use Google Default translation method.">
                     <option value="0">Off</option>
                     <option value="1">On</option>
                 </field>

@@ -18,6 +18,7 @@ class modGTranslateHelper {
         $params->def('language', 'en');
         $params->def('pro_version', 0);
         $params->def('new_tab', 0);
+        $params->def('analytics', 0);
         $params->def('show_en', 2);
         $params->def('show_ar', 1);
         $params->def('show_bg', 1);
