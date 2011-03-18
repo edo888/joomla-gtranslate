@@ -42,7 +42,7 @@ if($method == 'ajax'):
     $document =& JFactory::getDocument();
     if($load_jquery) {
         if(!defined('J_JQUERY_LOADED')) {
-            $document->addScript(JURI::root(true).'/modules/mod_gtranslate/jquery.js');
+            $document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js');
             define('J_JQUERY_LOADED', 1);
         }
     }
