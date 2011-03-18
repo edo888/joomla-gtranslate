@@ -1,6 +1,6 @@
 <?php
 /**
-* @version   $Id: helper.php 62 2010-05-16 09:55:18Z edo888 $
+* @version   $Id$
 * @package   GTranslate
 * @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html

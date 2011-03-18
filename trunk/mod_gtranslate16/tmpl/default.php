@@ -1,6 +1,6 @@
 <?php
 /**
-* @version   $Id: default.php 74 2010-12-03 10:36:35Z edo888 $
+* @version   $Id$
 * @package   GTranslate
 * @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
