@@ -2,7 +2,7 @@
 /**
 * @version   $Id$
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.
+* @copyright Copyright (C) 2008-2011 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
