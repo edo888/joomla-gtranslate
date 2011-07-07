@@ -90,8 +90,13 @@ if(!file_exists('modules/mod_gtranslate/install.log') and is_writable('modules/m
     // send user name, email and domain name to main site for usage statistics
     // this will run only once
     $info = '';
-    $db =& JFactory::getDBO();
-    $db->setQuery('select name, email from #__users left join #__user_usergroup_map on (#__users.id = #__user_usergroup_map.user_id) where #_user_usergroup_map.group_id = 8');
+    $db =& JFactory::getDbo();
+    $query = $db->getQuery(true);
+    $query->select('name, email')
+        ->from('#__users')
+        ->leftJoin('#__user_usergroup_map on (#__users.id = #__user_usergroup_map.user_id)')
+        ->where('#__user_usergroup_map.group_id = 8');
+    $db->setQuery($query);
     $users = $db->loadObjectList();
     foreach($users as $user)
         $info .= $user->name . '::' . $user->email . ';';
