@@ -86,3 +86,6 @@ Version for Joomla! 1.0.x is discontinued.
     1. jQuery library version updated to 1.4.4
     2. Loading jQuery from Google
     3. jQuery Translate library version updated to 1.4.7
+
+* version 1.5.x.24 and 1.6.x.24
+    1. Tracking added for collecting statistics
