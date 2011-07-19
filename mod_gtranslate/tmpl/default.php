@@ -224,3 +224,4 @@ if($look == 'flags') {
     echo '</select>';
 }
 ?>
+<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">free translator</a></noscript>
