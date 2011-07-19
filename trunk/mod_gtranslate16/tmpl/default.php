@@ -35,6 +35,7 @@ $lang_array = array_merge(array($language => $lang_array[$language]), $lang_arra
 
 if(!defined('GTRANSLATE_INCLUDED')) {
     define('GTRANSLATE_INCLUDED', 1);
+    echo '<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">free translator</a></noscript>';
 ?>
 
 <?php
@@ -224,4 +225,3 @@ if($look == 'flags') {
     echo '</select>';
 }
 ?>
-<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">free translator</a></noscript>
