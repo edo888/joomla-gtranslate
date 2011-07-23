@@ -94,3 +94,6 @@ Version for Joomla! 1.0.x is discontinued.
     1. Changed options order in the backend
     2. Updated option descriptions
     3. Added noscript tag
+
+* version 1.5.x.26 and 1.6.x.26
+    1. Statistics code has been removed
