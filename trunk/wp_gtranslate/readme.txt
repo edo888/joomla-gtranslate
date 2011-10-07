@@ -1,21 +1,20 @@
 === GTranslate ===
 Contributors: edo888
 Author: Edvard Ananyan
-Donate link: http://edo.webmaster.am/gtranslate
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.3
 Tested up to: 3.2
-Stable tag: 1.0.27
+Stable tag: 1.0.28
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
 == Description ==
 
-This module uses Google Translate [automatic translation](http://edo.webmaster.am/gtranslate?xyz=998) service to [translate your web page](http://edo.webmaster.am/gtranslate?xyz=998) with Google power. With 58 available languages your site will be available to more than 98% of internet users.
+This module uses Google Translate [automatic translation](http://gtranslate.net/?xyz=998) service to [translate your web page](http://gtranslate.net/?xyz=998) with Google power. With 58 available languages your site will be available to more than 98% of internet users.
 
-Visit [GTranslate Pro](http://edo.webmaster.am/gtranslate?xyz=998) for more details and features like `translation editing`, `search engine indexing` and `SEO URLs`.
+Visit [GTranslate Pro](http://gtranslate.net/?xyz=998) for more details and features like `translation editing`, `search engine indexing` and `SEO URLs`.
 
-Please `use` [GTranslate Forum](http://edo.webmaster.am/forum/gtranslate/) for your questions and support requests!
+Please `use` [GTranslate Forum](http://gtranslate.net/forum/) for your questions and support requests!
 
 * Hides "Suggest better translation" pop-up
 * Hides Google top frame after translation
@@ -26,9 +25,9 @@ Please `use` [GTranslate Forum](http://edo.webmaster.am/forum/gtranslate/) for y
 * Option to translate the page on fly
 * Available styles Dropdown/Flags/flags with dropdown
 * Valid XHTML
-* Option to operate with [Pro version](http://edo.webmaster.am/gtranslate?xyz=998) to have SEF URLs, refine/edit translations manually and [index translated pages](http://edo.webmaster.am/gtranslate?xyz=998) in search engines
+* Option to operate with [Pro version](http://gtranslate.net/?xyz=998) to have SEF URLs, refine/edit translations manually and [index translated pages](http://gtranslate.net/?xyz=998) in search engines
 
-Keywords: [website translation](http://edo.webmaster.am/gtranslate?xyz=998), [automatic website translation](http://edo.webmaster.am/gtranslate?xyz=998), [google translation](http://edo.webmaster.am/gtranslate?xyz=998), [google translate](http://edo.webmaster.am/gtranslate?xyz=998), [google translator](http://edo.webmaster.am/gtranslate?xyz=998), [automatic translator](http://edo.webmaster.am/gtranslate?xyz=998), [automatic translation](http://edo.webmaster.am/gtranslate?xyz=998), [ajax translator](http://edo.webmaster.am/gtranslate?xyz=998), [ajax translate](http://edo.webmaster.am/gtranslate?xyz=998), [jquery translator](http://edo.webmaster.am/gtranslate?xyz=998), [jquery translate](http://edo.webmaster.am/gtranslate?xyz=998)
+Keywords: [website translation](http://gtranslate.net/?xyz=998), [automatic website translation](http://gtranslate.net/?xyz=998), [google translation](http://gtranslate.net/?xyz=998), [google translate](http://gtranslate.net/?xyz=998), [google translator](http://gtranslate.net/?xyz=998), [automatic translator](http://gtranslate.net/?xyz=998), [automatic translation](http://gtranslate.net/?xyz=998), [ajax translator](http://gtranslate.net/?xyz=998), [ajax translate](http://gtranslate.net/?xyz=998), [jquery translator](http://gtranslate.net/?xyz=998), [jquery translate](http://gtranslate.net/?xyz=998)
 
 == Installation ==
 
@@ -43,7 +42,7 @@ To configure the widget go to Settings -> GTranslate
 == Frequently Asked Questions ==
 
 = It doesn't work, what to do? =
-Please check the [Troubleshooting](http://edo.webmaster.am/forum/gtranslate/troubleshooting-gtranslate-free-t370.html) and feel free to create a new topic if you cannot find your case.
+Please check the [Troubleshooting](http://gtranslate.net/forum/troubleshooting-gtranslate-free-t370.html) and feel free to create a new topic if you cannot find your case.
 
 = Where I can see analytics data? =
 You need to login to your Google Analytics account -> Content -> Event Tracking. The event name will be GTranslate and you will see event categories for each language code. If you want to see French language usage you can click on fr and you will see which pages are translated to French by your visitors.
@@ -62,6 +61,9 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.28 =
+* Links changed
 
 = 1.0.27 =
 * Changed text in noscript tag
