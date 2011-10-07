@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: GTranslate
-Plugin URI: http://edo.webmaster.am/gtranslate?xyz=998
-Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://edo.webmaster.am/forum/gtranslate/">GTranslate Forum</a>.
-Version: 1.0.27
+Plugin URI: http://gtranslate.net/?xyz=998
+Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
+Version: 1.0.28
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
 */
 
-/*  Copyright 2010 Edvard Ananyan  (email : edo888@gmail.com)
+/*  Copyright 2010 - 2011 Edvard Ananyan  (email : edo888@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -87,7 +87,7 @@ class GTranslate extends WP_Widget {
         else
             echo $data['widget_code'];
         echo $args['after_widget'];
-        echo '<noscript>JavaScript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">site translator</a>, <a href="http://edo.webmaster.am/gtranslate">automatic translation</a>, <a href="http://edo.webmaster.am/gtranslate">free translation</a>. Buy <a href="http://artmaestro.com/">oil paintings</a> on ArtMaestro.</noscript>';
+        echo '<noscript>JavaScript is required to use this <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a>. Buy <a href="http://artmaestro.com/">oil paintings</a> on ArtMaestro.</noscript>';
     }
 
     function get_widget_code($atts) {
@@ -97,7 +97,7 @@ class GTranslate extends WP_Widget {
         if(empty($data['widget_code']))
             return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
-            return $data['widget_code'].'<noscript>Javascript is required to use this <a href="http://edo.webmaster.am/gtranslate">website translator</a>, <a href="http://edo.webmaster.am/gtranslate">site translator</a>, <a href="http://edo.webmaster.am/gtranslate">automatic translation</a>, <a href="http://edo.webmaster.am/gtranslate">free translation</a></noscript>';
+            return $data['widget_code'].'<noscript>Javascript is required to use this <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a></noscript>';
     }
 
     function register() {
@@ -135,7 +135,7 @@ var languages_map = {en_x: 0, en_y: 0, ar_x: 100, ar_y: 0, bg_x: 200, bg_y: 0, z
 
 function RefreshDoWidgetCode() {
     var new_line = "\\n";
-    var widget_preview = '<!-- GTranslate: http://edo.webmaster.am/gtranslate -->'+new_line;
+    var widget_preview = '<!-- GTranslate: http://gtranslate.net/ -->'+new_line;
     var widget_code = '';
     var translation_method = jQuery('#translation_method').val();
     var default_language = jQuery('#default_language').val();
@@ -285,7 +285,7 @@ foreach($fincl_langs as $lang)
 ?>
         <form id="gtranslate" name="form1" method="post" action="<?php echo admin_url() . '/options-general.php?page=gtranslate_options' ?>">
         <p>Use the configuration form below to customize the GTranslate widget.</p>
-        <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://edo.webmaster.am/gtranslate?xyz=998" target="_blank">GTranslate Pro</a> version.</p>
+        <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://gtranslate.net/?xyz=998" target="_blank">GTranslate Pro</a> version.</p>
         <div style="float:left;width:270px;">
             <h4>Widget options</h4>
             <table style="font-size:11px;">
