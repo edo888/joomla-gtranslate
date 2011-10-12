@@ -91,6 +91,8 @@ if(jQuery.cookie('glang') && jQuery.cookie('glang') != '<?php echo $language; ?>
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: '<?php echo $language; ?>',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false,
     includedLanguages: '<?php
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
