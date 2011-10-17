@@ -1,0 +1,22 @@
+{
+    "name" : "GTranslate",
+    "slug" : "gtranslate",
+    "homepage" : "http://gtranslate.net/",
+    "download_url" : "http://joomla-gtranslate.googlecode.com/files/wp_gtranslate.1.0.28.zip",
+
+    "version" : "1.0.28",
+    "requires" : "2.8",
+    "tested" : "3.2",
+    "last_updated" : "2011-10-07 20:50:00",
+
+    "author" : "Edvard Ananyan",
+    "author_homepage" : "http://gtranslate.net/",
+
+    "sections" : {
+        "description" : "<p>This module uses Google Translate <a href="http://gtranslate.net/?xyz=998">automatic translation</a> service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.</p>",
+    },
+
+    "rating" : 90,
+    "num_ratings" : 323,
+    "downloaded" : 1532728
+}

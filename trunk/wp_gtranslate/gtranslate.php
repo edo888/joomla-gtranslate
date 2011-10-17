@@ -26,6 +26,9 @@ Author URI: http://edo.webmaster.am
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+require_once 'plugin-updates/plugin-update-checker.php';
+$MyUpdateChecker = new PluginUpdateChecker('http://example.com/path/to/wp_metadata.json', __FILE__, 'gtranslate');
+
 add_action('widgets_init', array('GTranslate', 'register'));
 register_activation_hook(__FILE__, array('GTranslate', 'activate'));
 register_deactivation_hook(__FILE__, array('GTranslate', 'deactivate'));
