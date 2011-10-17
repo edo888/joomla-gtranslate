@@ -2,7 +2,7 @@
     "name" : "GTranslate",
     "slug" : "gtranslate",
     "homepage" : "http://gtranslate.net/",
-    "download_url" : "http://joomla-gtranslate.googlecode.com/files/wp_gtranslate.1.0.28.zip",
+    "download_url" : "http://joomla-gtranslate.googlecode.com/files/wp_gtranslate.1.0.29.zip",
 
     "version" : "1.0.29",
     "requires" : "2.8",
