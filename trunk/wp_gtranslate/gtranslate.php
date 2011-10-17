@@ -27,7 +27,7 @@ Author URI: http://edo.webmaster.am
 */
 
 require_once 'plugin-updates/plugin-update-checker.php';
-$MyUpdateChecker = new PluginUpdateChecker('http://example.com/path/to/wp_metadata.json', __FILE__, 'gtranslate');
+$MyUpdateChecker = new PluginUpdateChecker('http://joomla-gtranslate.googlecode.com/svn/trunk/wp_metadata.json', __FILE__, 'gtranslate');
 
 add_action('widgets_init', array('GTranslate', 'register'));
 register_activation_hook(__FILE__, array('GTranslate', 'activate'));
