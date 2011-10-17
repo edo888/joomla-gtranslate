@@ -13,7 +13,7 @@
     "author_homepage" : "http://gtranslate.net/",
 
     "sections" : {
-        "description" : "<p>This module uses Google Translate <a href="http://gtranslate.net/?xyz=998">automatic translation</a> service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.</p>",
+        "description" : "<p>This module uses Google Translate <a href='http://gtranslate.net/?xyz=998'>automatic translation</a> service to translate your web page with Google power. With 58 available languages your site will be available to more than 98% of internet users.</p>",
     },
 
     "rating" : 90,
