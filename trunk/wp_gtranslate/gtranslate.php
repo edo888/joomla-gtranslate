@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 1.0.29
+Version: 1.0.30
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -40,7 +40,7 @@ add_shortcode('gtranslate', array('GTranslate', 'get_widget_code'));
 class GTranslate extends WP_Widget {
     function activate() {
         $data = array(
-            'gtranslate_title' => 'Translate',
+            'gtranslate_title' => 'Website Translator',
         );
         $data = get_option('GTranslate');
         GTranslate::load_defaults(& $data);
@@ -84,7 +84,7 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults(& $data);
 
         echo $args['before_widget'];
-        echo $args['before_title'] . '<a href="http://www.asiatranslate.net/website-translation.html" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
+        echo $args['before_title'] . '<a href="http://gtranslate.net/" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
         if(empty($data['widget_code']))
             echo 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
@@ -602,7 +602,7 @@ foreach($fincl_langs as $lang)
     }
 }
 
-if(!file_exists(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log') and is_writable(ABSPATH.PLUGINDIR .'/'. dirname( plugin_basename(__FILE__)))) {
+if(!file_exists(ABSPATH.PLUGINDIR.'/gt_install.log') and is_writable(ABSPATH.PLUGINDIR)) {
     // send user name, email and domain name to main site for usage statistics
     // this will run only once
     $info = '';
@@ -615,6 +615,6 @@ if(!file_exists(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/ins
     $fh = @fopen('http://edo.webmaster.am/gstat-wp?q=' . base64_encode($domain . ';' . $info), 'r');
     @fclose($fh);
 
-    $fh = fopen(ABSPATH.PLUGINDIR.'/'. dirname( plugin_basename(__FILE__)).'/install.log', 'a');
+    $fh = fopen(ABSPATH.PLUGINDIR.'/gt_install.log', 'a');
     fclose($fh);
 }
