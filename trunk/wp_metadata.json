@@ -2,12 +2,12 @@
     "name" : "GTranslate",
     "slug" : "gtranslate",
     "homepage" : "http://gtranslate.net/",
-    "download_url" : "http://joomla-gtranslate.googlecode.com/files/wp_gtranslate.1.0.29.zip",
+    "download_url" : "http://joomla-gtranslate.googlecode.com/files/wp_gtranslate.1.0.30.zip",
 
-    "version" : "1.0.29",
+    "version" : "1.0.30",
     "requires" : "2.8",
     "tested" : "3.2",
-    "last_updated" : "2011-10-07 20:50:00",
+    "last_updated" : "2011-10-28 20:10:18",
 
     "author" : "Edvard Ananyan",
     "author_homepage" : "http://gtranslate.net/",
@@ -17,6 +17,6 @@
     },
 
     "rating" : 90,
-    "num_ratings" : 323,
-    "downloaded" : 1532728
+    "num_ratings" : 328,
+    "downloaded" : 1538135
 }
