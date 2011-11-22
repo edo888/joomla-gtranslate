@@ -1,1 +1,1 @@
-// Will notify about required abdates
+// Will notify about required updates
