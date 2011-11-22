@@ -155,6 +155,7 @@ function RefreshDoWidgetCode() {
         widget_preview += 'function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'';
         widget_preview += default_language;
         widget_preview += '\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE';
+        widget_preview += ', autoDisplay: false';
         widget_preview += ', includedLanguages: \'';
         widget_preview += included_languages;
         widget_preview += "'}, 'google_translate_element');}"+new_line;
