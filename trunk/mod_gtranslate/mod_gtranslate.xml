@@ -13,7 +13,6 @@
     <files>
         <filename module="mod_gtranslate">mod_gtranslate.php</filename>
         <filename>helper.php</filename>
-        <filename>jquery-translate.js</filename>
         <filename>index.html</filename>
         <folder>tmpl</folder>
     </files>
