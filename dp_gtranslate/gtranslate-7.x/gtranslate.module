@@ -3,7 +3,7 @@ function gtranslate_help($path, $arg) {
     $output = '';
     switch($path) {
         case 'admin/help#gtranslate':
-            $output = '<p>' . t("Uses Google power to translate your web site. Author Edvard Ananyan <a href=\"http://edo.webmaster.am/gtranslate?xyz=1002\">http://edo.webmaster.am/gtranslate</a>. You can find more info and help on <a href=\"http://edo.webmaster.am/forum/gtranslate/\">GTranslate Forum</a>.") . '</p>';
+            $output = '<p>' . t("Uses Google power to translate your web site. Author Edvard Ananyan <a href=\"http://gtranslate.net/?xyz=1002\">http://edo.webmaster.am/gtranslate</a>. You can find more info and help on <a href=\"http://gtranslate.net/forum/\">GTranslate Forum</a>.") . '</p>';
             break;
     }
     return $output;
@@ -60,6 +60,7 @@ function gtranslate_block_view($delta = '') {
         $block_content .= 'function googleTranslateElementInit() {';
         $block_content .= 'new google.translate.TranslateElement({';
         $block_content .= "pageLanguage: '".variable_get('gtranslate_main_lang', 'en')."',";
+        $block_content .= 'layout: google.translate.TranslateElement.InlineLayout.SIMPLE,';
         $block_content .= "includedLanguages: '".$includedLanguages."'";
         $block_content .= "}, 'google_translate_element');";
         $block_content .= '}';
@@ -67,62 +68,43 @@ function gtranslate_block_view($delta = '') {
         $block_content .= '<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>';
 
     } else {
-
-        if(variable_get('gtranslate_method', 'google-default') == 'on-fly') {
-            //drupal_add_js('misc/jquery.js');
-            drupal_add_js('misc/jquery.cookie.js');
-            drupal_add_js(drupal_get_path('module', 'gtranslate').'/gtranslate-files/jquery-translate.js');
-            $block_content .= '<script type="text/javascript">'."\n";
-            $block_content .= "//<![CDATA[\n";
-            $block_content .= "if(jQuery.cookie('glang') && jQuery.cookie('glang') != '".variable_get('gtranslate_main_lang', 'en')."') jQuery(function(\$){\$('body').translate('".variable_get('gtranslate_main_lang', 'en')."', \$.cookie('glang'), {not:'.notranslate', toggle:true});});\n";
-            $block_content .= "//]]>\n";
-            $block_content .= '</script>';
-        }
-
         $block_content .= '<script type="text/javascript">';
-        $block_content .= "//<![CDATA[\n";
+        $block_content .= "/* <![CDATA[ */\n";
 
-        if(variable_get('gtranslate_method', 'google-default') == 'on-fly') {
-            if(variable_get('gtranslate_analytics', false))
-                $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);jQuery.cookie('glang', lang, {path: '/'});jQuery(function(\$){\$('body').translate('".variable_get('gtranslate_main_lang', 'en')."', lang, {not:'.notranslate', toggle:true})});}";
-            else
-                $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang, {path: '/'});jQuery(function(\$){\$('body').translate('".variable_get('gtranslate_main_lang', 'en')."', lang, {not:'.notranslate', toggle:true})});}";
-        } else {
-            if(variable_get('gtranslate_new_window', 0)) {
-                $block_content .= "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}";
-                if(variable_get('gtranslate_pro', 0)) {
-                    if(variable_get('gtranslate_analytics', false))
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}";
-                    else
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}";
-                } else {
-                    $block_content .= "if(top.location!=self.location)top.location=self.location;";
-                    $block_content .= "window['_tipoff']=function(){};window['_tipon']=function(a){};";
-                    if(variable_get('gtranslate_analytics', false))
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|<?php echo $mainlang; ?>')openTab(unescape(gfg('u')));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}";
-                    else
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;else if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|<?php echo $mainlang; ?>')openTab(unescape(gfg('u')));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}";
-                    $block_content .= 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}';
-                }
+        if(variable_get('gtranslate_new_window', 0)) {
+            $block_content .= "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}";
+            if(variable_get('gtranslate_pro', 0)) {
+                if(variable_get('gtranslate_analytics', false))
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}";
+                else
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')openTab(location.protocol+'//'+location.host+location.pathname.replace('/'+plang, '')+location.search);else openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}";
             } else {
-                if(variable_get('gtranslate_pro', 0)) {
-                    if(variable_get('gtranslate_analytics', false))
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')location.pathname=location.pathname.replace('/'+plang, '');else location.pathname='/'+lang+location.pathname.replace('/'+plang, '');}";
-                    else
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')location.pathname=location.pathname.replace('/'+plang, '');else location.pathname='/'+lang+location.pathname.replace('/'+plang, '');}";
-                } else {
-                    $block_content .= "if(top.location!=self.location)top.location=self.location;";
-                    $block_content .= "window['_tipoff']=function(){};window['_tipon']=function(a){};";
-                    if(variable_get('gtranslate_analytics', false))
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href=unescape(gfg('u'));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}";
-                    else
-                        $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;else if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href=unescape(gfg('u'));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}";
-                    $block_content .= 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}';
-                }
+                $block_content .= "if(top.location!=self.location)top.location=self.location;";
+                $block_content .= "window['_tipoff']=function(){};window['_tipon']=function(a){};";
+                if(variable_get('gtranslate_analytics', false))
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|<?php echo $mainlang; ?>')openTab(unescape(gfg('u')));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}";
+                else
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;else if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|<?php echo $mainlang; ?>')openTab(unescape(gfg('u')));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href));else openTab('http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u')));}";
+                $block_content .= 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}';
+            }
+        } else {
+            if(variable_get('gtranslate_pro', 0)) {
+                if(variable_get('gtranslate_analytics', false))
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')location.pathname=location.pathname.replace('/'+plang, '');else location.pathname='/'+lang+location.pathname.replace('/'+plang, '');}";
+                else
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='".variable_get('gtranslate_main_lang', 'en')."';if(lang == '".variable_get('gtranslate_main_lang', 'en')."')location.pathname=location.pathname.replace('/'+plang, '');else location.pathname='/'+lang+location.pathname.replace('/'+plang, '');}";
+            } else {
+                $block_content .= "if(top.location!=self.location)top.location=self.location;";
+                $block_content .= "window['_tipoff']=function(){};window['_tipon']=function(a){};";
+                if(variable_get('gtranslate_analytics', false))
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href=unescape(gfg('u'));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}";
+                else
+                    $block_content .= "function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')return;else if(location.hostname!='".$_SERVER['HTTP_HOST']."' && lang_pair=='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href=unescape(gfg('u'));else if(location.hostname=='".$_SERVER['HTTP_HOST']."' && lang_pair!='".variable_get('gtranslate_main_lang', 'en')."|".variable_get('gtranslate_main_lang', 'en')."')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}";
+                $block_content .= 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}';
             }
         }
 
-        $block_content .= "\n//]]>\n";
+        $block_content .= "\n/* ]]> */\n";
         $block_content .= '</script>';
 
         switch(variable_get('gtranslate_look', 'both')) {
@@ -258,8 +240,8 @@ function gtranslate_admin() {
         '#type' => 'radios',
         '#title' => t('Translation Method'),
         '#default_value' => variable_get('gtranslate_method', 'google-default'),
-        '#options' => array('google-default' => 'Google Default', 'on-fly' => 'On Fly', 'redirect' => 'Redirect'),
-        '#description' => t("Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. On Fly (jQuery) can be configured, it will also use the on the fly translation method. Redirect method will redirect the visitor to the translated page, if the Pro version is installed it will use SEF URLs and keep the visitor on your domain, however this method cannot translate non-public pages."),
+        '#options' => array('google-default' => 'Google Default', 'redirect' => 'Redirect'),
+        '#description' => t("Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. Redirect method will redirect the visitor to the translated page. It requires your site to be online, localhost will not work. If the Pro version is installed it will use SEF URLs and keep the visitor on your domain, also it can work on localhost."),
         '#required' => TRUE
     );
 
@@ -267,7 +249,7 @@ function gtranslate_admin() {
         '#type' => 'checkbox',
         '#title' => t('Operate with Pro version'),
         '#default_value' => variable_get('gtranslate_pro', 0),
-        '#description' => t("If you have Pro version installed you need to check this box. Find out more on <a href=http://edo.webmaster.am/gtranslate?xyz=1002 target=_blank>http://edo.webmaster.am/gtranslate</a>"),
+        '#description' => t("If you have Pro version installed you need to check this box. Find out more on <a href=http://gtranslate.net/?xyz=1002 target=_blank>http://gtranslate.net</a>"),
     );
 
     $form['general']['gtranslate_analytics'] = array(
