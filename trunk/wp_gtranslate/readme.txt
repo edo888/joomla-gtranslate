@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 1.0.30
+Stable tag: 1.0.31
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 

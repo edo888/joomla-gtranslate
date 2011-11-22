@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 1.0.30
+Version: 1.0.31
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -68,13 +68,6 @@ class GTranslate extends WP_Widget {
         $data = get_option('GTranslate');
         GTranslate::load_defaults(& $data);
         $wp_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
-
-        if($data['translation_method'] == 'on_fly' and !is_admin()) {
-            if($data['load_jquery'])
-                wp_enqueue_script('jquery-translate', $wp_plugin_url.'/jquery-translate.js', array('jquery'));
-            else
-                wp_enqueue_script('jquery-translate', $wp_plugin_url.'/jquery-translate.js');
-        }
 
         wp_enqueue_style('gtranslate-style', $wp_plugin_url.'/gtranslate-style'.$data['flag_size'].'.css');
     }
@@ -161,7 +154,8 @@ function RefreshDoWidgetCode() {
         widget_preview += '<script type="text/javascript">'+new_line;
         widget_preview += 'function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: \'';
         widget_preview += default_language;
-        widget_preview += '\', includedLanguages: \'';
+        widget_preview += '\', layout: google.translate.TranslateElement.InlineLayout.SIMPLE';
+        widget_preview += ', includedLanguages: \'';
         widget_preview += included_languages;
         widget_preview += "'}, 'google_translate_element');}"+new_line;
         widget_preview += '<\/script>';
@@ -201,7 +195,7 @@ function RefreshDoWidgetCode() {
         // Adding javascript
         widget_code += new_line+new_line;
         widget_code += '<script type="text/javascript">'+new_line;
-        widget_code += '//<![CDATA['+new_line;
+        widget_code += '/* <![CDATA[ */'+new_line;
         if(pro_version && translation_method == 'redirect' && new_window) {
             widget_code += "function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}"+new_line;
             if(analytics)
@@ -230,15 +224,9 @@ function RefreshDoWidgetCode() {
             else
                 widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
             widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
-        } else if(translation_method == 'on_fly') {
-            widget_code += "if(jQuery.cookie('glang') && jQuery.cookie('glang') != '"+default_language+"') jQuery(function(\$){\$('body').translate('"+default_language+"', \$.cookie('glang'), {toggle:true, not:'.notranslate'});});"+new_line;
-            if(analytics)
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);jQuery.cookie('glang', lang, {path: '/'});jQuery(function(\$){\$('body').translate('"+default_language+"', lang, {toggle:true, not:'.notranslate'});});}"+new_line;
-            else
-                widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;var lang=lang_pair.split('|')[1];jQuery.cookie('glang', lang, {path: '/'});jQuery(function(\$){\$('body').translate('"+default_language+"', lang, {toggle:true, not:'.notranslate'});});}"+new_line;
         }
 
-        widget_code += '//]]>'+new_line;
+        widget_code += '/* ]]> */'+new_line;
         widget_code += '<\/script>'+new_line;
 
     }
@@ -297,7 +285,6 @@ foreach($fincl_langs as $lang)
                 <td>
                     <select id="translation_method" name="translation_method" onChange="RefreshDoWidgetCode()">
                         <option value="google_default">Google Default</option>
-                        <option value="on_fly" selected>On Fly (jQuery)</option>
                         <option value="redirect">Redirect</option>
                     </select>
                 </td>
@@ -366,10 +353,6 @@ foreach($fincl_langs as $lang)
                         <option value="yi">Yiddish</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
-                <td class="option_name">Load jQuery library:</td>
-                <td><input id="load_jquery" name="load_jquery" value="1" type="checkbox" checked="checked" onclick="RefreshDoWidgetCode()" onchange="RefreshDoWidgetCode()"/></td>
             </tr>
             <tr>
                 <td class="option_name">Open in new window:</td>
