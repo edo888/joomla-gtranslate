@@ -25,7 +25,7 @@
                     <option value="0">Off</option>
                     <option value="1">On</option>
                 </field>
-                <field name="method" type="radio" default="standard" label="Translation method" description="Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. Redirect method will redirect the visitor to the translated page, if the Pro version is installed it will use SEF URLs (/es, /fr, /it, etc.) and keep the visitor on your domain.">
+                <field name="method" type="radio" default="standard" label="Translation method" description="Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. Redirect method will redirect the visitor to the translated page. It requires your site to be online, localhost will not work. If the Pro version is installed it will use SEF URLs (/es, /fr, /it, etc.) and keep the visitor on your domain, also it can work on localhost.">
                     <option value="google_default">Google Default</option>
                     <option value="standard">Redirect</option>
                 </field>
