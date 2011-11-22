@@ -7,8 +7,8 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.5.x.27</version>
-    <description>Google Automatic Translations</description>
+    <version>1.5.x.28</version>
+    <description>GTranslate - Website Translation Tool. Visit http://gtranslate.net for details.</description>
 
     <files>
         <filename module="mod_gtranslate">mod_gtranslate.php</filename>
@@ -20,18 +20,13 @@
 
     <params>
         <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
-        <param name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you purchased GTranslate Pro version and it is installed, just turn on this option to have SEF URLs with language codes (/es, /fr, /it, etc.), enable language editing feature and search engine indexing of the translated pages. You will need to use Redirect translation method with this option On. Visit http://edo.webmaster.am/gtranslate for more details.">
+        <param name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you have purchased GTranslate Pro version and it is installed, just turn on this option to have SEF URLs with language codes (/es, /fr, /it, etc.), enable language editing feature and search engine indexing of the translated pages. You will need to use Redirect translation method with this option On. Visit http://gtranslate.net for more details.">
             <option value="0">Off</option>
             <option value="1">On</option>
         </param>
-        <param name="method" type="radio" default="google_default" label="Translation method" description="Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. On Fly (jQuery) can be configured, it will also use the on the fly translation method. Redirect method will redirect the visitor to the translated page, if the Pro version is installed it will use SEF URLs (/es, /fr, /it, etc.) and keep the visitor on your domain.">
+        <param name="method" type="radio" default="standard" label="Translation method" description="Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. Redirect method will redirect the visitor to the translated page, if the Pro version is installed it will use SEF URLs (/es, /fr, /it, etc.) and keep the visitor on your domain.">
             <option value="google_default">Google Default</option>
-            <option value="ajax">On Fly (jQuery)</option>
             <option value="standard">Redirect</option>
-        </param>
-        <param name="load_jquery" type="radio" default="1" label="Load jQuery library" description="If you have other joomla extension which already loads jQuery library in head tag you need to turn this off.">
-            <option value="0">Off</option>
-            <option value="1">On</option>
         </param>
         <param name="look" type="list" default="both" label="Look" description="The way it will appear in your site (can be used except Google Default method)">
             <option value="flags">Flags</option>
