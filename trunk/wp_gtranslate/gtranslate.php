@@ -577,7 +577,8 @@ foreach($fincl_langs as $lang)
         $data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';
         $data['show_flags'] = isset($data['show_flags']) ? $data['show_flags'] : '1';
         $data['default_language'] = isset($data['default_language']) ? $data['default_language'] : 'en';
-        $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'on_fly';
+        $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'redirect';
+        if($data['translation_method'] == 'on_fly') $data['translation_method'] = 'redirect';
         $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
         $data['widget_code'] = isset($data['widget_code']) ? $data['widget_code'] : '';
         $data['incl_langs'] = isset($data['incl_langs']) ? $data['incl_langs'] : array();
