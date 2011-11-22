@@ -32,14 +32,14 @@ asort($lang_array);
 // Move the default language to the first position
 $lang_array = array_merge(array($language => $lang_array[$language]), $lang_array);
 
-
 if(!defined('GTRANSLATE_INCLUDED')) {
     define('GTRANSLATE_INCLUDED', 1);
     echo '<noscript>Javascript is required to use this <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">free translator</a></noscript>';
 ?>
+
+<?php if($method == 'standard' or $method == 'ajax'): ?>
 <script type="text/javascript">
 /* <![CDATA[ */
-<?php if($method == 'standard' or $method == 'ajax'): ?>
 <?php if($new_tab): ?>
     function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
     <?php if($pro_version): ?>
@@ -60,9 +60,9 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return '';return results[1];}
     <?php endif; ?>
 <?php endif; ?>
-<?php endif; ?>
 /* ]]> */
 </script>
+<?php endif; ?>
 
 <?php if($method == 'google_default'): ?>
 <div id="google_translate_element"></div>
