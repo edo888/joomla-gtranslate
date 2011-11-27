@@ -83,7 +83,7 @@ class GTranslate extends WP_Widget {
         else
             echo $data['widget_code'];
         echo $args['after_widget'];
-        echo '<noscript>JavaScript is required to use this <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a>. Buy <a href="http://artmaestro.com/">oil paintings</a> on ArtMaestro.</noscript>';
+        echo '<noscript>JavaScript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a>. Buy <a href="http://artmaestro.com/">oil paintings</a> on ArtMaestro.</noscript>';
     }
 
     function get_widget_code($atts) {
@@ -93,7 +93,7 @@ class GTranslate extends WP_Widget {
         if(empty($data['widget_code']))
             return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
-            return $data['widget_code'].'<noscript>Javascript is required to use this <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a></noscript>';
+            return $data['widget_code'].'<noscript>Javascript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a></noscript>';
     }
 
     function register() {
