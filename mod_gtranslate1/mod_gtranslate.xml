@@ -3,12 +3,12 @@
     <name>GTranslate</name>
     <author>Edvard Ananyan</author>
     <creationDate>June 2008</creationDate>
-    <copyright>Copyright (C) 2008-2009 Edvard Ananyan. All rights reserved.</copyright>
-    <license>http://edo.webmaster.am/projects</license>
+    <copyright>Copyright (C) 2008-2012 Edvard Ananyan. All rights reserved.</copyright>
+    <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.0.x.14</version>
-    <description>Google Automatic Translations</description>
+    <version>1.0.x.15</version>
+    <description>GTranslate - Website Translation Tool. Visit http://gtranslate.net for details.</description>
 
     <files>
         <filename module="mod_gtranslate">mod_gtranslate.php</filename>
@@ -38,7 +38,11 @@
             <option value="h">Horizontal</option>
             <option value="v">Vertical</option>
         </param>
-        <param name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you purchased GTranslate Pro version and it is installed, just turn on this option. http://edo.webmaster.am/gtranslate">
+        <param name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you have purchased GTranslate Pro version and it is installed, just turn on this option to have SEF URLs with language codes (/es, /fr, /it, etc.), enable language editing feature and search engine indexing of the translated pages. You will need to use Redirect translation method with this option On. Visit http://gtranslate.net for more details.">
+            <option value="0">Off</option>
+            <option value="1">On</option>
+        </param>
+        <param name="enterprise_version" type="radio" default="0" label="Operate with GTranslate Enterprise" description="If you have purchased GTranslate Enterprise service, just turn on this option to have SEF domains with language codes (es.example.com, fr.example.com, it.example.com, etc.), enable language editing feature and search engine indexing of the translated pages. Visit http://gtranslate.net for more details.">
             <option value="0">Off</option>
             <option value="1">On</option>
         </param>

@@ -2,11 +2,14 @@
 /**
 * @version   $Id$
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2011 Edvard Ananyan. All rights reserved.
+* @copyright Copyright (C) 2008-2012 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
 defined('_JEXEC') or die('Restricted access');
+
+if($pro_version or $enterprise_version)
+    $method = 'standard';
 
 $lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese','sq'=>'Albanian','et'=>'Estonian','gl'=>'Galician','hu'=>'Hungarian','mt'=>'Maltese','th'=>'Thai','tr'=>'Turkish','fa'=>'Persian','af'=>'Afrikaans','ms'=>'Malay','sw'=>'Swahili','ga'=>'Irish','cy'=>'Welsh','be'=>'Belarusian','is'=>'Icelandic','mk'=>'Macedonian','yi'=>'Yiddish','hy'=>'Armenian','az'=>'Azerbaijani','eu'=>'Basque','ka'=>'Georgian','ht'=>'Haitian Creole','ur'=>'Urdu');
 $flag_map = array();
@@ -44,6 +47,8 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
     <?php if($pro_version): ?>
     function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}
+    <?php elseif($enterprise_version): ?>
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+lang+'.'+location.hostname.replace(plang + '.', '')+location.pathname+location.search);}
     <?php else: ?>
     if(top.location!=self.location)top.location=self.location;
     window['_tipoff']=function(){};window['_tipon']=function(a){};
@@ -53,6 +58,8 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php else: ?>
     <?php if($pro_version): ?>
     function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}
+    <?php elseif($enterprise_version): ?>
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+lang+'.'+location.hostname.replace(plang + '.', '')+location.pathname+location.search;}
     <?php else: ?>
     if(top.location!=self.location)top.location=self.location;
     window['_tipoff']=function(){};window['_tipon']=function(a){};

@@ -18,6 +18,7 @@ $look = $params->get('look');
 $flag_size = $params->get('flag_size');
 $orientation = $params->get('orientation');
 $pro_version = $params->get('pro_version');
+$enterprise_version = $params->get('enterprise_version');
 $new_tab = $params->get('new_tab');
 $analytics = $params->get('analytics');
 $language = $params->get('language');
