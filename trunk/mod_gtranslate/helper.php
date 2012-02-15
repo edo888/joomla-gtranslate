@@ -17,6 +17,7 @@ class modGTranslateHelper {
         $params->def('flag_size', 16);
         $params->def('language', 'en');
         $params->def('pro_version', 0);
+        $params->def('enterprise_version', 0);
         $params->def('new_tab', 0);
         $params->def('analytics', 0);
         $params->def('show_en', 2);
