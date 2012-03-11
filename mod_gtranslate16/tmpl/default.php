@@ -109,7 +109,7 @@ if($look == 'flags') {
     $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
         if($pro_version)
-            $href = '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
+            $href = ($language == $lang) ? $uri->toString() : '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
         elseif($enterprise_version)
             $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
         else
@@ -176,7 +176,7 @@ if($look == 'flags') {
     $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
         if($pro_version)
-            $href = '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
+            $href = ($language == $lang) ? $uri->toString() : '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
         elseif($enterprise_version)
             $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
         else
