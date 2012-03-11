@@ -37,7 +37,7 @@ $lang_array = array_merge(array($language => $lang_array[$language]), $lang_arra
 
 if(!defined('GTRANSLATE_INCLUDED')) {
     define('GTRANSLATE_INCLUDED', 1);
-    echo '<noscript>Javascript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">free translator</a>, <a href="http://gtranslate.net/">website translator</a></noscript>';
+    echo '<noscript>Javascript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">free translator</a>, <a href="http://gtranslate.net/">translation delivery network</a></noscript>';
 ?>
 
 <?php if($method == 'standard' or $method == 'ajax'): ?>
@@ -46,7 +46,7 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php if($new_tab): ?>
     function openTab(url) {var form=document.createElement('form');form.method='post';form.action=url;form.target='_blank';document.body.appendChild(form);form.submit();}
     <?php if($pro_version): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search);}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search);}
     <?php elseif($enterprise_version): ?>
     function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+(lang == '<?php echo $language; ?>' ? '' : lang+'.')+location.hostname.replace(plang + '.', '')+location.pathname+location.search);}
     <?php else: ?>
@@ -57,7 +57,7 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     <?php endif; ?>
 <?php else: ?>
     <?php if($pro_version): ?>
-    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang, '')+location.search;}
+    function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search;}
     <?php elseif($enterprise_version): ?>
     function doTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>_gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+(lang == '<?php echo $language; ?>' ? '' : lang+'.')+location.hostname.replace(plang + '.', '')+location.pathname+location.search;}
     <?php else: ?>
@@ -105,7 +105,16 @@ function googleTranslateElementInit() {
 }
 
 if($look == 'flags') {
+    $session =& JFactory::getSession();
+    $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
+        if($pro_version)
+            $href = '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
+        elseif($enterprise_version)
+            $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
+        else
+            $href = '#';
+
         $show_this = 'show_'.str_replace('-', '', $lang);
         list($flag_x, $flag_y) = $flag_map[$lang];
         if($$show_this) {
@@ -119,7 +128,7 @@ if($look == 'flags') {
                             $flag_y = 100;
                         if($flag_size == 32)
                             $flag_y = 200;
-                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
                         break;
                     case 'pt':
                         $flag_x = 100;
@@ -129,7 +138,7 @@ if($look == 'flags') {
                             $flag_y = 100;
                         if($flag_size == 32)
                             $flag_y = 200;
-                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
                         break;
                     case 'es':
                         $flag_x = 200;
@@ -139,12 +148,12 @@ if($look == 'flags') {
                             $flag_y = 100;
                         if($flag_size == 32)
                             $flag_y = 200;
-                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
                         break;
                 }
             }
             else
-                echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a>';
+                echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a>';
             if($orientation == 'v')
                 echo '<br />';
             else
@@ -163,11 +172,20 @@ if($look == 'flags') {
     }
     echo '</select>';
 } else {
+    $session =& JFactory::getSession();
+    $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
+        if($pro_version)
+            $href = '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
+        elseif($enterprise_version)
+            $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
+        else
+            $href = '#';
+
         $show_this = 'show_'.str_replace('-', '', $lang);
         list($flag_x, $flag_y) = $flag_map[$lang];
         if($$show_this == '2')
-            echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+            echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
         elseif($$show_this == '3') {
             switch($lang) {
                     case 'en':
@@ -178,7 +196,7 @@ if($look == 'flags') {
                             $flag_y = 100;
                         if($flag_size == 32)
                             $flag_y = 200;
-                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
                         break;
                     case 'pt':
                         $flag_x = 100;
@@ -188,7 +206,7 @@ if($look == 'flags') {
                             $flag_y = 100;
                         if($flag_size == 32)
                             $flag_y = 200;
-                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
                         break;
                     case 'es':
                         $flag_x = 200;
@@ -198,7 +216,7 @@ if($look == 'flags') {
                             $flag_y = 100;
                         if($flag_size == 32)
                             $flag_y = 200;
-                        echo '<a href="javascript:doTranslate(\''.$language.'|'.$lang.'\')" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
+                        echo '<a href="'.$href.'" onclick="doTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
                         break;
                 }
         }
