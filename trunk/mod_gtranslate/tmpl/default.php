@@ -153,7 +153,7 @@ if($look == 'flags') {
                 }
             }
             else
-                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a>';
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a>';
             if($orientation == 'v')
                 echo '<br />';
             else
