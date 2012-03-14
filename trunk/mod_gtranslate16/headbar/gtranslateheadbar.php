@@ -22,7 +22,7 @@ class JElementGTranslateHeadbar extends JElement {
 	<table class="toolbar">
 	<tr>
 		<td class="button">
-			<a class="toolbar" rel="help" onclick="popupWindow(\'http://gtranslate.net/documentation/mod_gtranslate_j15\', \'Documentation\', 700, 500, 1)" href="#">
+			<a class="toolbar" rel="help" onclick="popupWindow(\'http://gtranslate.net/documentation/mod_gtranslate_j16\', \'Documentation\', 700, 500, 1)" href="#">
 			<span class="icon-32-help"></span>Documentation</a>
 		</td>
 	</tr>
