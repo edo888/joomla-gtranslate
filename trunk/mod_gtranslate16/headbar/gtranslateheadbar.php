@@ -8,15 +8,17 @@
 
 defined('_JEXEC') or die('Restricted access');
 
-class JElementGTranslateHeadbar extends JElement {
+jimport('joomla.form.formfield');
 
-	var	$_name = 'GTranslateHeadbar';
+class JFormFieldGTranslateHeadbar extends JFormField {
 
-	function fetchTooltip() {
+	protected $type = 'GTranslateHeadbar';
+
+	public function getLabel() {
 		return;
 	}
 
-	function fetchElement($name, $value, &$node) {
+	protected function getInput() {
 		$html = '<div style="float:left;padding:10px 0 0 10px"><a href="http://gtranslate.net/" target="_blank"><img src="http://gtranslate.net/templates/gtranslate/images/gt_logo_joomla.png" alt="GTranslate"></a></div>
 <div class="toolbar">
 	<table class="toolbar">

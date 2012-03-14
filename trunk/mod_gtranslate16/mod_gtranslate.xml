@@ -19,7 +19,7 @@
     </files>
 
     <config>
-        <fields name="params" addpath="/modules/mod_gtranslate/headbar">
+        <fields name="params" addfieldpath="/modules/mod_gtranslate/headbar">
             <fieldset name="basic">
                 <field label="" type="gtranslateheadbar" />
                 <field type="spacer" default="" />
