@@ -17,12 +17,12 @@ class JElementGTranslateHeadbar extends JElement {
     }
 
     function fetchElement($name, $value, &$node) {
-        $html = '<div style="float:left;padding:10px 0 0 10px"><a href="http://gtranslate.net/" target="_blank"><img src="http://gtranslate.net/templates/gtranslate/images/gt_logo_joomla.png" alt="GTranslate"></a></div>
+        $html = '<div style="float:left;padding:10px;"><a href="http://gtranslate.net/" target="_blank"><img src="http://gtranslate.net/templates/gtranslate/images/gt_logo_joomla.png" alt="GTranslate"></a></div>
 <div class="toolbar">
     <table class="toolbar">
     <tr>
         <td class="button">
-            <a class="toolbar" rel="help" onclick="popupWindow(\'http://gtranslate.net/docs/54-gtranslate-module-documentation?tmpl=component\', \'Documentation\', 700, 500, 1)" href="#">
+            <a class="toolbar" rel="help" onclick="popupWindow(\'http://gtranslate.net/docs/54-joomla-module-documentation?tmpl=component\', \'Documentation\', 700, 500, 1)" href="#">
             <span class="icon-32-help"></span>Documentation</a>
         </td>
     </tr>

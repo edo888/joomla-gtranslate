@@ -19,8 +19,8 @@
     </files>
 
     <config>
-        <fields name="params" addfieldpath="/modules/mod_gtranslate/headbar">
-            <fieldset name="basic">
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/modules/mod_gtranslate/headbar">
                 <field label="" type="gtranslateheadbar" />
                 <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
                 <field name="pro_version" type="radio" default="0" label="Operate with GTranslate Pro version" description="If you purchased GTranslate Pro version and it is installed, just turn on this option to have SEF URLs with language codes (/es, /fr, /it, etc.), enable language editing feature and search engine indexing of the translated pages. Visit http://gtranslate.net for more details.">
