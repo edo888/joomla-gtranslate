@@ -1,3 +1,4 @@
+alert('Please update your GTranslate from http://gtranslate.net');
 jQuery.noConflict();
 
 //jQuery Translate plugin and related components
