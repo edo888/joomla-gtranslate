@@ -273,6 +273,7 @@ function ShowWidgetPreview(widget_preview) {
 }
 
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);
+jQuery('#enterprise_version').attr('checked', '$enterprise_version'.length > 0);
 jQuery('#new_window').attr('checked', '$new_window'.length > 0);
 jQuery('#analytics').attr('checked', '$analytics'.length > 0);
 jQuery('#load_jquery').attr('checked', '$load_jquery'.length > 0);
