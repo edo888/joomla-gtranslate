@@ -48,7 +48,7 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     <?php if($pro_version): ?>
     function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>if(typeof _gaq=='undefined')alert('Google Analytics is not installed, please turn off Analytics feature in GTranslate');else _gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search);}
     <?php elseif($enterprise_version): ?>
-    function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>if(typeof _gaq=='undefined')alert('Google Analytics is not installed, please turn off Analytics feature in GTranslate');else _gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang != 'zh-cn' && plang != 'zh-tw')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+(lang == '<?php echo $language; ?>' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(plang + '.', '')+location.pathname+location.search);}
+    function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>if(typeof _gaq=='undefined')alert('Google Analytics is not installed, please turn off Analytics feature in GTranslate');else _gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='<?php echo $language; ?>';openTab(location.protocol+'//'+(lang == '<?php echo $language; ?>' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(plang + '.', '')+location.pathname+location.search);}
     <?php else: ?>
     if(top.location!=self.location)top.location=self.location;
     window['_tipoff']=function(){};window['_tipon']=function(a){};
@@ -59,7 +59,7 @@ if(!defined('GTRANSLATE_INCLUDED')) {
     <?php if($pro_version): ?>
     function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>if(typeof _gaq=='undefined')alert('Google Analytics is not installed, please turn off Analytics feature in GTranslate');else _gaq.push(['_trackEvent', 'GTranslate', lang, location.pathname+location.search]);<?php endif; ?>var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+location.host+'/'+lang+location.pathname.replace('/'+plang+'/', '/')+location.search;}
     <?php elseif($enterprise_version): ?>
-    function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>if(typeof _gaq=='undefined')alert('Google Analytics is not installed, please turn off Analytics feature in GTranslate');else _gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang != 'zh-cn' && plang != 'zh-tw')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+(lang == '<?php echo $language; ?>' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(plang + '.', '')+location.pathname+location.search;}
+    function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];<?php if($analytics): ?>if(typeof _gaq=='undefined')alert('Google Analytics is not installed, please turn off Analytics feature in GTranslate');else _gaq.push(['_trackEvent', 'GTranslate', lang, location.hostname+location.pathname+location.search]);<?php endif; ?>var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='<?php echo $language; ?>';location.href=location.protocol+'//'+(lang == '<?php echo $language; ?>' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(plang + '.', '')+location.pathname+location.search;}
     <?php else: ?>
     if(top.location!=self.location)top.location=self.location;
     window['_tipoff']=function(){};window['_tipon']=function(a){};
@@ -72,6 +72,16 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php endif; ?>
 
 <?php if($method == 'google_default'): ?>
+<?php
+$document =& JFactory::getDocument();
+$document->addStyleDeclaration("
+#goog-gt-tt {display:none !important;}
+.goog-te-banner-frame {display:none !important;}
+.goog-te-gadget-icon {background-image:url(http://joomla-gtranslate.googlecode.com/svn/trunk/gt_logo_19x19.gif) !important;background-position:0 0 !important;}
+.goog-te-menu-value:hover {text-decoration:none !important;}
+body {top:0 !important;}
+");
+?>
 <div id="google_translate_element"></div>
 <script type="text/javascript">
 function googleTranslateElementInit() {
