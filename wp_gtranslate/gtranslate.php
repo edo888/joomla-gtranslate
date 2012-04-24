@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 1.0.33
+Version: 1.0.34
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
