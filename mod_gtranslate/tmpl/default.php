@@ -84,7 +84,7 @@ function doGTranslate(lang_pair) {
        if(sel[i].className == 'goog-te-combo')
            teCombo = sel[i];
 
-    if(document.getElementById('google_translate_element') == null || document.getElementById('google_translate_element').innerHTML.length == 0 || teCombo.length == 0  || teCombo.innerHTML.length == 0) {setTimeout(function() { doGTranslate(lang_pair); }, 500);}
+    if(document.getElementById('google_translate_element2') == null || document.getElementById('google_translate_element2').innerHTML.length == 0 || teCombo.length == 0  || teCombo.innerHTML.length == 0) {setTimeout(function() { doGTranslate(lang_pair); }, 500);}
     else {
         teCombo.value = lang;
         GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change');
@@ -133,12 +133,12 @@ $document->addStyleDeclaration("
 .goog-te-banner-frame {display:none !important;}
 .goog-te-menu-value:hover {text-decoration:none !important;}
 body {top:0 !important;}
-#google_translate_element {display:none!important;}
+#google_translate_element2 {display:none!important;}
 ");
 ?>
-<div id="google_translate_element"></div>
-<script type="text/javascript">function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: '<?php echo $language; ?>', autoDisplay: false}, 'google_translate_element');}</script>
-<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div id="google_translate_element2"></div>
+<script type="text/javascript">function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: '<?php echo $language; ?>', autoDisplay: false}, 'google_translate_element2');}</script>
+<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
 <?php endif; ?>
 
 <?php
