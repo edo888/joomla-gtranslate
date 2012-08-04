@@ -77,11 +77,17 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 function GTranslateFireEvent(element, event) {try {if (document.createEventObject){var evt = document.createEventObject();element.fireEvent('on'+event,evt);} else {var evt = document.createEvent("HTMLEvents");evt.initEvent(event, true, true );element.dispatchEvent(evt);}} catch (e) {}}
 function doGTranslate(lang_pair) {
     if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];
-    if(document.getElementById('google_translate_element') == null || document.getElementById('google_translate_element').innerHTML.length == 0 || document.getElementsByClassName('goog-te-combo').length == 0  || document.getElementsByClassName('goog-te-combo')[0].innerHTML.length == 0) {setTimeout(function() { doGTranslate(lang_pair); }, 500);}
+
+    var teCombo;
+    var sel = document.getElementsByTagName('select');
+    for(var i = 0; i < sel.length; i++)
+       if(sel[i].className == 'goog-te-combo')
+           teCombo = sel[i];
+
+    if(document.getElementById('google_translate_element') == null || document.getElementById('google_translate_element').innerHTML.length == 0 || teCombo.length == 0  || teCombo.innerHTML.length == 0) {setTimeout(function() { doGTranslate(lang_pair); }, 500);}
     else {
-        document.getElementsByClassName('goog-te-combo')[0].value = lang;
-        GTranslateFireEvent(document.getElementsByClassName('goog-te-combo')[0],'change');
-        GTranslateFireEvent(document.getElementsByClassName('goog-te-combo')[0],'change');
+        teCombo.value = lang;
+        GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change');
     }
 }
 /* ]]> */

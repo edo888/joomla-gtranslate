@@ -71,6 +71,29 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 </script>
 <?php endif; ?>
 
+<?php if($method == 'onfly'): ?>
+<script type="text/javascript">
+/* <![CDATA[ */
+function GTranslateFireEvent(element, event) {try {if (document.createEventObject){var evt = document.createEventObject();element.fireEvent('on'+event,evt);} else {var evt = document.createEvent("HTMLEvents");evt.initEvent(event, true, true );element.dispatchEvent(evt);}} catch (e) {}}
+function doGTranslate(lang_pair) {
+    if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];
+
+    var teCombo;
+    var sel = document.getElementsByTagName('select');
+    for(var i = 0; i < sel.length; i++)
+       if(sel[i].className == 'goog-te-combo')
+           teCombo = sel[i];
+
+    if(document.getElementById('google_translate_element') == null || document.getElementById('google_translate_element').innerHTML.length == 0 || teCombo.length == 0  || teCombo.innerHTML.length == 0) {setTimeout(function() { doGTranslate(lang_pair); }, 500);}
+    else {
+        teCombo.value = lang;
+        GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change');
+    }
+}
+/* ]]> */
+</script>
+<?php endif; ?>
+
 <?php if($method == 'google_default'): ?>
 <?php
 $document =& JFactory::getDocument();
@@ -101,6 +124,22 @@ function googleTranslateElementInit() {
 </script>
 <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <?php return; endif; ?>
+
+<?php if($method == 'onfly'): ?>
+<?php
+$document =& JFactory::getDocument();
+$document->addStyleDeclaration("
+#goog-gt-tt {display:none !important;}
+.goog-te-banner-frame {display:none !important;}
+.goog-te-menu-value:hover {text-decoration:none !important;}
+body {top:0 !important;}
+#google_translate_element {display:none!important;}
+");
+?>
+<div id="google_translate_element"></div>
+<script type="text/javascript">function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: '<?php echo $language; ?>', autoDisplay: false}, 'google_translate_element');}</script>
+<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<?php endif; ?>
 
 <?php
     $document =& JFactory::getDocument();
