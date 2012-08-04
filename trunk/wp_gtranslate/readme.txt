@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.8
 Tested up to: 3.2
-Stable tag: 1.0.34
+Stable tag: 1.0.35
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -61,6 +61,9 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.35 =
+* On Fly method is back
 
 = 1.0.34 =
 * Error fixed with Chinese language in Enterprise mode

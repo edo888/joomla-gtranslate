@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
 Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 1.0.34
+Version: 1.0.35
 Author: Edvard Ananyan
 Author URI: http://edo.webmaster.am
 
@@ -168,7 +168,7 @@ function RefreshDoWidgetCode() {
         widget_preview += "'}, 'google_translate_element');}"+new_line;
         widget_preview += '<\/script>';
         widget_preview += '<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"><\/script>'+new_line;
-    } else if(translation_method == 'on_fly' || translation_method == 'redirect') {
+    } else if(translation_method == 'on_fly' || translation_method == 'redirect' || translation_method == 'onfly') {
         // Adding flags
         if(jQuery('#show_flags:checked').length) {
             jQuery.each(languages, function(i, val) {
@@ -205,6 +205,27 @@ function RefreshDoWidgetCode() {
                 }
             });
             widget_preview += '</select>';
+        }
+
+        // Adding onfly html and css
+        if(translation_method == 'onfly') {
+            widget_code += '<style type="text/css">'+new_line;
+            widget_code += '<!--'+new_line;
+            widget_code += "#goog-gt-tt {display:none !important;}"+new_line;
+            widget_code += ".goog-te-banner-frame {display:none !important;}"+new_line;
+            widget_code += ".goog-te-menu-value:hover {text-decoration:none !important;}"+new_line;
+            widget_code += "body {top:0 !important;}"+new_line;
+            widget_code += "#google_translate_element2 {display:none!important;}"+new_line;
+            widget_code += '-->'+new_line;
+            widget_code += '</style>'+new_line+new_line;
+            widget_code += '<div id="google_translate_element2"></div>'+new_line;
+            widget_code += '<script type="text/javascript">'+new_line;
+            widget_code += 'function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: \'';
+            widget_code += default_language;
+            widget_code += '\',autoDisplay: false';
+            widget_code += "}, 'google_translate_element2');}"+new_line;
+            widget_code += '<\/script>';
+            widget_code += '<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"><\/script>'+new_line;
         }
 
         // Adding javascript
@@ -250,6 +271,8 @@ function RefreshDoWidgetCode() {
             else
                 widget_code += "function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(location.hostname!='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')return;else if(location.hostname=='translate.googleusercontent.com' && lang_pair=='"+default_language+"|"+default_language+"')location.href=unescape(gfg('u'));else if(location.hostname!='translate.googleusercontent.com' && lang_pair!='"+default_language+"|"+default_language+"')location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+escape(location.href);else location.href='http://translate.google.com/translate?client=tmpg&hl=en&langpair='+lang_pair+'&u='+unescape(gfg('u'));}"+new_line;
             widget_code += 'function gfg(name) {name=name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");var regexS="[\\?&]"+name+"=([^&#]*)";var regex=new RegExp(regexS);var results=regex.exec(location.href);if(results==null)return "";return results[1];}'+new_line;
+        } else if(translation_method == 'onfly') {
+            widget_code += unescape("eval%28function%28p%2Ca%2Cc%2Ck%2Ce%2Cr%29%7Be%3Dfunction%28c%29%7Breturn%28c%3Ca%3F%27%27%3Ae%28parseInt%28c/a%29%29%29+%28%28c%3Dc%25a%29%3E35%3FString.fromCharCode%28c+29%29%3Ac.toString%2836%29%29%7D%3Bif%28%21%27%27.replace%28/%5E/%2CString%29%29%7Bwhile%28c--%29r%5Be%28c%29%5D%3Dk%5Bc%5D%7C%7Ce%28c%29%3Bk%3D%5Bfunction%28e%29%7Breturn%20r%5Be%5D%7D%5D%3Be%3Dfunction%28%29%7Breturn%27%5C%5Cw+%27%7D%3Bc%3D1%7D%3Bwhile%28c--%29if%28k%5Bc%5D%29p%3Dp.replace%28new%20RegExp%28%27%5C%5Cb%27+e%28c%29+%27%5C%5Cb%27%2C%27g%27%29%2Ck%5Bc%5D%29%3Breturn%20p%7D%28%276%207%28a%2Cb%29%7Bn%7B4%282.9%29%7B3%20c%3D2.9%28%29%3Ba.o%28%5C%27p%5C%27+b%2Cc%29%7Df%7B3%20c%3D2.q%28%22r%22%29%3Bc.s%28b%2Cg%2Cg%29%3Ba.t%28c%29%7D%7Du%28e%29%7B%7D%7D6%20h%28a%29%7B4%28a.8%29a%3Da.8%3B4%28a%3D%3D%5C%27%5C%27%29v%3B3%20b%3Da.w%28%5C%27%7C%5C%27%29%5B1%5D%3B3%20c%3B3%20d%3D2.x%28%5C%27y%5C%27%29%3Bz%283%20i%3D0%3Bi%3Cd.5%3Bi++%294%28d%5Bi%5D.A%3D%3D%5C%27B-C-D%5C%27%29c%3Dd%5Bi%5D%3B4%282.j%28%5C%27k%5C%27%29%3D%3DE%7C%7C2.j%28%5C%27k%5C%27%29.l.5%3D%3D0%7C%7Cc.5%3D%3D0%7C%7Cc.l.5%3D%3D0%29%7BF%286%28%29%7Bh%28a%29%7D%2CG%29%7Df%7Bc.8%3Db%3B7%28c%2C%5C%27m%5C%27%29%3B7%28c%2C%5C%27m%5C%27%29%7D%7D%27%2C43%2C43%2C%27%7C%7Cdocument%7Cvar%7Cif%7Clength%7Cfunction%7CGTranslateFireEvent%7Cvalue%7CcreateEventObject%7C%7C%7C%7C%7C%7Celse%7Ctrue%7CdoGTranslate%7C%7CgetElementById%7Cgoogle_translate_element2%7CinnerHTML%7Cchange%7Ctry%7CfireEvent%7Con%7CcreateEvent%7CHTMLEvents%7CinitEvent%7CdispatchEvent%7Ccatch%7Creturn%7Csplit%7CgetElementsByTagName%7Cselect%7Cfor%7CclassName%7Cgoog%7Cte%7Ccombo%7Cnull%7CsetTimeout%7C500%27.split%28%27%7C%27%29%2C0%2C%7B%7D%29%29")+new_line;
         }
 
         widget_code += '/* ]]> */'+new_line;
@@ -313,6 +336,7 @@ foreach($fincl_langs as $lang)
                     <select id="translation_method" name="translation_method" onChange="RefreshDoWidgetCode()">
                         <option value="google_default">Google Default</option>
                         <option value="redirect">Redirect</option>
+                        <option value="onfly">On Fly (Beta)</option>
                     </select>
                 </td>
             </tr>
