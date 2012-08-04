@@ -7,7 +7,7 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>http://edo.webmaster.am</authorUrl>
-    <version>1.6.x.30</version>
+    <version>1.6.x.31</version>
     <description>GTranslate - Website Translation Tool. Visit http://gtranslate.net for details.</description>
 
     <files>
@@ -34,6 +34,7 @@
                 <field name="method" type="radio" default="standard" label="Translation method" description="Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. Redirect method will redirect the visitor to the translated page. It requires your site to be online, localhost will not work. If the Pro version is installed it will use SEF URLs (/es, /fr, /it, etc.) and keep the visitor on your domain, also it can work on localhost.">
                     <option value="google_default">Google Default (On Fly)</option>
                     <option value="standard">Redirect</option>
+                    <option value="onfly">On Fly (Beta)</option>
                 </field>
                 <field name="look" type="list" default="both" label="Look" description="The way it will appear in your site (can be used except Google Default method)">
                     <option value="flags">Flags</option>
