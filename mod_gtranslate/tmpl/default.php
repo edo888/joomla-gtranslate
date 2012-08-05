@@ -74,16 +74,7 @@ if(!defined('GTRANSLATE_INCLUDED')) {
 <?php if($method == 'onfly'): ?>
 <script type="text/javascript">
 /* <![CDATA[ */
-function GTranslateFireEvent(element, event) {try {if (document.createEvent){var evt = document.createEvent("HTMLEvents");evt.initEvent(event, true, true );element.dispatchEvent(evt);}else {var evt = document.createEventObject();element.fireEvent('on'+event,evt);}} catch (e) {}}
-function doGTranslate(lang_pair) {
-    if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];
-    if(document.getElementById('google_translate_element') == null || document.getElementById('google_translate_element').innerHTML.length == 0 || document.getElementsByClassName('goog-te-combo').length == 0  || document.getElementsByClassName('goog-te-combo')[0].innerHTML.length == 0) {setTimeout(function() { doGTranslate(lang_pair); }, 500);}
-    else {
-        document.getElementsByClassName('goog-te-combo')[0].value = lang;
-        GTranslateFireEvent(document.getElementsByClassName('goog-te-combo')[0],'change');
-        GTranslateFireEvent(document.getElementsByClassName('goog-te-combo')[0],'change');
-    }
-}
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('8 9(a,b){p{7(2.h){d c=2.h("q");c.r(b,i,i);a.s(c)}j{d c=2.t();a.u(\'v\'+b,c)}}w(e){}}8 k(a){7(a.f)a=a.f;7(a==\'\')x;d b=a.y(\'|\')[1];7(2.l(\'m\')==z||2.l(\'m\').n.g==0||2.3(\'4-5-6\').g==0||2.3(\'4-5-6\')[0].n.g==0){A(8(){k(a)},B)}j{2.3(\'4-5-6\')[0].f=b;9(2.3(\'4-5-6\')[0],\'o\');9(2.3(\'4-5-6\')[0],\'o\')}}',38,38,'||document|getElementsByClassName|goog|te|combo|if|function|GTranslateFireEvent||||var||value|length|createEvent|true|else|doGTranslate|getElementById|google_translate_element|innerHTML|change|try|HTMLEvents|initEvent|dispatchEvent|createEventObject|fireEvent|on|catch|return|split|null|setTimeout|500'.split('|'),0,{}))
 /* ]]> */
 </script>
 <?php endif; ?>
