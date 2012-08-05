@@ -37,7 +37,7 @@ $lang_array = array_merge(array($language => $lang_array[$language]), $lang_arra
 
 if(!defined('GTRANSLATE_INCLUDED')) {
     define('GTRANSLATE_INCLUDED', 1);
-    echo '<noscript>Javascript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">free translator</a>, <a href="http://gtranslate.net/">translation delivery network</a></noscript>';
+    echo '<noscript>Javascript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">multilingual website</a> and <a href="http://gtranslate.net/">translation delivery network</a></noscript>';
 ?>
 
 <?php if($method == 'standard' or $method == 'ajax'): ?>
