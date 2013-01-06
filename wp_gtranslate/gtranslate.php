@@ -2,14 +2,14 @@
 /*
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
-Description: Get translations with a single click between 58 languages (more than 98% of internet users) on your website! For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
-Version: 1.0.36
+Description: Makes your website multilingual and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
+Version: 1.0.37
 Author: Edvard Ananyan
-Author URI: http://edo.webmaster.am
+Author URI: http://gtranslate.net
 
 */
 
-/*  Copyright 2010 - 2011 Edvard Ananyan  (email : edo888@gmail.com)
+/*  Copyright 2010 - 2013 Edvard Ananyan  (email : edo888@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ class GTranslate extends WP_Widget {
             'gtranslate_title' => 'Website Translator',
         );
         $data = get_option('GTranslate');
-        GTranslate::load_defaults(& $data);
+        GTranslate::load_defaults($data);
 
         add_option('GTranslate', $data);
     }
@@ -66,7 +66,7 @@ class GTranslate extends WP_Widget {
 
     function enqueue_scripts() {
         $data = get_option('GTranslate');
-        GTranslate::load_defaults(& $data);
+        GTranslate::load_defaults($data);
         $wp_plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 
         wp_enqueue_style('gtranslate-style', $wp_plugin_url.'/gtranslate-style'.$data['flag_size'].'.css');
@@ -74,7 +74,7 @@ class GTranslate extends WP_Widget {
 
     function widget($args) {
         $data = get_option('GTranslate');
-        GTranslate::load_defaults(& $data);
+        GTranslate::load_defaults($data);
 
         echo $args['before_widget'];
         echo $args['before_title'] . '<a href="http://gtranslate.net/" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
@@ -83,12 +83,14 @@ class GTranslate extends WP_Widget {
         else
             echo $data['widget_code'];
         echo $args['after_widget'];
+        if(isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === false))
+            echo '<script src="http://tdn.gtranslate.net/tdn-bin/queue.js" type="text/javascript"></script>';
         echo '<noscript>JavaScript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">translation delivery network</a>.</noscript>';
     }
 
     function get_widget_code($atts) {
         $data = get_option('GTranslate');
-        GTranslate::load_defaults(& $data);
+        GTranslate::load_defaults($data);
 
         if(empty($data['widget_code']))
             return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
@@ -114,7 +116,7 @@ class GTranslate extends WP_Widget {
         if($_POST['save'])
             GTranslate::control_options();
         $data = get_option('GTranslate');
-        GTranslate::load_defaults(& $data);
+        GTranslate::load_defaults($data);
 
         $site_url = site_url();
 
