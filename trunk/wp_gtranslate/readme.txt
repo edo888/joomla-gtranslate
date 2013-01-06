@@ -3,8 +3,8 @@ Contributors: edo888
 Author: Edvard Ananyan
 Tags: widget, plugin, sidebar, google, translate, translation, automatic translator, google translate, ajax translator, jquery translator
 Requires at least: 2.8
-Tested up to: 3.2
-Stable tag: 1.0.36
+Tested up to: 3.5
+Stable tag: 1.0.37
 
 Get translations with a single click between 58 languages (more than 98% of internet users) on your website!
 
@@ -61,6 +61,10 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 1. Main View
 
 == Changelog ==
+
+= 1.0.37 =
+* Bug fixed with new versions of PHP
+* Translation queue added
 
 = 1.0.36 =
 * On Fly IE9 bug fixed
