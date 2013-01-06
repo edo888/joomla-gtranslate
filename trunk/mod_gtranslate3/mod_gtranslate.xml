@@ -10,7 +10,7 @@
     <version>3.0.x.32</version>
     <description>
     <![CDATA[
-    <span style='float:left;'>GTranslate - Makes your website multilingual and available to the world.<br/><br/><a href='http://gtranslate.net/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/languages/automatic-translations/4823' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a><br/><br/>
+    <span style='float:left;font-weight:normal;text-align:left;'>GTranslate - Makes your website multilingual and available to the world.<br/><br/><a href='http://gtranslate.net/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/languages/automatic-translations/4823' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a><br/><br/>
     <h3>Tour Video</h3>
     <iframe src="http://player.vimeo.com/video/30132555?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     <p>If you would like to <i>edit translations manually</i> and have <i>SEF URLs</i> (http://domain.com<u>/es/</u>, http://domain.com<u>/fr/</u>, http://domain.com<u>/it/</u>, etc.) for translated languages or you want your <i>translated pages to be indexed</i> in search engines to <i>increase international traffic</i> you may consider <a href="http://gtranslate.net/features?xyz=997" target="_blank">GTranslate Pro</a> version.</p>
