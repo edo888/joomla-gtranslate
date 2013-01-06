@@ -2,7 +2,7 @@
 /*
 Plugin Name: GTranslate
 Plugin URI: http://gtranslate.net/?xyz=998
-Description: Makes your website multilingual and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
+Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="http://gtranslate.net/forum/">GTranslate Forum</a>.
 Version: 1.0.37
 Author: Edvard Ananyan
 Author URI: http://gtranslate.net
@@ -79,7 +79,7 @@ class GTranslate extends WP_Widget {
         echo $args['before_widget'];
         echo $args['before_title'] . '<a href="http://gtranslate.net/" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
         if(empty($data['widget_code']))
-            echo 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
+            echo '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
             echo $data['widget_code'];
         echo $args['after_widget'];
@@ -93,7 +93,7 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults($data);
 
         if(empty($data['widget_code']))
-            return 'Configure it from WP-Admin -> Settings -> GTranslate to see it in action.';
+            return '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
             return $data['widget_code'].'<noscript>Javascript is required to use <a href="http://gtranslate.net/">GTranslate</a> <a href="http://gtranslate.net/">website translator</a>, <a href="http://gtranslate.net/">site translator</a>, <a href="http://gtranslate.net/">automatic translation</a>, <a href="http://gtranslate.net/">free translation</a></noscript>';
     }
@@ -328,7 +328,8 @@ foreach($fincl_langs as $lang)
 ?>
         <form id="gtranslate" name="form1" method="post" action="<?php echo admin_url() . '/options-general.php?page=gtranslate_options' ?>">
         <p>Use the configuration form below to customize the GTranslate widget.</p>
-        <p>If you would like to edit translations manually and have SEF URLs (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your translated pages to be indexed in search engines you may consider <a href="http://gtranslate.net/?xyz=998" target="_blank">GTranslate Pro</a> version.</p>
+        <p>If you would like to <b>edit translations manually</b> and have <b>SEF URLs</b> (<?php echo $site_url; ?><b>/es/</b>, <?php echo $site_url; ?><b>/fr/</b>, <?php echo $site_url; ?><b>/it/</b>, etc.) for translated languages or you want your <b>translated pages to be indexed</b> in search engines to <b>increase international traffic</b> you may consider <a href="http://gtranslate.net/features?p=wp&xyz=998" target="_blank">GTranslate Pro</a> version.</p>
+        <p>If you would like to use our next generation <b>cloud service</b> which will allow you to <b>host your languages</b> on top level country domain name (ccTLD) to <b>rank higher</b> on local search engines results you may consider <a href="http://gtranslate.net/features?p=wp&xyz=998" target="_blank">GTranslate Enterprise</a> a <a href="http://gtranslate.net/translation-delivery-network" target="_blank">Translation Delivery Network</a>. In that case for example for Spanish you can have <b>es.domain.com</b> or <b>domain.es</b> if you own it.</p>
         <div style="float:left;width:270px;">
             <h4>Widget options</h4>
             <table style="font-size:11px;">
@@ -597,6 +598,10 @@ foreach($fincl_langs as $lang)
         </div>
             <p class="submit"><input type="submit" class="button-primary" name="save" value="<?php _e('Save Changes'); ?>" /></p>
         </form>
+
+        <h4>Videos</h4>
+        <iframe src="http://player.vimeo.com/video/30132555?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+        <iframe src="http://player.vimeo.com/video/38686858?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
         <script type="text/javascript"><?php echo $script; ?></script>
         <?php
@@ -636,7 +641,7 @@ foreach($fincl_langs as $lang)
         $data['show_dropdown'] = isset($data['show_dropdown']) ? $data['show_dropdown'] : '1';
         $data['show_flags'] = isset($data['show_flags']) ? $data['show_flags'] : '1';
         $data['default_language'] = isset($data['default_language']) ? $data['default_language'] : 'en';
-        $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'redirect';
+        $data['translation_method'] = isset($data['translation_method']) ? $data['translation_method'] : 'onfly';
         if($data['translation_method'] == 'on_fly') $data['translation_method'] = 'redirect';
         $data['flag_size'] = isset($data['flag_size']) ? $data['flag_size'] : '16';
         $data['widget_code'] = isset($data['widget_code']) ? $data['widget_code'] : '';
