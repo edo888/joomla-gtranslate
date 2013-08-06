@@ -74,7 +74,7 @@ class GTranslate extends WP_Widget {
         GTranslate::load_defaults($data);
 
         echo $args['before_widget'];
-        echo $args['before_title'] . '<a href="http://gtranslate.net/" rel="follow" target="_blank">' . $data['gtranslate_title'] . '</a>' . $args['after_title'];
+        echo $args['before_title'] . $data['gtranslate_title'] . $args['after_title'];
         if(empty($data['widget_code']))
             echo '<b>Notice:</b> Please configure GTranslate from WP-Admin -> Settings -> GTranslate to see it in action.';
         else
