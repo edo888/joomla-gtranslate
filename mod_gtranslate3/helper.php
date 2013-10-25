@@ -9,7 +9,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 class modGTranslateHelper {
-    function getParams(&$params) {
+    public static function getParams(&$params) {
         $params->def('method', 'google_default');
         $params->def('load_jquery', 1);
         $params->def('look', 'both');
