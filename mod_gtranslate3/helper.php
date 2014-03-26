@@ -78,6 +78,31 @@ class modGTranslateHelper {
         $params->def('show_ka', 1);
         $params->def('show_ht', 1);
         $params->def('show_ur', 1);
+
+        // 2014-03-26 languages
+        $params->def('show_bn', 0);
+        $params->def('show_bs', 0);
+        $params->def('show_ceb', 0);
+        $params->def('show_eo', 0);
+        $params->def('show_gu', 0);
+        $params->def('show_ha', 0);
+        $params->def('show_hmn', 0);
+        $params->def('show_ig', 0);
+        $params->def('show_jw', 0);
+        $params->def('show_kn', 0);
+        $params->def('show_km', 0);
+        $params->def('show_lo', 0);
+        $params->def('show_la', 0);
+        $params->def('show_mi', 0);
+        $params->def('show_mr', 0);
+        $params->def('show_mn', 0);
+        $params->def('show_ne', 0);
+        $params->def('show_pa', 0);
+        $params->def('show_so', 0);
+        $params->def('show_ta', 0);
+        $params->def('show_te', 0);
+        $params->def('show_yo', 0);
+        $params->def('show_zu', 0);
         return $params;
     }
 }
