@@ -126,6 +126,30 @@
                     <option value="vi">Vietnamese</option>
                     <option value="cy">Welsh</option>
                     <option value="yi">Yiddish</option>
+                    <!-- 2014-03-26 languages -->
+                    <option value="bn">Bengali</option>
+                    <option value="bs">Bosnian</option>
+                    <option value="ceb">Cebuano</option>
+                    <option value="eo">Esperanto</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="ha">Hausa</option>
+                    <option value="hmn">Hmong</option>
+                    <option value="ig">Igbo</option>
+                    <option value="jw">Javanese</option>
+                    <option value="kn">Kannada</option>
+                    <option value="km">Khmer</option>
+                    <option value="lo">Lao</option>
+                    <option value="la">Latin</option>
+                    <option value="mi">Maori</option>
+                    <option value="mr">Marathi</option>
+                    <option value="mn">Mongolian</option>
+                    <option value="ne">Nepali</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="so">Somali</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="zu">Zulu</option>
                 </field>
                 <field name="show_af" type="radio" class="btn-group" default="1" label="Show Afrikaans" description="Show Afrikaans in language list">
                     <option value="1">Yes</option>
