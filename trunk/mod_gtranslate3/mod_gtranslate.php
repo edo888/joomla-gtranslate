@@ -80,6 +80,32 @@ $show_eu = $params->get('show_eu');
 $show_ka = $params->get('show_ka');
 $show_ht = $params->get('show_ht');
 $show_ur = $params->get('show_ur');
+
+// 2014-03-26 languages
+$show_bn = $params->get('show_bn');
+$show_bs = $params->get('show_bs');
+$show_ceb = $params->get('show_ceb');
+$show_eo = $params->get('show_eo');
+$show_gu = $params->get('show_gu');
+$show_ha = $params->get('show_ha');
+$show_hmn = $params->get('show_hmn');
+$show_ig = $params->get('show_ig');
+$show_jw = $params->get('show_jw');
+$show_kn = $params->get('show_kn');
+$show_km = $params->get('show_km');
+$show_lo = $params->get('show_lo');
+$show_la = $params->get('show_la');
+$show_mi = $params->get('show_mi');
+$show_mr = $params->get('show_mr');
+$show_mn = $params->get('show_mn');
+$show_ne = $params->get('show_ne');
+$show_pa = $params->get('show_pa');
+$show_so = $params->get('show_so');
+$show_ta = $params->get('show_ta');
+$show_te = $params->get('show_te');
+$show_yo = $params->get('show_yo');
+$show_zu = $params->get('show_zu');
+
 $main_url = $_SERVER['HTTP_HOST'];
 
 if($_SERVER['SERVER_PORT'] != '80')
