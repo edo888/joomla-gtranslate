@@ -5,7 +5,7 @@ GTranslate is a multilingual solution which can make any website multilingual!
 
 GTranslate Tour
 
-http://www.youtube.com/watch?v=R4mfiKGZh_g
+[![Alt text for your video](http://img.youtube.com/vi/R4mfiKGZh_g/0.jpg)](http://www.youtube.com/watch?v=R4mfiKGZh_g)
 
 [Website Translator](http://gtranslate.net) - GTranslate
 
