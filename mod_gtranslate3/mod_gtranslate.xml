@@ -3,23 +3,39 @@
     <name>GTranslate</name>
     <author>Edvard Ananyan</author>
     <creationDate>September 2010</creationDate>
-    <copyright>Copyright (C) 2008-2014 Edvard Ananyan. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2008 - 2016 Edvard Ananyan. All rights reserved.</copyright>
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
-    <authorUrl>http://gtranslate.net</authorUrl>
-    <version>3.0.x.34</version>
+    <authorUrl>https://gtranslate.io</authorUrl>
+    <version>3.0.36</version>
     <description>
     <![CDATA[
-    <span style='float:left;font-weight:normal;text-align:left;'>GTranslate - Makes your website multilingual and available to the world.<br/><br/><a href='http://gtranslate.net/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/languages/automatic-translations/4823' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a><br/><br/>
-    <h3>Tour Video</h3>
-    <iframe src="http://player.vimeo.com/video/30132555?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-    <p>If you would like to <i>edit translations manually</i> and have <i>SEF URLs</i> (http://domain.com<u>/es/</u>, http://domain.com<u>/fr/</u>, http://domain.com<u>/it/</u>, etc.) for translated languages or you want your <i>translated pages to be indexed</i> in search engines to <i>increase international traffic</i> you may consider <a href="http://gtranslate.net/features?xyz=997" target="_blank">GTranslate Pro</a> version.</p>
-    <h3>Translation Delivery Network</h3>
-    <iframe src="http://player.vimeo.com/video/38686858?title=1&amp;byline=0&amp;portrait=0" width="568" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-    <p>If you would like to use our next generation <i>cloud service</i> which will allow you to <i>host your languages</i> on top level country domain name (ccTLD) to <i>rank higher</i> on local search engines results you may consider <a href="http://gtranslate.net/features?xyz=997" target="_blank">GTranslate Enterprise</a> a <a href="http://gtranslate.net/translation-delivery-network" target="_blank">Translation Delivery Network</a>. In that case for example for Spanish you can have <u>es.domain.com</u> or <u>domain.es</u> if you own it.</p>
-    <br/><b>Version: 3.0.x.34</b><br/>Copyright &copy; 2008-2014 Edvard Ananyan, All rights reserved. <a href='http://gtranslate.net' target='_blank'><b>http://gtranslate.net</b></a></span>
+    <span style='font-weight:normal;text-align:left;font-size:120%;line-height:1.5;'>
+    <p>GTranslate - Makes your website multilingual and available to the world.</p>
+    <p><i>Ugrade your <a href="https://gtranslate.io/?xyz=997#pricing" target="_blank">GTranslate</a> to a paid plan and enable the following features:</i></p>
+    <ul>
+        <li><strong>Enable search engine indexing</strong> - Search engines will index your translated pages which will increase international traffic.</li>
+        <li><strong>Search engine friendly</strong> - The URL will change depending on a selected language e.g. <b>es.domain.com</b> or <b>domain.com/es/</b> for Spanish.</li>
+        <li><strong>Meta data translation</strong> - Meta keywords and description will be translated which will increase translated keywords ranking in the search engines.</li>
+        <li><strong>Ability to edit translations</strong> - You will be able to edit the translated texts directly from the front-end.</li>
+        <li><strong>Cache support</strong> - Translations will be cached and make your translated pages to load faster.</li>
+        <li><strong><a href="https://gtranslate.io/#faq" target="_blank">Translation Delivery Network</a></strong> - The translations will be delivered by our cloud network. No software is installed on your server.</li>
+        <li><strong>Centralized translation cache</strong> - The quality of the translations cache will improve over time by using crowd sourced and professional translations.</li>
+        <li><strong>Seamless updates</strong> - We care about further updates. You just enjoy the up to date service every day.</li>
+        <li><strong>URL Translation</strong> - The URL will be translated which is very important for multilingual SEO.</li>
+        <li><strong>Ability to edit translated URLs</strong> - You will be able to change the translated URL manually.</li>
+        <li><strong>Language hosting</strong> - Host your language on top level country domain name to rank higher on local search engines results (ccTLD <b>domain.es</b>).</li>
+    </ul>
+
+    <p><a href='https://gtranslate.io/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/extension/languages/automatic-translations/gtranslate#reviews' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a></p>
+    <p><b>Version: 3.0.36</b><br/>Copyright &copy; 2008 - 2016 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io' target='_blank'><b>http://gtranslate.io</b></a></p>
+    </span>
     ]]>
     </description>
+
+    <updateservers>
+        <server type="extension" name="GTranslate" priority="1">http://gtranslate.net/downloads/gtranslate.xml</server>
+    </updateservers>
 
     <files>
         <filename module="mod_gtranslate">mod_gtranslate.php</filename>
@@ -32,40 +48,11 @@
         <fields name="params">
             <fieldset name="basic">
                 <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
-                <field name="pro_version" type="radio" class="btn-group" default="0" label="Operate with GTranslate Pro version" description="If you purchased GTranslate Pro version and it is installed, just turn on this option to have SEF URLs with language codes (/es, /fr, /it, etc.), enable language editing feature and search engine indexing of the translated pages. Visit http://gtranslate.net for more details.">
-                    <option value="0">Off</option>
-                    <option value="1">On</option>
-                </field>
-                <field name="enterprise_version" type="radio" class="btn-group" default="0" label="Operate with GTranslate Enterprise" description="If you have purchased GTranslate Enterprise service, just turn on this option to have SEF domains with language codes (es.example.com, fr.example.com, it.example.com, etc.), enable language editing feature and search engine indexing of the translated pages. Visit http://gtranslate.net for more details.">
-                    <option value="0">Off</option>
-                    <option value="1">On</option>
-                </field>
-                <field name="method" type="radio" class="btn-group" default="onfly" label="Translation method" description="Select which method shall be used when translating the page. Google Default will show only a dropdown provided by Google and it will translate the page on the fly, but you cannot configure it's appearance. Redirect method will redirect the visitor to the translated page. It requires your site to be online, localhost will not work. If the Pro version is installed it will use SEF URLs (/es, /fr, /it, etc.) and keep the visitor on your domain, also it can work on localhost.">
-                    <option value="google_default">Google Default</option>
-                    <option value="standard">Redirect</option>
-                    <option value="onfly">On Fly</option>
-                </field>
-                <field name="look" type="list" default="both" label="Look" description="The way it will appear in your site (can be used except Google Default method)">
+                <field name="look" type="radio" class="btn-group" default="both" label="Look" description="The way it will appear in your site (can be used except Google Default method)">
+                    <option value="both">Flags and Dropdown</option>
                     <option value="flags">Flags</option>
                     <option value="dropdown">Drop down list</option>
-                    <option value="both">Both</option>
-                </field>
-                <field name="flag_size" type="radio" class="btn-group" default="16" label="Flag size" description="Size of the language flags">
-                    <option value="16">16</option>
-                    <option value="24">24</option>
-                    <option value="32">32</option>
-                </field>
-                <field name="orientation" type="radio" class="btn-group" default="h" label="Orientation" description="Display translation bar horizontally or vertically">
-                    <option value="h">Horizontal</option>
-                    <option value="v">Vertical</option>
-                </field>
-                <field name="new_tab" type="radio" class="btn-group" default="0" label="Open translated page in new window" description="Opens translated page in new window">
-                    <option value="0">Off</option>
-                    <option value="1">On</option>
-                </field>
-                <field name="analytics" type="radio" class="btn-group" default="0" label="Analytics" description="If you have Google Analytics new code on your site (_gaq). You can enable this which will allow you to see translation events in Google Analytics -&gt; Content -&gt; Event Tracking. Note: Will not work if you use Google Default translation method.">
-                    <option value="0">Off</option>
-                    <option value="1">On</option>
+                    <option value="dropdown_with_flags">Nice dropdown with flags</option>
                 </field>
                 <field name="language" type="list" default="en" label="Site Language" description="Your site's native language">
                     <option value="af">Afrikaans</option>
@@ -150,7 +137,40 @@
                     <option value="te">Telugu</option>
                     <option value="yo">Yoruba</option>
                     <option value="zu">Zulu</option>
+                    <!-- 2016-02-15 languages -->
+                    <option value="my">Myanmar (Burmese)</option>
+                    <option value="ny">Chichewa</option>
+                    <option value="kk">Kazakh</option>
+                    <option value="mg">Malagasy</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="si">Sinhala</option>
+                    <option value="st">Sesotho</option>
+                    <option value="su">Sudanese</option>
+                    <option value="tg">Tajik</option>
+                    <option value="uz">Uzbek</option>
                 </field>
+                <field name="pro_version" type="radio" class="btn-group" default="0" label="Sub-directory URL Structure *" description="Example: http://example.com/ru/. This feature is available only in paid plans: https://gtranslate.io/#pricing">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                </field>
+                <field name="enterprise_version" type="radio" class="btn-group" default="0" label="Sub-domain URL Structure *" description="Example: http://ru.example.com. This feature is available only in paid plans: https://gtranslate.io/#pricing">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                </field>
+                <field name="flag_size" type="radio" class="btn-group" default="16" label="Flag size" description="Size of the language flags">
+                    <option value="16">16px</option>
+                    <option value="24">24px</option>
+                    <option value="32">32px</option>
+                </field>
+                <field name="new_tab" type="radio" class="btn-group" default="0" label="Open translation in new tab" description="Opens translated page in new window. Works with Sub-directory or Sub-domain URL structure only.">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                </field>
+                <field name="analytics" type="radio" class="btn-group" default="0" label="Analytics" description="If you have Google Analytics new code on your site (_gaq). You can enable this which will allow you to see translation events in Google Analytics -&gt; Content -&gt; Event Tracking. Note: Will not work if you use Google Default translation method.">
+                    <option value="0">Off</option>
+                    <option value="1">On</option>
+                </field>
+
                 <field name="show_af" type="radio" class="btn-group" default="1" label="Show Afrikaans" description="Show Afrikaans in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
@@ -446,120 +466,139 @@
                 </field>
 
                 <!-- 2014-03-26 languages -->
-                <field name="show_bn" type="radio" class="btn-group" default="0" label="Show Bengali" description="Show in Bengali language list">
+                <field name="show_bn" type="radio" class="btn-group" default="0" label="Show Bengali" description="Show Bengali in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_bs" type="radio" class="btn-group" default="0" label="Show Bosnian" description="Show in Bosnian language list">
+                <field name="show_bs" type="radio" class="btn-group" default="0" label="Show Bosnian" description="Show Bosnian in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_ceb" type="radio" class="btn-group" default="0" label="Show Cebuano" description="Show in Cebuano language list">
+                <field name="show_ceb" type="radio" class="btn-group" default="0" label="Show Cebuano" description="Show Cebuano in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_eo" type="radio" class="btn-group" default="0" label="Show Esperanto" description="Show in Esperanto language list">
+                <field name="show_eo" type="radio" class="btn-group" default="0" label="Show Esperanto" description="Show Esperanto in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_gu" type="radio" class="btn-group" default="0" label="Show Gujarati" description="Show in Gujarati language list">
+                <field name="show_gu" type="radio" class="btn-group" default="0" label="Show Gujarati" description="Show Gujarati in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_ha" type="radio" class="btn-group" default="0" label="Show Hausa" description="Show in Hausa language list">
+                <field name="show_ha" type="radio" class="btn-group" default="0" label="Show Hausa" description="Show Hausa in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_hmn" type="radio" class="btn-group" default="0" label="Show Hmong" description="Show in Hmong language list">
+                <field name="show_hmn" type="radio" class="btn-group" default="0" label="Show Hmong" description="Show Hmong in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_ig" type="radio" class="btn-group" default="0" label="Show Igbo" description="Show in Igbo language list">
+                <field name="show_ig" type="radio" class="btn-group" default="0" label="Show Igbo" description="Show Igbo in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_jw" type="radio" class="btn-group" default="0" label="Show Javanese" description="Show in Javanese language list">
+                <field name="show_jw" type="radio" class="btn-group" default="0" label="Show Javanese" description="Show Javanese in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_kn" type="radio" class="btn-group" default="0" label="Show Kannada" description="Show in Kannada language list">
+                <field name="show_kn" type="radio" class="btn-group" default="0" label="Show Kannada" description="Show Kannada in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_km" type="radio" class="btn-group" default="0" label="Show Khmer" description="Show in Khmer language list">
+                <field name="show_km" type="radio" class="btn-group" default="0" label="Show Khmer" description="Show Khmer in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_lo" type="radio" class="btn-group" default="0" label="Show Lao" description="Show in Lao language list">
+                <field name="show_lo" type="radio" class="btn-group" default="0" label="Show Lao" description="Show Lao in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_la" type="radio" class="btn-group" default="0" label="Show Latin" description="Show in Latin language list">
+                <field name="show_la" type="radio" class="btn-group" default="0" label="Show Latin" description="Show Latin in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_mi" type="radio" class="btn-group" default="0" label="Show Maori" description="Show in Maori language list">
+                <field name="show_mi" type="radio" class="btn-group" default="0" label="Show Maori" description="Show Maori in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_mr" type="radio" class="btn-group" default="0" label="Show Marathi" description="Show in Marathi language list">
+                <field name="show_mr" type="radio" class="btn-group" default="0" label="Show Marathi" description="Show Marathi in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_mn" type="radio" class="btn-group" default="0" label="Show Mongolian" description="Show in Mongolian language list">
+                <field name="show_mn" type="radio" class="btn-group" default="0" label="Show Mongolian" description="Show Mongolian in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_ne" type="radio" class="btn-group" default="0" label="Show Nepali" description="Show in Nepali language list">
+                <field name="show_ne" type="radio" class="btn-group" default="0" label="Show Nepali" description="Show Nepali in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_pa" type="radio" class="btn-group" default="0" label="Show Punjabi" description="Show in Punjabi language list">
+                <field name="show_pa" type="radio" class="btn-group" default="0" label="Show Punjabi" description="Show Punjabi in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_so" type="radio" class="btn-group" default="0" label="Show Somali" description="Show in Somali language list">
+                <field name="show_so" type="radio" class="btn-group" default="0" label="Show Somali" description="Show Somali in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_ta" type="radio" class="btn-group" default="0" label="Show Tamil" description="Show in Tamil language list">
+                <field name="show_ta" type="radio" class="btn-group" default="0" label="Show Tamil" description="Show Tamil in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_te" type="radio" class="btn-group" default="0" label="Show Telugu" description="Show in Telugu language list">
+                <field name="show_te" type="radio" class="btn-group" default="0" label="Show Telugu" description="Show Telugu in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_yo" type="radio" class="btn-group" default="0" label="Show Yoruba" description="Show in Yoruba language list">
+                <field name="show_yo" type="radio" class="btn-group" default="0" label="Show Yoruba" description="Show Yoruba in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
                 </field>
-                <field name="show_zu" type="radio" class="btn-group" default="0" label="Show Zulu" description="Show in Zulu language list">
+                <field name="show_zu" type="radio" class="btn-group" default="0" label="Show Zulu" description="Show Zulu in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
+                </field>
+
+                <!-- 2016-02-15 languages -->
+                <field name="show_my" type="radio" class="btn-group" default="0" label="Show Myanmar (Burmese)" description="Show Myanmar (Burmese) in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_ny" type="radio" class="btn-group" default="0" label="Show Chichewa" description="Show Chichewa in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_kk" type="radio" class="btn-group" default="0" label="Show Kazakh" description="Show Kazakh in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_mg" type="radio" class="btn-group" default="0" label="Show Malagasy" description="Show Malagasy in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_ml" type="radio" class="btn-group" default="0" label="Show Malayalam" description="Show Malayalam in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_si" type="radio" class="btn-group" default="0" label="Show Sinhala" description="Show Sinhala in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_st" type="radio" class="btn-group" default="0" label="Show Sesotho" description="Show Sesotho in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_su" type="radio" class="btn-group" default="0" label="Show Sudanese" description="Show Sudanese in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_tg" type="radio" class="btn-group" default="0" label="Show Tajik" description="Show Tajik in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="show_uz" type="radio" class="btn-group" default="0" label="Show Uzbek" description="Show Uzbek in language list">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </field>
             </fieldset>
 

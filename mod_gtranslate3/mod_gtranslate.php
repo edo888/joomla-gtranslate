@@ -2,7 +2,7 @@
 /**
 * @version   $Id: mod_gtranslate.php 167 2012-10-26 19:28:57Z edo888 $
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2011 Edvard Ananyan. All rights reserved.
+* @copyright Copyright (C) 2008-2016 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
@@ -105,6 +105,18 @@ $show_ta = $params->get('show_ta');
 $show_te = $params->get('show_te');
 $show_yo = $params->get('show_yo');
 $show_zu = $params->get('show_zu');
+
+// 2014-02-15 languages
+$show_my = $params->get('show_my');
+$show_ny = $params->get('show_ny');
+$show_kk = $params->get('show_kk');
+$show_mg = $params->get('show_mg');
+$show_ml = $params->get('show_ml');
+$show_si = $params->get('show_si');
+$show_st = $params->get('show_st');
+$show_su = $params->get('show_su');
+$show_tg = $params->get('show_tg');
+$show_uz = $params->get('show_uz');
 
 $main_url = $_SERVER['HTTP_HOST'];
 

@@ -2,7 +2,7 @@
 /**
 * @version   $Id: helper.php 132 2012-02-15 19:44:06Z edo888 $
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2011 Edvard Ananyan. All rights reserved.
+* @copyright Copyright (C) 2008-2016 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
@@ -10,7 +10,7 @@ defined('_JEXEC') or die('Restricted access');
 
 class modGTranslateHelper {
     public static function getParams(&$params) {
-        $params->def('method', 'google_default');
+        $params->def('method', 'onfly');
         $params->def('load_jquery', 1);
         $params->def('look', 'both');
         $params->def('orientation', 'h');
@@ -103,6 +103,19 @@ class modGTranslateHelper {
         $params->def('show_te', 0);
         $params->def('show_yo', 0);
         $params->def('show_zu', 0);
+
+        // 2014-02-15
+        $params->def('show_my', 0);
+        $params->def('show_ny', 0);
+        $params->def('show_kk', 0);
+        $params->def('show_mg', 0);
+        $params->def('show_ml', 0);
+        $params->def('show_si', 0);
+        $params->def('show_st', 0);
+        $params->def('show_su', 0);
+        $params->def('show_tg', 0);
+        $params->def('show_uz', 0);
+
         return $params;
     }
 }

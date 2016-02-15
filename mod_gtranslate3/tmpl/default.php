@@ -1,8 +1,8 @@
 <?php
 /**
-* @version   $Id$
+* @version   $Id: default.php 188 2014-07-22 15:36:04Z edo888 $
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2012 Edvard Ananyan. All rights reserved.
+* @copyright Copyright (C) 2008-2016 Edvard Ananyan. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
@@ -10,8 +10,10 @@ defined('_JEXEC') or die('Restricted access');
 
 if($pro_version or $enterprise_version)
     $method = 'standard';
+else
+    $method = 'onfly';
 
-$lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese','sq'=>'Albanian','et'=>'Estonian','gl'=>'Galician','hu'=>'Hungarian','mt'=>'Maltese','th'=>'Thai','tr'=>'Turkish','fa'=>'Persian','af'=>'Afrikaans','ms'=>'Malay','sw'=>'Swahili','ga'=>'Irish','cy'=>'Welsh','be'=>'Belarusian','is'=>'Icelandic','mk'=>'Macedonian','yi'=>'Yiddish','hy'=>'Armenian','az'=>'Azerbaijani','eu'=>'Basque','ka'=>'Georgian','ht'=>'Haitian Creole','ur'=>'Urdu','bn' => 'Bengali','bs' => 'Bosnian','ceb' => 'Cebuano','eo' => 'Esperanto','gu' => 'Gujarati','ha' => 'Hausa','hmn' => 'Hmong','ig' => 'Igbo','jw' => 'Javanese','kn' => 'Kannada','km' => 'Khmer','lo' => 'Lao','la' => 'Latin','mi' => 'Maori','mr' => 'Marathi','mn' => 'Mongolian','ne' => 'Nepali','pa' => 'Punjabi','so' => 'Somali','ta' => 'Tamil','te' => 'Telugu','yo' => 'Yoruba','zu' => 'Zulu');
+$lang_array = array('en'=>'English','ar'=>'Arabic','bg'=>'Bulgarian','zh-CN'=>'Chinese (Simplified)','zh-TW'=>'Chinese (Traditional)','hr'=>'Croatian','cs'=>'Czech','da'=>'Danish','nl'=>'Dutch','fi'=>'Finnish','fr'=>'French','de'=>'German','el'=>'Greek','hi'=>'Hindi','it'=>'Italian','ja'=>'Japanese','ko'=>'Korean','no'=>'Norwegian','pl'=>'Polish','pt'=>'Portuguese','ro'=>'Romanian','ru'=>'Russian','es'=>'Spanish','sv'=>'Swedish','ca'=>'Catalan','tl'=>'Filipino','iw'=>'Hebrew','id'=>'Indonesian','lv'=>'Latvian','lt'=>'Lithuanian','sr'=>'Serbian','sk'=>'Slovak','sl'=>'Slovenian','uk'=>'Ukrainian','vi'=>'Vietnamese','sq'=>'Albanian','et'=>'Estonian','gl'=>'Galician','hu'=>'Hungarian','mt'=>'Maltese','th'=>'Thai','tr'=>'Turkish','fa'=>'Persian','af'=>'Afrikaans','ms'=>'Malay','sw'=>'Swahili','ga'=>'Irish','cy'=>'Welsh','be'=>'Belarusian','is'=>'Icelandic','mk'=>'Macedonian','yi'=>'Yiddish','hy'=>'Armenian','az'=>'Azerbaijani','eu'=>'Basque','ka'=>'Georgian','ht'=>'Haitian Creole','ur'=>'Urdu','bn' => 'Bengali','bs' => 'Bosnian','ceb' => 'Cebuano','eo' => 'Esperanto','gu' => 'Gujarati','ha' => 'Hausa','hmn' => 'Hmong','ig' => 'Igbo','jw' => 'Javanese','kn' => 'Kannada','km' => 'Khmer','lo' => 'Lao','la' => 'Latin','mi' => 'Maori','mr' => 'Marathi','mn' => 'Mongolian','ne' => 'Nepali','pa' => 'Punjabi','so' => 'Somali','ta' => 'Tamil','te' => 'Telugu','yo' => 'Yoruba','zu' => 'Zulu','my' => 'Myanmar (Burmese)','ny' => 'Chichewa','kk' => 'Kazakh','mg' => 'Malagasy','ml' => 'Malayalam','si' => 'Sinhala','st' => 'Sesotho','su' => 'Sudanese','tg' => 'Tajik','uz' => 'Uzbek');
 $flag_map = array();
 $i = $j = 0;
 foreach($lang_array as $lang => $lang_name) {
@@ -207,7 +209,7 @@ if($look == 'flags') {
             echo '<option value="'.$language.'|'.$lang.'" style="'.($lang == $language ? 'font-weight:bold;' : '').'background:url(\''.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/16l.png\') no-repeat scroll 0 -'.$flag_y.'px;padding-left:18px;">'.$lang_name.'</option>';
     }
     echo '</select>';
-} else {
+} elseif ($look == 'both') {
     $session = JFactory::getSession();
     $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
@@ -265,5 +267,69 @@ if($look == 'flags') {
             echo '<option '.($lang == $language ? 'style="font-weight:bold;"' : '').' value="'.$language.'|'.$lang.'">'.$lang_name.'</option>';
     }
     echo '</select>';
+} elseif ($look = 'dropdown_with_flags') {
+
+    JHtml::_('jquery.framework');
+
+    $current_language = isset($_SERVER['HTTP_X_GT_LANG']) ? $_SERVER['HTTP_X_GT_LANG'] : $language;
+
+    list($flag_x, $flag_y) = $flag_map[$current_language];
+
+    echo '<div class="switcher notranslate">';
+    echo '<div class="selected">';
+    echo '<a href="#" onclick="return false;"><span class="gflag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="16" width="16" alt="'.$lang_array[$current_language].'" /></span>'.$lang_array[$current_language].'</a>';
+    echo '</div>';
+    echo '<div class="option">';
+
+    $session = JFactory::getSession();
+    $uri = JURI::getInstance();
+
+    foreach($lang_array as $lang => $lang_name) {
+        $show_this = 'show_'.str_replace('-', '', $lang);
+        list($flag_x, $flag_y) = $flag_map[$lang];
+
+        if($$show_this == '2') {
+            if($pro_version)
+                $href = ($language == $lang) ? $uri->toString() : '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
+            elseif($enterprise_version)
+                $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
+            else
+                $href = '#';
+
+            echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');jQuery(this).parent().parent().find(\'div.selected a\').html(jQuery(this).html());return false;" title="'.$lang_name.'" class="nturl '.($current_language == $lang ? ' selected' : '').'"><span class="gflag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="16" width="16" alt="'.$lang_name.'" /></span>'.$lang_name.'</a>';
+        }
+    }
+
+    echo '</div></div>';
+
+    $document = JFactory::getDocument();
+
+    // Adding slider javascript
+    $document->addScriptDeclaration("
+        jQuery(document).ready(function() {
+          jQuery('.switcher .selected').click(function() {if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(50).slideDown(800);}});
+          jQuery('body').not('.switcher .selected').mousedown(function() {if(jQuery('.switcher .option').is(':visible')) {jQuery('.switcher .option').stop(true,true).delay(300).slideUp(800);}});
+        });
+    ");
+
+    // Adding slider css
+    $module_url = JURI::root(true).'/modules/mod_gtranslate/tmpl/lang';
+    $document->addStyleDeclaration("
+        span.gflag {font-size:16px;padding:1px 0;background-repeat:no-repeat;background-image:url($module_url/16.png);}
+        span.gflag img {border:0;margin-top:2px;}
+        .switcher {font-family:Arial;font-size:10pt;text-align:left;cursor:pointer;overflow:hidden;width:163px;line-height:16px;}
+        .switcher a {text-decoration:none;display:block;font-size:10pt;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+        .switcher a span.gflag {margin-right:3px;padding:0;display:block;float:left;}
+        .switcher .selected {background:#FFFFFF url($module_url/switcher.png) repeat-x;position:relative;z-index:9999;}
+        .switcher .selected a {border:1px solid #CCCCCC;background:url($module_url/arrow_down.png) 146px center no-repeat;color:#666666;padding:3px 5px;width:151px;}
+        .switcher .selected a:hover {background:#F0F0F0 url($module_url/arrow_down.png) 146px center no-repeat;}
+        .switcher .option {position:relative;z-index:9998;border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC;background-color:#EEEEEE;display:none;width:161px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+        .switcher .option a {color:#000;padding:3px 5px;}
+        .switcher .option a:hover {background:#FFC;}
+        .switcher .option a.selected {background:#FFC;}
+        #selected_lang_name {float: none;}
+        .l_name {float: none !important;margin: 0;}
+    ");
+
 }
 ?>
