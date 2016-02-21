@@ -106,7 +106,7 @@ $show_te = $params->get('show_te');
 $show_yo = $params->get('show_yo');
 $show_zu = $params->get('show_zu');
 
-// 2014-02-15 languages
+// 2016-02-15 languages
 $show_my = $params->get('show_my');
 $show_ny = $params->get('show_ny');
 $show_kk = $params->get('show_kk');
@@ -117,6 +117,21 @@ $show_st = $params->get('show_st');
 $show_su = $params->get('show_su');
 $show_tg = $params->get('show_tg');
 $show_uz = $params->get('show_uz');
+
+// 2016-02-21
+$show_am = $params->get('show_am');
+$show_co = $params->get('show_co');
+$show_haw = $params->get('show_haw');
+$show_ku = $params->get('show_ku');
+$show_ky = $params->get('show_ky');
+$show_lb = $params->get('show_lb');
+$show_ps = $params->get('show_ps');
+$show_sm = $params->get('show_sm');
+$show_gd = $params->get('show_gd');
+$show_sn = $params->get('show_sn');
+$show_sd = $params->get('show_sd');
+$show_fy = $params->get('show_fy');
+$show_xh = $params->get('show_xh');
 
 $main_url = $_SERVER['HTTP_HOST'];
 

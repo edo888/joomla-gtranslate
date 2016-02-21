@@ -116,6 +116,21 @@ class modGTranslateHelper {
         $params->def('show_tg', 0);
         $params->def('show_uz', 0);
 
+        // 2016-02-21
+        $params->def('show_am', 0);
+        $params->def('show_co', 0);
+        $params->def('show_haw', 0);
+        $params->def('show_ku', 0);
+        $params->def('show_ky', 0);
+        $params->def('show_lb', 0);
+        $params->def('show_ps', 0);
+        $params->def('show_sm', 0);
+        $params->def('show_gd', 0);
+        $params->def('show_sn', 0);
+        $params->def('show_sd', 0);
+        $params->def('show_fy', 0);
+        $params->def('show_xh', 0);
+
         return $params;
     }
 }
