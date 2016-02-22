@@ -61,6 +61,11 @@ if(!function_exists("getallheaders")) {
 
 $request_headers = getallheaders();
 
+if(isset($request_headers['X-GT-Lang'])) {
+    echo 'Please remove DNS cname records for GTranslate!';
+    exit;
+}
+
 $host = $glang . '.' . preg_replace('/^www\./', '', $_SERVER['HTTP_HOST']);
 $request_headers['Host'] = $host;
 $request_headers['Accept-Encoding'] = '';
