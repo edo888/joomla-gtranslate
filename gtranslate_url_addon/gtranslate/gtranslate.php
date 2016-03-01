@@ -74,6 +74,9 @@ if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']))
 //print_r($request_headers);
 //exit;
 
+if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false)
+    $request_headers['Content-Type'] = 'multipart/form-data;'; // remove boundary
+
 $headers = array();
 foreach($request_headers as $key => $val) {
     $headers[] = $key . ': ' . $val;
@@ -93,7 +96,10 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 switch($_SERVER['REQUEST_METHOD']) {
     case 'POST': {
         curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents('php://input'));
+        if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false)
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST); // todo: think about $_FILES: http://php.net/manual/en/class.curlfile.php
+        else
+            curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents('php://input'));
     }; break;
 
     case 'PUT': {
