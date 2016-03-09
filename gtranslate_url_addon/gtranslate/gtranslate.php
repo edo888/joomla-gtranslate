@@ -75,7 +75,7 @@ if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']))
 //exit;
 
 if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false)
-    $request_headers['Content-Type'] = 'multipart/form-data;'; // remove boundary
+    $request_headers['Content-Type'] = 'multipart/form-data'; // remove boundary
 
 $headers = array();
 foreach($request_headers as $key => $val) {
@@ -96,10 +96,12 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 switch($_SERVER['REQUEST_METHOD']) {
     case 'POST': {
         curl_setopt($ch, CURLOPT_POST, true);
-        if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false)
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $_POST); // todo: think about $_FILES: http://php.net/manual/en/class.curlfile.php
-        else
+        if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data') !== false) {
+            http_build_query_for_curl($_POST, $new_post);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $new_post); // todo: think about $_FILES: http://php.net/manual/en/class.curlfile.php
+        } else {
             curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents('php://input'));
+        }
     }; break;
 
     case 'PUT': {
@@ -130,6 +132,10 @@ $response_headers = explode(PHP_EOL, $header);
 $headers_sent = '';
 foreach($response_headers as $header) {
     if(!empty($header) and !preg_match('/Content\-Length|Transfer\-Encoding|Content\-Encoding|Link/', $header)) {
+
+        if(preg_match('/^Location:/', $header))
+            $header = str_replace($host, $_SERVER['HTTP_HOST'] . '/' . $glang, $header);
+
         $headers_sent .= $header;
         header($header);
     }
@@ -149,3 +155,18 @@ if(isset($_GET['language_edit'])) {
 }
 
 echo $html;
+
+function http_build_query_for_curl($arrays, &$new = array(), $prefix = null) { // flatten multidimentional array for post
+    if(is_object($arrays)) {
+        $arrays = get_object_vars($arrays);
+    }
+
+    foreach($arrays AS $key => $value) {
+        $k = isset($prefix) ? $prefix . '[' . $key . ']' : $key;
+        if(is_array($value) or is_object($value)) {
+            http_build_query_for_curl($value, $new, $k);
+        } else {
+            $new[$k] = $value;
+        }
+    }
+}
