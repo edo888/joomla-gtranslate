@@ -85,7 +85,7 @@ eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 <?php if($method == 'google_default'): ?>
 <?php
-$document =& JFactory::getDocument();
+$document = JFactory::getDocument();
 $document->addStyleDeclaration("
 #goog-gt-tt {display:none !important;}
 .goog-te-banner-frame {display:none !important;}
@@ -143,7 +143,7 @@ body {top:0 !important;}
 }
 
 if($look == 'flags') {
-    $session =& JFactory::getSession();
+    $session = JFactory::getSession();
     $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
         if($pro_version)
