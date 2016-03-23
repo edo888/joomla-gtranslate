@@ -7,7 +7,7 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>https://gtranslate.io</authorUrl>
-    <version>3.0.37</version>
+    <version>3.0.38</version>
     <description>
     <![CDATA[
     <span style='font-weight:normal;text-align:left;font-size:120%;line-height:1.5;'>
@@ -28,7 +28,7 @@
     </ul>
 
     <p><a href='https://gtranslate.io/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/extension/languages/automatic-translations/gtranslate#reviews' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a></p>
-    <p><b>Version: 3.0.37</b><br/>Copyright &copy; 2008 - 2016 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io' target='_blank'><b>http://gtranslate.io</b></a></p>
+    <p><b>Version: 3.0.38</b><br/>Copyright &copy; 2008 - 2016 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io' target='_blank'><b>http://gtranslate.io</b></a></p>
     </span>
     ]]>
     </description>
