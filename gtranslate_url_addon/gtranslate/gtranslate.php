@@ -22,9 +22,9 @@ foreach($_GET as $key => $val) {
     if($key != 'glang' and $key != 'gurl') {
         if(is_array($val))
             foreach($val as $v)
-                $get_params[] = $key.'[]='.$v;
+                $get_params[] = $key.'[]='.urlencode($v);
         else
-            $get_params[] = $key.'='.$val;
+            $get_params[] = $key.'='.urlencode($val);
     }
 }
 
