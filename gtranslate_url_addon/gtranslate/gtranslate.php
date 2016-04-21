@@ -53,6 +53,8 @@ if(!function_exists("getallheaders")) {
       if (substr($key, 0, 5) == "HTTP_") {
         $key = str_replace(" ", "-", ucwords(strtolower(str_replace("_", " ", substr($key, 5)))));
         $result[$key] = $value;
+      } else if ($key == "CONTENT_TYPE") {
+        $result["Content-Type"] = $value;
       }
     }
     return $result;
@@ -150,6 +152,7 @@ $html = preg_replace('/href=\"\/' . $glang . '\/(af|sq|am|ar|hy|az|eu|be|bn|bs|b
 $html = str_ireplace('href="/' . $glang . '//', 'href="//', $html);
 $html = str_ireplace('action="/', 'action="/' . $glang . '/', $html);
 $html = str_ireplace('action="/' . $glang . '//', 'action="//', $html);
+$html = str_ireplace('action="//' . $_SERVER['HTTP_HOST'], 'action="//' . $_SERVER['HTTP_HOST'] . '/' . $glang, $html);
 
 if(isset($_GET['language_edit'])) {
     $html = str_replace('/tdn-static/', $protocol . '://tdns.gtranslate.net/tdn-static/', $html);
