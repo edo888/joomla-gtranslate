@@ -140,7 +140,7 @@ foreach($response_headers as $header) {
             $header = str_ireplace($host, $_SERVER['HTTP_HOST'] . '/' . $glang, $header);
 
         $headers_sent .= $header;
-        header($header);
+        header($header, false);
     }
 }
 //echo $headers_sent;
