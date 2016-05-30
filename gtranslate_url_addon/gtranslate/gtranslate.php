@@ -17,19 +17,14 @@ foreach($page_url_segments as $i => $segment) {
 }
 $page_url = implode('/', $page_url_segments);
 
-$get_params = array();
-foreach($_GET as $key => $val) {
-    if($key != 'glang' and $key != 'gurl') {
-        if(is_array($val))
-            foreach($val as $v)
-                $get_params[] = $key.'[]='.urlencode($v);
-        else
-            $get_params[] = $key.'='.urlencode($val);
-    }
-}
+$get_params = $_GET;
+if(isset($get_params['glang']))
+	unset($get_params['glang']);
+if(isset($get_params['gurl']))
+    unset($get_params['gurl']);
 
 if(count($get_params)) {
-    $page_url .= '?' . implode('&', $get_params);
+	$page_url .= '?' . http_build_query($get_params);
 }
 
 if($glang == $main_lang) {
@@ -42,7 +37,7 @@ $page_url = $server.'.tdn.gtranslate.net' . $page_url;
 $protocol = ((isset($_SERVER['HTTPS']) and ($_SERVER['HTTPS'] == 'on' or $_SERVER['HTTPS'] == 1)) or (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) and  $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https' : 'http';
 $page_url = $protocol . '://' . $page_url;
 
-if(!in_array($glang, array('en','ar','bg','zh-cn','zh-tw','hr','cs','da','nl','fi','fr','de','el','hi','it','ja','ko','no','pl','pt','ro','ru','es','sv','ca','tl','iw','id','lv','lt','sr','sk','sl','uk','vi','sq','et','gl','hu','mt','th','tr','fa','af','ms','sw','ga','cy','be','is','mk','yi','hy','az','eu','ka','ht','ur','bn','bs','ceb','eo','gu','ha','hmn','ig','jw','kn','km','lo','la','mi','mr','mn','ne','pa','so','ta','te','yo','zu','my','ny','kk','mg','ml','si','st','su','tg','uz','am','co','haw','ku','ky','lb','ps','sm','gd','sn','sd','fy','xh')))
+if(!in_array(strtolower($glang), array('en','ar','bg','zh-cn','zh-tw','hr','cs','da','nl','fi','fr','de','el','hi','it','ja','ko','no','pl','pt','ro','ru','es','sv','ca','tl','iw','id','lv','lt','sr','sk','sl','uk','vi','sq','et','gl','hu','mt','th','tr','fa','af','ms','sw','ga','cy','be','is','mk','yi','hy','az','eu','ka','ht','ur','bn','bs','ceb','eo','gu','ha','hmn','ig','jw','kn','km','lo','la','mi','mr','mn','ne','pa','so','ta','te','yo','zu','my','ny','kk','mg','ml','si','st','su','tg','uz','am','co','haw','ku','ky','lb','ps','sm','gd','sn','sd','fy','xh')))
     exit;
 
 if(!function_exists("getallheaders")) {
