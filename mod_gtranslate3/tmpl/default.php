@@ -8,7 +8,6 @@
 
 /*
 todo:
-new looks
 analytics
 dogtranslate function update
 remove ajax method and google_default
@@ -147,10 +146,11 @@ body {top:0 !important;}
         a.flag {text-decoration:none;}
         a.flag img {vertical-align:middle;padding:0;margin:0;border:0;display:inline;height:{$flag_size}px;opacity:0.8;}
         a.flag:hover img {opacity:1;}
+        a.flag span {margin-right:5px;font-size:15px;vertical-align:middle;}
     ");
 }
 
-if($look == 'flags') {
+if($look == 'flags' or $look == 'flags_name' or $look == 'flags_code' or $look == 'lang_names' or $look == 'lang_codes') {
     $session = JFactory::getSession();
     $uri = JURI::getInstance();
     foreach($lang_array as $lang => $lang_name) {
@@ -179,7 +179,17 @@ if($look == 'flags') {
             else
                 $flag = $lang;
 
-            echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/'.$flag_size.'/'.$flag.'.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang.'" /></a>';
+            if($look == 'flags')
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/'.$flag_size.'/'.$flag.'.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang.'" /></a>';
+            elseif($look == 'flags_name')
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/'.$flag_size.'/'.$flag.'.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang.'" /> <span>'.$lang_name.'</span></a> ';
+            elseif($look == 'flags_code')
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/'.$flag_size.'/'.$flag.'.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang.'" /> <span>'.strtoupper($lang).'</span></a> ';
+            elseif($look == 'lang_names')
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate">'.$lang_name.'</a> ';
+            elseif($look == 'lang_codes')
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate">'.strtoupper($lang).'</a> ';
+
         }
     }
 } elseif ($look == 'dropdown') {
