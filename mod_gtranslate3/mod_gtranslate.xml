@@ -7,7 +7,7 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>https://gtranslate.io</authorUrl>
-    <version>3.0.39</version>
+    <version>3.7.1</version>
     <description>
     <![CDATA[
     <span style='font-weight:normal;text-align:left;font-size:120%;line-height:1.5;'>
@@ -28,7 +28,7 @@
     </ul>
 
     <p><a href='https://gtranslate.io/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/extension/languages/automatic-translations/gtranslate#reviews' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a></p>
-    <p><b>Version: 3.0.39</b><br/>Copyright &copy; 2008 - 2017 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io' target='_blank'><b>http://gtranslate.io</b></a></p>
+    <p><b>Version: 3.7.1</b><br/>Copyright &copy; 2008 - 2017 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io/?xyz=997' target='_blank'><b>http://gtranslate.io</b></a></p>
     </span>
     ]]>
     </description>
@@ -48,11 +48,15 @@
         <fields name="params">
             <fieldset name="basic">
                 <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
-                <field name="look" type="radio" class="btn-group" default="both" label="Look" description="The way it will appear in your site (can be used except Google Default method)">
+                <field name="look" type="list" default="both" label="Look" description="The way it will appear in your site">
                     <option value="both">Flags and Dropdown</option>
                     <option value="flags">Flags</option>
                     <option value="dropdown">Drop down list</option>
                     <option value="dropdown_with_flags">Nice dropdown with flags</option>
+                    <option value="flags_name">(new) Flags with language name</option>
+                    <option value="flags_code">(new) Flags with language code</option>
+                    <option value="lang_names">(new) Language names</option>
+                    <option value="lang_codes">(new) Language codes</option>
                 </field>
                 <field name="language" type="list" default="en" label="Site Language" description="Your site's native language">
                     <option value="af">Afrikaans</option>
@@ -175,6 +179,11 @@
                     <option value="16">16px</option>
                     <option value="24">24px</option>
                     <option value="32">32px</option>
+                    <option value="48">48px</option>
+                </field>
+                <field name="native_language_names" type="radio" class="btn-group" default="0" label="Show native language names" description="Display language name in native alphabet.">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </field>
                 <field name="new_tab" type="radio" class="btn-group" default="0" label="Open translation in new tab" description="Opens translated page in new window. Works with Sub-directory or Sub-domain URL structure only.">
                     <option value="0">Off</option>
@@ -263,8 +272,9 @@
                 <field name="show_en" type="radio" class="btn-group" default="2" label="Show English" description="Show English in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a GB flag</option>
-                    <option value="3">As a US flag</option>
+                    <option value="2">As GB flag</option>
+                    <option value="3">As USA flag</option>
+                    <option value="4">As Canada flag</option>
                 </field>
                 <field name="show_et" type="radio" class="btn-group" default="1" label="Show Estonian" description="Show Estonian in language list">
                     <option value="1">Yes</option>
@@ -284,7 +294,8 @@
                 <field name="show_fr" type="radio" class="btn-group" default="2" label="Show French" description="Show French in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a flag</option>
+                    <option value="2">As France flag</option>
+                    <option value="3">As Quebec flag</option>
                 </field>
                 <field name="show_gl" type="radio" class="btn-group" default="1" label="Show Galician" description="Show Galician in language list">
                     <option value="1">Yes</option>
@@ -399,8 +410,8 @@
                 <field name="show_pt" type="radio" class="btn-group" default="2" label="Show Portuguese" description="Show Portuguese in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a PT flag</option>
-                    <option value="3">As a BR flag</option>
+                    <option value="2">As Portugal flag</option>
+                    <option value="3">As Brazil flag</option>
                 </field>
                 <field name="show_ro" type="radio" class="btn-group" default="1" label="Show Romanian" description="Show Romanian in language list">
                     <option value="1">Yes</option>
@@ -430,8 +441,8 @@
                 <field name="show_es" type="radio" class="btn-group" default="2" label="Show Spanish" description="Show Spanish in language list">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
-                    <option value="2">As a ES flag</option>
-                    <option value="3">As a MX flag</option>
+                    <option value="2">As Spain flag</option>
+                    <option value="3">As Mexico flag</option>
                 </field>
                 <field name="show_sw" type="radio" class="btn-group" default="1" label="Show Swahili" description="Show Swahili in language list">
                     <option value="1">Yes</option>

@@ -6,7 +6,18 @@
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
+/*
+todo:
+new looks
+analytics
+dogtranslate function update
+remove ajax method and google_default
+set default language
+*/
+
 defined('_JEXEC') or die('Restricted access');
+
+include 'native_names_map.php';
 
 if($pro_version or $enterprise_version)
     $method = 'standard';
@@ -133,12 +144,9 @@ body {top:0 !important;}
 <?php
     $document = JFactory::getDocument();
     $document->addStyleDeclaration("
-        a.flag {font-size:{$flag_size}px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size . 'a.png' . "');}
-        a.flag:hover {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/' . $flag_size.'.png' . "');}
-        a.flag img {border:0;}
-        a.alt_flag {font-size:{$flag_size}px;padding:1px 0;background-repeat:no-repeat;background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/alt_flagsa.png' . "');}
-        a.alt_flag:hover {background-image:url('" . JURI::root(true) . '/modules/mod_gtranslate/tmpl/lang/alt_flags.png' . "');}
-        a.alt_flag img {border:0;}
+        a.flag {text-decoration:none;}
+        a.flag img {vertical-align:middle;padding:0;margin:0;border:0;display:inline;height:{$flag_size}px;opacity:0.8;}
+        a.flag:hover img {opacity:1;}
     ");
 }
 
@@ -153,60 +161,39 @@ if($look == 'flags') {
         else
             $href = '#';
 
+        if($native_language_names)
+            $lang_name = $native_names_map[$lang];
+
         $show_this = 'show_'.str_replace('-', '', $lang);
-        list($flag_x, $flag_y) = $flag_map[$lang];
         if($$show_this) {
-            if($$show_this == '3') {
-                switch($lang) {
-                    case 'en':
-                        $flag_x = 0;
-                        if($flag_size == 16)
-                            $flag_y = 0;
-                        if($flag_size == 24)
-                            $flag_y = 100;
-                        if($flag_size == 32)
-                            $flag_y = 200;
-                        echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-                        break;
-                    case 'pt':
-                        $flag_x = 100;
-                        if($flag_size == 16)
-                            $flag_y = 0;
-                        if($flag_size == 24)
-                            $flag_y = 100;
-                        if($flag_size == 32)
-                            $flag_y = 200;
-                        echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-                        break;
-                    case 'es':
-                        $flag_x = 200;
-                        if($flag_size == 16)
-                            $flag_y = 0;
-                        if($flag_size == 24)
-                            $flag_y = 100;
-                        if($flag_size == 32)
-                            $flag_y = 200;
-                        echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-                        break;
-                }
-            }
+            if($lang == 'en' and $$show_this == '3')
+                $flag = 'en-us';
+            elseif($lang == 'en' and $$show_this == '4')
+                $flag = 'en-ca';
+            elseif($lang == 'pt' and $$show_this == '3')
+                $flag = 'pt-br';
+            elseif($lang == 'es' and $$show_this == '3')
+                $flag = 'es-mx';
+            elseif($lang == 'fr' and $$show_this == '3')
+                $flag = 'fr-qc';
             else
-                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a>';
-            if($orientation == 'v')
-                echo '<br />';
-            else
-                echo ' ';
+                $flag = $lang;
+
+            echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/'.$flag_size.'/'.$flag.'.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang.'" /></a>';
         }
     }
 } elseif ($look == 'dropdown') {
-    echo '<select onchange="doGTranslate(this);">';
+    echo '<select onchange="doGTranslate(this);" class="notranslate">';
     echo '<option value="">Select Language</option>';
     $i = 0;
     foreach($lang_array as $lang => $lang_name) {
         $show_this = 'show_'.str_replace('-', '', $lang);
-        $flag_y = $flag_map_vertical[$lang];
+
+        if($native_language_names)
+            $lang_name = $native_names_map[$lang];
+
         if($$show_this)
-            echo '<option value="'.$language.'|'.$lang.'" style="'.($lang == $language ? 'font-weight:bold;' : '').'background:url(\''.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/16l.png\') no-repeat scroll 0 -'.$flag_y.'px;padding-left:18px;">'.$lang_name.'</option>';
+            echo '<option value="'.$language.'|'.$lang.'" style="'.($lang == $language ? 'font-weight:bold;' : '').'">'.$lang_name.'</option>';
     }
     echo '</select>';
 } elseif ($look == 'both') {
@@ -220,48 +207,34 @@ if($look == 'flags') {
         else
             $href = '#';
 
+        if($native_language_names)
+            $lang_name = $native_names_map[$lang];
+
         $show_this = 'show_'.str_replace('-', '', $lang);
-        list($flag_x, $flag_y) = $flag_map[$lang];
-        if($$show_this == '2')
-            echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-        elseif($$show_this == '3') {
-            switch($lang) {
-                    case 'en':
-                        $flag_x = 0;
-                        if($flag_size == 16)
-                            $flag_y = 0;
-                        if($flag_size == 24)
-                            $flag_y = 100;
-                        if($flag_size == 32)
-                            $flag_y = 200;
-                        echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-                        break;
-                    case 'pt':
-                        $flag_x = 100;
-                        if($flag_size == 16)
-                            $flag_y = 0;
-                        if($flag_size == 24)
-                            $flag_y = 100;
-                        if($flag_size == 32)
-                            $flag_y = 200;
-                        echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-                        break;
-                    case 'es':
-                        $flag_x = 200;
-                        if($flag_size == 16)
-                            $flag_y = 0;
-                        if($flag_size == 24)
-                            $flag_y = 100;
-                        if($flag_size == 32)
-                            $flag_y = 200;
-                        echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="alt_flag nturl" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang_name.'" /></a> ';
-                        break;
-                }
+        if($$show_this) {
+            if($lang == 'en' and $$show_this == '3')
+                $flag = 'en-us';
+            elseif($lang == 'en' and $$show_this == '4')
+                $flag = 'en-ca';
+            elseif($lang == 'pt' and $$show_this == '3')
+                $flag = 'pt-br';
+            elseif($lang == 'es' and $$show_this == '3')
+                $flag = 'es-mx';
+            elseif($lang == 'fr' and $$show_this == '3')
+                $flag = 'fr-qc';
+            else
+                $flag = $lang;
+
+            if($$show_this != '1' and $$show_this != '0')
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');return false;" title="'.$lang_name.'" class="flag nturl notranslate"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/'.$flag_size.'/'.$flag.'.png" height="'.$flag_size.'" width="'.$flag_size.'" alt="'.$lang.'" /></a>';
         }
     }
-    echo '<br/><select onchange="doGTranslate(this);">';
+    echo '<br/><select onchange="doGTranslate(this);" class="notranslate">';
     echo '<option value="">Select Language</option>';
     foreach($lang_array as $lang => $lang_name) {
+        if($native_language_names)
+            $lang_name = $native_names_map[$lang];
+
         $show_this = 'show_'.str_replace('-', '', $lang);
         if($$show_this)
             echo '<option '.($lang == $language ? 'style="font-weight:bold;"' : '').' value="'.$language.'|'.$lang.'">'.$lang_name.'</option>';
@@ -271,13 +244,29 @@ if($look == 'flags') {
 
     JHtml::_('jquery.framework');
 
-    $current_language = isset($_SERVER['HTTP_X_GT_LANG']) ? $_SERVER['HTTP_X_GT_LANG'] : $language;
+    $current_language = isset($_SERVER['HTTP_X_GT_LANG']) ? str_replace(array('zh-cn', 'zh-tw'), array('zh-CN', 'zh-TW'), $_SERVER['HTTP_X_GT_LANG']) : $language;
 
-    list($flag_x, $flag_y) = $flag_map[$current_language];
+    if($native_language_names)
+        $lang_name = $native_names_map[$current_language];
+    else
+        $lang_name = $lang_array[$current_language];
+
+    if($current_language == 'en' and $show_en == '3')
+        $flag = 'en-us';
+    elseif($current_language == 'en' and $show_en == '4')
+        $flag = 'en-ca';
+    elseif($current_language == 'pt' and $show_pt == '3')
+        $flag = 'pt-br';
+    elseif($current_language == 'es' and $show_es == '3')
+        $flag = 'es-mx';
+    elseif($current_language == 'fr' and $show_fr == '3')
+        $flag = 'fr-qc';
+    else
+        $flag = $current_language;
 
     echo '<div class="switcher notranslate">';
     echo '<div class="selected">';
-    echo '<a href="#" onclick="return false;"><span class="gflag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="16" width="16" alt="'.$lang_array[$current_language].'" /></span>'.$lang_array[$current_language].'</a>';
+    echo '<a href="#" onclick="return false;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/16/'.$flag.'.png" height="16" width="16" alt="'.$lang_array[$current_language].'" /> '.$lang_name.'</a>';
     echo '</div>';
     echo '<div class="option">';
 
@@ -285,18 +274,33 @@ if($look == 'flags') {
     $uri = JURI::getInstance();
 
     foreach($lang_array as $lang => $lang_name) {
+        if($pro_version)
+            $href = ($language == $lang) ? $uri->toString() : '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
+        elseif($enterprise_version)
+            $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
+        else
+            $href = '#';
+
+        if($native_language_names)
+            $lang_name = $native_names_map[$lang];
+
         $show_this = 'show_'.str_replace('-', '', $lang);
-        list($flag_x, $flag_y) = $flag_map[$lang];
-
-        if($$show_this == '2') {
-            if($pro_version)
-                $href = ($language == $lang) ? $uri->toString() : '/' . $lang . str_replace('/' . $session->get('glang', $language) . '/', '/', $uri->toString(array('path', 'query')));
-            elseif($enterprise_version)
-                $href = ($language == $lang) ? $uri->toString() : $uri->getScheme() . '://' . $lang . '.' . str_replace('www.', '', $uri->toString(array('host', 'path', 'query')));
+        if($$show_this) {
+            if($lang == 'en' and $$show_this == '3')
+                $flag = 'en-us';
+            elseif($lang == 'en' and $$show_this == '4')
+                $flag = 'en-ca';
+            elseif($lang == 'pt' and $$show_this == '3')
+                $flag = 'pt-br';
+            elseif($lang == 'es' and $$show_this == '3')
+                $flag = 'es-mx';
+            elseif($lang == 'fr' and $$show_this == '3')
+                $flag = 'fr-qc';
             else
-                $href = '#';
+                $flag = $lang;
 
-            echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');jQuery(this).parent().parent().find(\'div.selected a\').html(jQuery(this).html());return false;" title="'.$lang_name.'" class="nturl '.($current_language == $lang ? ' selected' : '').'"><span class="gflag" style="background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/blank.png" height="16" width="16" alt="'.$lang_name.'" /></span>'.$lang_name.'</a>';
+            if($$show_this)
+                echo '<a href="'.$href.'" onclick="doGTranslate(\''.$language.'|'.$lang.'\');jQuery(\'div.switcher div.selected a\').html(jQuery(this).html());return false;" title="'.$lang_name.'" class="nturl '.($current_language == $lang ? ' selected' : '').'"><img src="'.JURI::root(true).'/modules/mod_gtranslate/tmpl/lang/16/'.$flag.'.png" height="16" width="16" alt="'.$lang.'" /> '.$lang_name.'</a>';
         }
     }
 
@@ -307,28 +311,32 @@ if($look == 'flags') {
     // Adding slider javascript
     $document->addScriptDeclaration("
         jQuery(document).ready(function() {
-          jQuery('.switcher .selected').click(function() {if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(50).slideDown(800);}});
-          jQuery('body').not('.switcher .selected').mousedown(function() {if(jQuery('.switcher .option').is(':visible')) {jQuery('.switcher .option').stop(true,true).delay(300).slideUp(800);}});
+            jQuery('.switcher .selected').click(function() {if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(50).slideDown(500);jQuery('.switcher .selected a').toggleClass('open')}});
+            jQuery('.switcher .option').bind('mousewheel', function(e) {var options = jQuery('.switcher .option');if(options.is(':visible'))options.scrollTop(options.scrollTop() - e.originalEvent.wheelDelta);return false;});
+            jQuery('body').not('.switcher .selected').mousedown(function() {if(jQuery('.switcher .option').is(':visible')) {jQuery('.switcher .option').stop(true,true).delay(50).slideUp(500);jQuery('.switcher .selected a').toggleClass('open')}});
         });
     ");
 
     // Adding slider css
     $module_url = JURI::root(true).'/modules/mod_gtranslate/tmpl/lang';
     $document->addStyleDeclaration("
-        span.gflag {font-size:16px;padding:1px 0;background-repeat:no-repeat;background-image:url($module_url/16.png);}
-        span.gflag img {border:0;margin-top:2px;}
-        .switcher {font-family:Arial;font-size:10pt;text-align:left;cursor:pointer;overflow:hidden;width:163px;line-height:16px;}
+        .switcher {font-family:Arial;font-size:10pt;text-align:left;cursor:pointer;overflow:hidden;width:163px;line-height:17px;}
         .switcher a {text-decoration:none;display:block;font-size:10pt;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
-        .switcher a span.gflag {margin-right:3px;padding:0;display:block;float:left;}
+        .switcher a img {vertical-align:middle;display:inline;border:0;padding:0;margin:0;opacity:0.8;}
+        .switcher a:hover img {opacity:1;}
         .switcher .selected {background:#FFFFFF url($module_url/switcher.png) repeat-x;position:relative;z-index:9999;}
         .switcher .selected a {border:1px solid #CCCCCC;background:url($module_url/arrow_down.png) 146px center no-repeat;color:#666666;padding:3px 5px;width:151px;}
+        .switcher .selected a.open {background-image:url($module_url/arrow_up.png)}
         .switcher .selected a:hover {background:#F0F0F0 url($module_url/arrow_down.png) 146px center no-repeat;}
-        .switcher .option {position:relative;z-index:9998;border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC;background-color:#EEEEEE;display:none;width:161px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+        .switcher .option {position:relative;z-index:9998;border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC;background-color:#EEEEEE;display:none;width:161px;max-height:198px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;overflow-y:auto;overflow-x:hidden;}
         .switcher .option a {color:#000;padding:3px 5px;}
         .switcher .option a:hover {background:#FFC;}
         .switcher .option a.selected {background:#FFC;}
         #selected_lang_name {float: none;}
         .l_name {float: none !important;margin: 0;}
+        .switcher .option::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 3px rgba(0,0,0,0.3);border-radius:5px;background-color:#F5F5F5;}
+        .switcher .option::-webkit-scrollbar {width:5px;}
+        .switcher .option::-webkit-scrollbar-thumb {border-radius:5px;-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);background-color:#888;}
     ");
 
 }
