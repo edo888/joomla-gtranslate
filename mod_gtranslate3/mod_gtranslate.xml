@@ -189,7 +189,7 @@
                     <option value="0">Off</option>
                     <option value="1">On</option>
                 </field>
-                <field name="analytics" type="radio" class="btn-group" default="0" label="Analytics" description="If you have Google Analytics new code on your site (_gaq). You can enable this which will allow you to see translation events in Google Analytics -&gt; Content -&gt; Event Tracking. Note: Will not work if you use Google Default translation method.">
+                <field name="analytics" type="radio" class="btn-group" default="0" label="Analytics" description="If you have Google Analytics code on your site, you can enable this which will allow you to see translation events in Google Analytics -&gt; Events.">
                     <option value="0">Off</option>
                     <option value="1">On</option>
                 </field>
