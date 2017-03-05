@@ -48,7 +48,7 @@
         <fields name="params">
             <fieldset name="basic">
                 <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
-                <field name="look" type="list" default="both" label="Look" description="The way it will appear in your site">
+                <field name="look" type="list" default="dropdown_with_flags" label="Look" description="The way it will appear in your site">
                     <option value="both">Flags and Dropdown</option>
                     <option value="flags">Flags</option>
                     <option value="dropdown">Drop down list</option>
@@ -175,6 +175,8 @@
                     <option value="0">Off</option>
                     <option value="1">On</option>
                 </field>
+                <field name="paid" type="note" label="* paid feature" class="alert alert-info" description="Upgrade your GTranslate to a paid plan to use this feature and get SEO benefits." />
+
                 <field name="flag_size" type="radio" class="btn-group" default="16" label="Flag size" description="Size of the language flags">
                     <option value="16">16px</option>
                     <option value="24">24px</option>
@@ -682,7 +684,7 @@
             </fieldset>
 
             <fieldset name="advanced">
-                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+                <field name="cache" type="list" default="0" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
                     <option value="1">JGLOBAL_USE_GLOBAL</option>
                     <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
                 </field>
