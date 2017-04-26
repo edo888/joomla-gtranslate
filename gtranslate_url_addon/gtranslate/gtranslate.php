@@ -19,15 +19,17 @@ $page_url = implode('/', $page_url_segments);
 
 $get_params = $_GET;
 if(isset($get_params['glang']))
-	unset($get_params['glang']);
+    unset($get_params['glang']);
 if(isset($get_params['gurl']))
     unset($get_params['gurl']);
 
 if(count($get_params)) {
-	$page_url .= '?' . http_build_query($get_params);
+    $page_url .= '?' . http_build_query($get_params);
 }
 
 if($glang == $main_lang) {
+    $page_url = preg_replace('/^[\/]+/', '/', $page_url);
+
     header('Location: ' . $page_url, true, 301);
     exit;
 }
@@ -65,9 +67,16 @@ if(isset($request_headers['X-GT-Lang'])) {
 
 $host = $glang . '.' . preg_replace('/^www\./', '', $_SERVER['HTTP_HOST']);
 $request_headers['Host'] = $host;
+if(isset($request_headers['HOST'])) unset($request_headers['HOST']);
+if(isset($request_headers['host'])) unset($request_headers['host']);
+
 $request_headers['Accept-Encoding'] = '';
-if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']))
+if(isset($request_headers['accept-encoding'])) unset($request_headers['accept-encoding']);
+
+if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
     $request_headers['Authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+    if(isset($request_headers['authorization'])) unset($request_headers['authorization']);
+}
 //print_r($request_headers);
 //exit;
 
@@ -148,6 +157,9 @@ $html = str_ireplace('href="/' . $glang . '//', 'href="//', $html);
 $html = str_ireplace('action="/', 'action="/' . $glang . '/', $html);
 $html = str_ireplace('action="/' . $glang . '//', 'action="//', $html);
 $html = str_ireplace('action="//' . $_SERVER['HTTP_HOST'], 'action="//' . $_SERVER['HTTP_HOST'] . '/' . $glang, $html);
+
+// jReviews specific
+$html = str_ireplace('var s2AjaxUri = "/', 'var s2AjaxUri = "/'.$glang.'/', $html);
 
 if(isset($_GET['language_edit'])) {
     $html = str_replace('/tdn-static/', $protocol . '://tdns.gtranslate.net/tdn-static/', $html);
