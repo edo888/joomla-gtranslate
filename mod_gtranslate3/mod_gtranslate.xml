@@ -7,7 +7,7 @@
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>https://gtranslate.io</authorUrl>
-    <version>3.7.2</version>
+    <version>3.7.3</version>
     <description>
     <![CDATA[
     <span style='font-weight:normal;text-align:left;font-size:120%;line-height:1.5;'>
@@ -15,6 +15,7 @@
     <p><i>Ugrade your <a href="https://gtranslate.io/?xyz=997#pricing" target="_blank">GTranslate</a> to a paid plan and enable the following features:</i></p>
     <ul>
         <li><strong>Enable search engine indexing</strong> - Search engines will index your translated pages which will increase international traffic.</li>
+        <li><strong>Neural machine translations</strong> - Human level translation quality.</li>
         <li><strong>Search engine friendly</strong> - The URL will change depending on a selected language e.g. <b>es.domain.com</b> or <b>domain.com/es/</b> for Spanish.</li>
         <li><strong>Meta data translation</strong> - Meta keywords and description will be translated which will increase translated keywords ranking in the search engines.</li>
         <li><strong>Ability to edit translations</strong> - You will be able to edit the translated texts directly from the front-end.</li>
@@ -27,8 +28,8 @@
         <li><strong>Language hosting</strong> - Host your language on top level country domain name to rank higher on local search engines results (ccTLD <b>domain.es</b>).</li>
     </ul>
 
-    <p><a href='https://gtranslate.io/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/extension/languages/automatic-translations/gtranslate#reviews' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a></p>
-    <p><b>Version: 3.7.2</b><br/>Copyright &copy; 2008 - 2017 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io/?xyz=997' target='_blank'><b>http://gtranslate.io</b></a></p>
+    <p><a href='https://gtranslate.io/?xyz=997#pricing' target='_blank' class='btn btn-large btn-success'><i class='icon-info-2'></i> Plans &amp; Pricing</a> &nbsp; <a href='https://gtranslate.io/?xyz=997#faq' target='_blank' class='btn btn-large btn-primary'><i class='icon-info'></i> FAQ</a> &nbsp; <a href='https://gtranslate.io/docs/54-joomla-module-documentation' target='_blank' class='btn btn-large btn-info'><i class='icon-support'></i> Documentation</a> &nbsp; <a href='http://extensions.joomla.org/extensions/extension/languages/automatic-translations/gtranslate#reviews' target='_blank' class='btn btn-large btn-warning'><i class='icon-comments'></i> Reviews</a></p>
+    <p><b>Version: 3.7.3</b><br/>Copyright &copy; 2008 - 2017 Edvard Ananyan, All rights reserved. <a href='https://gtranslate.io/?xyz=997' target='_blank'><b>http://gtranslate.io</b></a></p>
     </span>
     ]]>
     </description>
@@ -42,6 +43,7 @@
         <filename>helper.php</filename>
         <filename>index.html</filename>
         <folder>tmpl</folder>
+        <folder>field</folder>
     </files>
 
     <config>
@@ -681,6 +683,9 @@
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </field>
+
+                <!-- Live Chat -->
+                <field name="live_chat" type="LiveChat" label="" description="" />
             </fieldset>
 
             <fieldset name="advanced">
