@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 include 'config.php';
 
 if(!isset($_GET['glang']) or !isset($_GET['gurl']))
@@ -6,8 +8,9 @@ if(!isset($_GET['glang']) or !isset($_GET['gurl']))
 
 $glang = $_GET['glang'];
 
-shuffle($servers);
-$server = $servers[1];
+// pick a server based on hostname
+$server_id = intval(substr(md5(preg_replace('/^www\./', '', $_SERVER['HTTP_HOST'])), 0, 5), 16) % count($servers);
+$server = $servers[$server_id];
 
 $page_url = '/'.$_GET['gurl'];
 
@@ -140,8 +143,10 @@ $headers_sent = '';
 foreach($response_headers as $header) {
     if(!empty($header) and !preg_match('/Content\-Length|Transfer\-Encoding|Content\-Encoding|Link/', $header)) {
 
-        if(preg_match('/^Location:/', $header))
+        if(preg_match('/^Location:/', $header)) {
             $header = str_ireplace($host, $_SERVER['HTTP_HOST'] . '/' . $glang, $header);
+            $header = str_ireplace('Location: /', 'Location: /' . $glang . '/', $header);
+        }
 
         $headers_sent .= $header;
         header($header, false);
