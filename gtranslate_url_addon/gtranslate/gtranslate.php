@@ -88,7 +88,11 @@ if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-
 
 $headers = array();
 foreach($request_headers as $key => $val) {
-    $headers[] = $key . ': ' . $val;
+    // remove cloudflare CF headers: CF-IPCountry, CF-Ray, etc...
+    if(preg_match('/^CF-/i', $key))
+        continue;
+    else
+        $headers[] = $key . ': ' . $val;
 }
 
 //print_r($headers);
