@@ -18,314 +18,6 @@ $settings = $params->toArray();
 // Move the default language to the first position
 $lang_array = array_merge(array($settings['language'] => $lang_array[$settings['language']]), $lang_array);
 
-function gt_render_widget_float($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/float.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/float.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_dwf($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/dwf.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/dwf.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_fd($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/fd.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/fd.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_flags($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/flags.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/flags.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_dropdown($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/dropdown.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/dropdown.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_fn($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/fn.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/fn.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_fc($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/fc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/fc.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_ln($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/ln.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/ln.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_lc($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/lc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/lc.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_globe($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/globe.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/svg/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/globe.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-function gt_render_widget_popup($enable_cdn, $gt_settings) {
-    $widget_code = '';
-    if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper')
-        $widget_code .= '<div class="gtranslate_wrapper"></div>';
-
-    if(!empty($gt_settings['custom_domains']))
-        $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
-
-    $uri = Uri::getInstance();
-    $document = Factory::getDocument();
-
-    $orig_url = $uri->toString(array('path', 'query'));
-    $orig_domain = $uri->getHost();
-
-    if($enable_cdn) {
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript('https://cdn.gtranslate.net/widgets/latest/popup.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'defer' => 'defer'));
-    } else {
-        $base_path = JURI::root() . 'media/mod_gtranslate';
-        $gt_settings['flags_location'] = $base_path . '/flags/';
-
-        $document->addScriptDeclaration('window.gtranslateSettings = ' . json_encode($gt_settings) . ';');
-        $document->addScript($base_path.'/js/popup.js', array(), array('defer' => 'defer', 'data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain));
-    }
-
-    echo $widget_code;
-}
-
-$enable_cdn = $settings['enable_cdn'];
-
-// todo: remove needless settings based on widget look
 $gt_settings = array(
     'default_language' => $settings['language'],
     'languages' => $settings['languages'],
@@ -388,18 +80,334 @@ if($settings['look'] == 'dropdown_with_flags' and $color_scheme == 'dark') {
 }
 
 switch($settings['look']) {
-    case 'float': gt_render_widget_float($enable_cdn, $gt_settings); break;
-    case 'dropdown_with_flags': gt_render_widget_dwf($enable_cdn, $gt_settings); break;
+
+    case 'float': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/float.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/float.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'dropdown_with_flags': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/dwf.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/dwf.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
     case 'both': // same as flags_dropdown
-    case 'flags_dropdown': gt_render_widget_fd($enable_cdn, $gt_settings); break;
-    case 'flags': gt_render_widget_flags($enable_cdn, $gt_settings); break;
-    case 'dropdown': gt_render_widget_dropdown($enable_cdn, $gt_settings); break;
-    case 'flags_name': gt_render_widget_fn($enable_cdn, $gt_settings); break;
-    case 'flags_code': gt_render_widget_fc($enable_cdn, $gt_settings); break;
-    case 'lang_names': gt_render_widget_ln($enable_cdn, $gt_settings); break;
-    case 'lang_codes': gt_render_widget_lc($enable_cdn, $gt_settings); break;
-    case 'globe': gt_render_widget_globe($enable_cdn, $gt_settings); break;
-    case 'popup': gt_render_widget_popup($enable_cdn, $gt_settings); break;
+    case 'flags_dropdown': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/fd.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/fd.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'flags': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/flags.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/flags.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'dropdown': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/dropdown.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/dropdown.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'flags_name': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/fn.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/fn.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'flags_code': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/fc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/fc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'lang_names': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/ln.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/ln.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'lang_codes': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/lc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/lc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'globe': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/globe.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/svg/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/globe.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'popup': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/popup.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/popup.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
 
     default: echo 'unknown widget look'; break;
 }
