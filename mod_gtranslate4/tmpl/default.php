@@ -94,7 +94,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -124,7 +124,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -155,7 +155,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -185,7 +185,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -215,7 +215,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -244,7 +244,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -274,7 +274,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -304,7 +304,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -333,7 +333,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -362,7 +362,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
@@ -392,7 +392,7 @@ switch($settings['look']) {
         $uri = Uri::getInstance();
         $document = Factory::getDocument();
 
-        $orig_url = $uri->toString(array('path', 'query'));
+        $orig_url = $uri->getPath();
         $orig_domain = $uri->getHost();
 
         if($settings['enable_cdn']) {
