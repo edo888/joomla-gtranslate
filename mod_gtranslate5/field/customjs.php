@@ -2,7 +2,7 @@
 /**
 * @version   $Id$
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2023 GTranslate Inc. All rights reserved.
+* @copyright Copyright (C) 2008-2025 GTranslate Inc. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
@@ -11,8 +11,9 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.form.formfield');
 
 use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Form\FormField;
 
-class JFormFieldCustomJS extends JFormField {
+class JFormFieldCustomJS extends FormField {
 
     protected $type = 'custom_js';
 
