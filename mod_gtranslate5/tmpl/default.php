@@ -2,7 +2,7 @@
 /**
 * @version   $Id$
 * @package   GTranslate
-* @copyright Copyright (C) 2008-2023 GTranslate Inc. All rights reserved.
+* @copyright Copyright (C) 2008-2026 GTranslate Inc. All rights reserved.
 * @license   GNU/GPL v3 http://www.gnu.org/licenses/gpl.html
 */
 
@@ -404,6 +404,36 @@ switch($settings['look']) {
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript($base_path.'/js/popup.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        }
+
+        echo $widget_code;
+    }; break;
+
+    case 'popup_search': {
+        $widget_code = '';
+        if($gt_settings['wrapper_selector'] == '.gtranslate_wrapper') {
+            $gt_settings['wrapper_selector'] = '#gt-wrapper-' . $module->id;
+            $widget_code .= '<div class="gtranslate_wrapper" id="gt-wrapper-' . $module->id . '"></div>';
+        }
+
+        if(!empty($gt_settings['custom_domains']))
+            $gt_settings['custom_domains'] = json_decode($gt_settings['custom_domains']);
+
+        $uri = Uri::getInstance();
+        $document = Factory::getDocument();
+
+        $orig_url = $uri->getPath();
+        $orig_domain = $uri->getHost();
+
+        if($settings['enable_cdn']) {
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript('https://cdn.gtranslate.net/widgets/latest/ps.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
+        } else {
+            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $gt_settings['flags_location'] = $base_path . '/flags/';
+
+            $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
+            $document->addScript($base_path.'/js/ps.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         }
 
         echo $widget_code;

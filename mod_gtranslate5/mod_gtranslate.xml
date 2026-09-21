@@ -3,11 +3,11 @@
     <name>GTranslate</name>
     <author>Edvard Ananyan</author>
     <creationDate>September 2010</creationDate>
-    <copyright>Copyright (C) 2008 - 2025 GTranslate Inc. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2008 - 2026 GTranslate Inc. All rights reserved.</copyright>
     <license>GNU/GPL v3 http://www.gnu.org/licenses/gpl.html</license>
     <authorEmail>edo888@gmail.com</authorEmail>
     <authorUrl>https://gtranslate.io</authorUrl>
-    <version>5.0.3</version>
+    <version>5.0.4</version>
     <description>GTranslate - Makes your website multilingual and available to the world.</description>
 
     <updateservers>
@@ -42,6 +42,7 @@
                     <option value="lang_codes">Language codes</option>
                     <option value="globe">Globe</option>
                     <option value="popup">Popup</option>
+                    <option value="popup_search">Popup with search</option>
                 </field>
                 <field name="language" type="list" default="en" label="Translate from" description="Your site's native language">
                     <option value="af">Afrikaans</option>
@@ -206,18 +207,18 @@
                     <option value="light">Light</option>
                     <option value="dark">Dark</option>
                 </field>
-                <field name="flag_size" type="radio" class="btn-group" default="32" filter="intval" label="Flag size" description="Size of the language flags" showon="look:dropdown_with_flags,flags,flags_dropdown,flags_name,flags_code,popup">
+                <field name="flag_size" type="radio" class="btn-group" default="32" filter="intval" label="Flag size" description="Size of the language flags" showon="look:dropdown_with_flags,flags,flags_dropdown,flags_name,flags_code,popup,popup_search">
                     <option value="16">16px</option>
                     <option value="24">24px</option>
                     <option value="32">32px</option>
                     <option value="48">48px</option>
                 </field>
-                <field name="flag_style" type="radio" class="btn-group" default="2d" label="Flag style" description="Style of the language flags" showon="look:dropdown_with_flags,flags,flags_dropdown,flags_name,flags_code,popup">
+                <field name="flag_style" type="radio" class="btn-group" default="2d" label="Flag style" description="Style of the language flags" showon="look:dropdown_with_flags,flags,flags_dropdown,flags_name,flags_code,popup,popup_search">
                     <option value="2d">2D (.png)</option>
                     <option value="3d">3D (.svg)</option>
                 </field>
 
-                <field name="alt_flags" type="checkboxes" label="Alternative flags" showon="look:float,dropdown_with_flags,flags,flags_dropdown,flags_name,flags_code,popup">
+                <field name="alt_flags" type="checkboxes" label="Alternative flags" showon="look:float,dropdown_with_flags,flags,flags_dropdown,flags_name,flags_code,popup,popup_search">
                     <option value="usa">USA flag (English)</option>
                     <option value="canada">Canada flag (English)</option>
                     <option value="brazil">Brazil flag (Portuguese)</option>
