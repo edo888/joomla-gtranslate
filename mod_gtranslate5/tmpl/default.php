@@ -101,7 +101,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/float.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -131,7 +131,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/dwf.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -162,7 +162,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/fd.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -192,7 +192,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/flags.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -222,7 +222,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/dropdown.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript($base_path.'/js/dropdown.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
@@ -251,7 +251,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/fn.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -281,7 +281,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/fc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -311,7 +311,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/ln.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript($base_path.'/js/ln.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
@@ -340,7 +340,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/lc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript($base_path.'/js/lc.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
@@ -369,7 +369,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/globe.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/svg/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -399,7 +399,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/popup.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
@@ -429,7 +429,7 @@ switch($settings['look']) {
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
             $document->addScript('https://cdn.gtranslate.net/widgets/latest/ps.js', array(), array('data-gt-orig-url' => $orig_url, 'data-gt-orig-domain' => $orig_domain, 'data-gt-widget-id' => $module->id, 'defer' => 'defer'));
         } else {
-            $base_path = JURI::root() . 'media/mod_gtranslate';
+            $base_path = Uri::root() . 'media/mod_gtranslate';
             $gt_settings['flags_location'] = $base_path . '/flags/';
 
             $document->addScriptDeclaration("window.gtranslateSettings = window.gtranslateSettings || {};window.gtranslateSettings['" . $module->id . "'] = " . json_encode($gt_settings) . ";");
